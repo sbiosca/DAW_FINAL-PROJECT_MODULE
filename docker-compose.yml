@@ -1,18 +1,57 @@
-name: Deploy_Final-Project
+version: '3.5'
 services:
   backend:
     build:
-      context: backend
-      target: djangoDeploy
+      context: backend/server
+    networks:
+      - deploymentNetwork
+      - dbNetwork
     ports:
       - 8000:8000
+    depends_on:
+      - postgres
   frontend:
     build:
       context: frontend
-      target: reactDeploy
     networks:
       - deploymentNetwork
     ports:
       - 3000:3000
     volumes: 
-      - ./frontend/src:/code/src
+      - ./frontend/src:/frontendDir/src
+  postgres:
+    container_name: containerPostgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=bioskin
+      - POSTGRES_PASSWORD=r00t
+    volumes:
+      - /db/biosfc.sql:/docker-entrypoint-initdb.d/database.sql
+    ports:
+      - 5432:5432
+    networks:
+      - dbNetwork
+    restart: unless-stopped
+  pgadmin:
+    container_name: containerPgAdmin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=bioskin@pgadmin.es
+      - PGADMIN_DEFAULT_PASSWORD=r00t
+      - PGADMIN_CONFIG_SERVER_MODE='False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - 8050:80
+    networks:
+      - dbNetwork
+    restart: unless-stopped
+
+networks:
+  deploymentNetwork:
+  dbNetwork:
+
+volumes:
+  postgres:
+  pgadmin:
+  
