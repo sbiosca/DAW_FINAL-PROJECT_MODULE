@@ -23,10 +23,10 @@ services:
       - ./frontend/src:/frontendDir/src
   postgres:
     container_name: containerPostgres
-    image: postgres:latest
+    image: postgres
     environment:
-      - POSTGRES_USER=bioskin
-      - POSTGRES_PASSWORD=r00t
+      POSTGRES_USER: bioskin
+      POSTGRES_PASSWORD: r00t
     volumes:
       - /db/biosfc.sql:/docker-entrypoint-initdb.d/database.sql
     ports:
@@ -38,9 +38,9 @@ services:
     container_name: containerPgAdmin
     image: dpage/pgadmin4
     environment:
-      - PGADMIN_DEFAULT_EMAIL=bioskin@pgadmin.es
-      - PGADMIN_DEFAULT_PASSWORD=r00t
-      - PGADMIN_CONFIG_SERVER_MODE='False'
+      PGADMIN_DEFAULT_EMAIL: bioskin@pgadmin.es
+      PGADMIN_DEFAULT_PASSWORD: r00t
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
        - pgadmin:/var/lib/pgadmin
     ports:
@@ -52,6 +52,7 @@ services:
 networks:
   deploymentNetwork:
   dbNetwork:
+    driver: bridge
 
 volumes:
   postgres:
