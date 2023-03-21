@@ -1,6 +1,7 @@
 version: '3.5'
 services:
   backend:
+    container_name: containerbackend
     build:
       context: backend/server
     networks:
@@ -11,6 +12,7 @@ services:
     depends_on:
       - postgres
   frontend:
+    container_name: containerfrontend
     build:
       context: frontend
     networks:
