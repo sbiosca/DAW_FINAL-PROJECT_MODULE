@@ -1,3 +1,5 @@
 /venv
 
 /server/.env
+
+/server/server/app
