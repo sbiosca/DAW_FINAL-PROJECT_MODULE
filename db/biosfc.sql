@@ -27,7 +27,9 @@ SET default_table_access_method = heap;
 CREATE TABLE public.competiciones (
     id integer NOT NULL,
     name character(100),
-    clasificacion integer
+    clasificacion integer,
+
+    primary key(id)
 );
 
 
@@ -40,7 +42,11 @@ ALTER TABLE public.competiciones OWNER TO bioskin;
 CREATE TABLE public.entrada_reserved (
     id integer NOT NULL,
     id_entrada integer NOT NULL,
-    id_user integer
+    id_user integer,
+        -- foreign key(id_entrada) references entradas(id),
+        -- foreign key(id_user) references users(id),
+
+    primary key(id)
 );
 
 
@@ -57,7 +63,10 @@ CREATE TABLE public.entradas (
     graderia character(100),
     fila integer,
     precio numeric(100,0),
-    disponible boolean
+    disponible boolean,
+        -- foreign key(id_partido) references partidos(id),
+
+    primary key(id)
 );
 
 
@@ -74,7 +83,9 @@ CREATE TABLE public.equipo (
     stadium character(50),
     shield character(50),
     lat numeric(100,0),
-    long numeric(100,0)
+    long numeric(100,0),
+
+    primary key(id)
 );
 
 
@@ -86,13 +97,17 @@ ALTER TABLE public.equipo OWNER TO bioskin;
 
 CREATE TABLE public.integrantes (
     id integer NOT NULL,
+    id_player integer NOT NULL,
+    id_tecn integer,
     name character(50),
     apellidos character(50),
     nacionalidad character(50),
     fech_naci date,
     avatar character(1000),
-    id_player integer NOT NULL,
-    id_tecn integer
+        -- foreign key(id_player) references jugadores(id),
+        -- foreign key(id_tecn) references tecnicos(id),
+
+    primary key(id)
 );
 
 
@@ -108,7 +123,9 @@ CREATE TABLE public.jugadores (
     goles integer,
     tarjetas_amar integer,
     tarjetas_roj integer,
-    lesionado boolean
+    lesionado boolean,
+
+    primary key(id)
 );
 
 
@@ -121,7 +138,9 @@ ALTER TABLE public.jugadores OWNER TO bioskin;
 CREATE TABLE public.news (
     id integer NOT NULL,
     descr character(1000),
-    img character(100)
+    img character(100),
+
+    primary key(id)
 );
 
 
@@ -133,11 +152,14 @@ ALTER TABLE public.news OWNER TO bioskin;
 
 CREATE TABLE public.partidos (
     id integer NOT NULL,
+    id_competi integer NOT NULL,
     eq1 character(100),
     eq2 character(100),
     horario timestamp(6) with time zone,
-    id_competi integer NOT NULL,
-    resultado character(1)
+    resultado character(1),
+        -- foreign key(id_competi) references competiciones(id),
+
+    primary key(id)
 );
 
 
@@ -151,7 +173,9 @@ CREATE TABLE public.productos (
     id integer NOT NULL,
     name character(100),
     type character(100),
-    talla character(50)
+    talla character(50),
+
+    primary key(id)
 );
 
 
@@ -163,7 +187,9 @@ ALTER TABLE public.productos OWNER TO bioskin;
 
 CREATE TABLE public.socios (
     id integer NOT NULL,
-    num_socio integer
+    num_socio integer,
+
+    primary key(id)
 );
 
 
@@ -175,7 +201,9 @@ ALTER TABLE public.socios OWNER TO bioskin;
 
 CREATE TABLE public.tecnicos (
     id integer NOT NULL,
-    type character(1)
+    type character(1),
+
+    primary key(id)
 );
 
 
@@ -189,7 +217,9 @@ CREATE TABLE public.tienda (
     id integer NOT NULL,
     name character(50),
     lat numeric(100,0),
-    long numeric(100,0)
+    long numeric(100,0),
+
+    primary key(id)
 );
 
 
@@ -203,7 +233,31 @@ CREATE TABLE public.users (
     id integer NOT NULL,
     id_profile integer NOT NULL,
     username character(50),
-    passwd character(500)
+    passwd character(500),
+        -- foreign key(id_profile) references profile(id),
+
+    primary key(id)
+);
+
+
+ALTER TABLE public.users OWNER TO bioskin;
+
+--
+-- Name: profile; Type: TABLE; Schema: public; Owner: bioskin
+--
+
+CREATE TABLE public.profile (
+    id integer NOT NULL,
+    id_socio integer NOT NULL,
+    correo character(50),
+    name_complet character(100),
+    addres character(100),
+    num_telf numeric(9),
+    avatar character(50),
+    type character(50),
+        -- foreign key(id_socio) references socios(id),
+
+    primary key(id)
 );
 
 
@@ -236,11 +290,11 @@ COPY public.entradas (id, id_partido, asiento, graderia, fila, precio, disponibl
 --
 -- Data for Name: equipo; Type: TABLE DATA; Schema: public; Owner: bioskin
 --
+-- INSERT INTO equipo VALUES (1, 'BIOS FC', 'Ontinyent', 'Stadium Bioskin', 'logo_bioskin.png', 39, -1)
 
 COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
-1       BIOS FC                                                 Ontinyent                                              Stadium Bioskin                                          shield_bios.png                                         39     -1
+1       BIOS FC     Ontinyent       Stadium Bioskin     logo_bioskin    39      -1
 \.
-
 
 --
 -- Data for Name: integrantes; Type: TABLE DATA; Schema: public; Owner: bioskin
@@ -315,8 +369,15 @@ COPY public.users (id, id_profile, username, passwd) FROM stdin;
 
 
 --
--- Name: competiciones competiciones_pkey; Type: CONSTRAINT; Schema: public; Owner: bioskin
+-- Data for Name: profile; Type: TABLE DATA; Schema: public; Owner: bioskin
 --
+
+COPY public.profile (id, id_socio, correo, name_complet, addres, num_telf, avatar, type) FROM stdin;
+\.
+
+
+Name: competiciones competiciones_pkey; Type: CONSTRAINT; Schema: public; Owner: bioskin
+
 
 ALTER TABLE ONLY public.competiciones
     ADD CONSTRAINT competiciones_pkey PRIMARY KEY (id);
@@ -418,6 +479,6 @@ ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id_profile);
 
 
---
+
 -- PostgreSQL database dump complete
 --

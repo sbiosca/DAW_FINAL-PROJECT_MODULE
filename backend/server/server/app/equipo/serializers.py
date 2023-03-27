@@ -16,9 +16,9 @@ class EquipoSerializer(serializers.ModelSerializer):
             'name': instance.name,
             'city': instance.city,
             'stadium': instance.stadium,
+            'shield': instance.shield,
             'lat': instance.lat,
             'long': instance.long,
-            'shield': instance.shield
         }
         
         

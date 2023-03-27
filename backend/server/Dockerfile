@@ -1,7 +1,7 @@
-
 FROM --platform=$BUILDPLATFORM python:3.10.7 AS pythonDeploy
-EXPOSE 8000
 WORKDIR /server
+COPY ./package.json ./package.json
+EXPOSE 8000
 COPY requirements.txt /server
 RUN pip install -r requirements.txt --no-cache-dir
 COPY . /server

@@ -1,11 +1,11 @@
 FROM node:lts AS reactDeploy
-
-ENV CI=true
-ENV PORT=3000
-
 WORKDIR /frontendDir
-COPY package.json /frontendDir/package.json
-COPY package-lock.json /frontendDir/package-lock.json
-RUN npm ci
-COPY . /frontendDir
-CMD [ "npm", "start", "npm", "i" ]
+COPY ./package.json .
+RUN ["npm", "install"]
+
+FROM node:lts
+WORKDIR /frontendDir
+COPY --from=reactDeploy /frontendDir/node_modules ./node_modules
+COPY . .
+EXPOSE 3000
+CMD [ "npm", "start"]

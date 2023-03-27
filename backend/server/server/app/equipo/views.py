@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework import viewsets, status
+from django.http import HttpResponse
 from .models import Equipo
 from .serializers import EquipoSerializer
 
