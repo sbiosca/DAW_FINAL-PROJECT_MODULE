@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class StationAppConfig(AppConfig):
-    name = 'server.app.station'
-    verbose_name = 'Station'
+class IntegrantesAppConfig(AppConfig):
+    name = 'server.app.integrantes'
+    verbose_name = 'Integrantes'
 
-default_app_config = 'server.app.station.StationAppConfig'
+default_app_config = 'server.app.integrantes.IntegrantesAppConfig'

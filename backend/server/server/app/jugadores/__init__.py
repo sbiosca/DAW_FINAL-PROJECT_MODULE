@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class StationAppConfig(AppConfig):
-    name = 'server.app.station'
-    verbose_name = 'Station'
+class JugadoresAppConfig(AppConfig):
+    name = 'server.app.jugadores'
+    verbose_name = 'Jugadores'
 
-default_app_config = 'server.app.station.StationAppConfig'
+default_app_config = 'server.app.jugadores.JugadoresAppConfig'

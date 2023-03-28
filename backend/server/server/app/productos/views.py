@@ -1,11 +1,11 @@
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework import viewsets, status
-from .models import Equipo
-from .serializers import EquipoSerializer
+from .models import Productos
+from .serializers import ProductosSerializer
 
-class EquipoView(viewsets.GenericViewSet):
-    def GetEquipo(self, request):
-        queryset = Equipo.objects.all()
-        serializer = EquipoSerializer(queryset,many=True).data
+class ProductosView(viewsets.GenericViewSet):
+    def GetProductos(self, request):
+        queryset = Productos.objects.all()
+        serializer = ProductosSerializer(queryset,many=True).data
         return Response(serializer,status=status.HTTP_200_OK)

@@ -1,16 +1,12 @@
 from django.db import models
-from server.app.core.models import TimestampedModel
-
-class Equipo(models.Model):
+from server.app.entradas.models import Entrada
+from server.app.users.models import Users
+class Entrada_reserved(models.Model):
     class Meta:
         managed = False
-        db_table = "equipo"
-    name = models.CharField('name',max_length=100)
-    city = models.CharField('city',max_length=100)
-    stadium = models.CharField('stadium',max_length=100)
-    lat = models.DecimalField('lat', max_digits=15, decimal_places=10)
-    long = models.DecimalField('long', max_digits=15, decimal_places=10)
-    shield = models.CharField('shield', max_length=500)
+        db_table = "entrada_reserved"
+    entrada = models.ForeignKey(Entrada,related_name="id_entrada",on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(Users,related_name="id_user",on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return str(self.id)

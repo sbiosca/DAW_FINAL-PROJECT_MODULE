@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import EquipoView
+from .views import SociosView
 
 urlpatterns = [
-    path('', EquipoView.as_view({'get': 'GetEquipo'})),
+    path('', SociosView.as_view({'get': 'GetSocios'})),
 ]

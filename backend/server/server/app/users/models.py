@@ -1,7 +1,7 @@
 from django.db import models
 from server.app.core.models import TimestampedModel
 
-class Equipo(models.Model):
+class Users(models.Model):
     class Meta:
         managed = False
         db_table = "equipo"

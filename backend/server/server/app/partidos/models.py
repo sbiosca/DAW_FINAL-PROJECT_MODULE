@@ -1,16 +1,15 @@
 from django.db import models
 from server.app.core.models import TimestampedModel
 
-class Equipo(models.Model):
+class Partidos(models.Model):
     class Meta:
         managed = False
-        db_table = "equipo"
-    name = models.CharField('name',max_length=100)
-    city = models.CharField('city',max_length=100)
-    stadium = models.CharField('stadium',max_length=100)
-    lat = models.DecimalField('lat', max_digits=15, decimal_places=10)
-    long = models.DecimalField('long', max_digits=15, decimal_places=10)
-    shield = models.CharField('shield', max_length=500)
+        db_table = "partidos"
+    competi = models.IntegerField('id_competi')
+    eq1 = models.CharField('eq1',max_length=100)
+    eq2 = models.CharField('eq2',max_length=100)
+    horario = models.DateTimeField('horario')
+    resultado = models.CharField('resultado',max_length=20)
 
     def __str__(self):
         return str(self.id)
