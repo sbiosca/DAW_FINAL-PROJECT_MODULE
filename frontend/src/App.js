@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
 import React from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom";

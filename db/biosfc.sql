@@ -82,8 +82,8 @@ CREATE TABLE public.equipo (
     city character(50),
     stadium character(50),
     shield character(50),
-    lat numeric(100,0),
-    long numeric(100,0),
+    lat character(50),
+    long character(50),
 
     primary key(id)
 );
@@ -290,10 +290,10 @@ COPY public.entradas (id, id_partido, asiento, graderia, fila, precio, disponibl
 --
 -- Data for Name: equipo; Type: TABLE DATA; Schema: public; Owner: bioskin
 --
--- INSERT INTO equipo VALUES (1, 'BIOS FC', 'Ontinyent', 'Stadium Bioskin', 'logo_bioskin.png', 39, -1)
+-- INSERT INTO equipo VALUES (1, 'BIOS FC', 'Ontinyent', 'Stadium Bioskin', 'logo_bioskin.png', 38.824789, -0.615483)
 
 COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
-1       BIOS FC     Ontinyent       Stadium Bioskin     logo_bioskin    39      -1
+1       BIOS FC     Ontinyent       Stadium Bioskin     logo_bioskin.png    38.824789      -0.615483
 \.
 
 --
