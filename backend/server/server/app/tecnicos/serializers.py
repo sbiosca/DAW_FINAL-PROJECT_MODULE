@@ -1,24 +1,18 @@
 
 from pyexpat import model
 from rest_framework import serializers
-from .models import Equipo
+from .models import Tecnicos
 from django.core.serializers import serialize
 
-class EquipoSerializer(serializers.ModelSerializer):
+class TecnicosSerializer(serializers.ModelSerializer):
     class Meta:
-            model = Equipo
+            model = Tecnicos
             fields = ('__all__')
-            #fields = ('id', 'name', 'lat', 'long')
     
-    def to_Equipo(instance):
+    def to_Tecnicos(instance):
         return {
             'id': instance.id,
-            'name': instance.name,
-            'city': instance.city,
-            'stadium': instance.stadium,
-            'lat': instance.lat,
-            'long': instance.long,
-            'shield': instance.shield
+            'type': instance.type
         }
         
         

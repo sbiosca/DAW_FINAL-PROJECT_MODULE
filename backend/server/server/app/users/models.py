@@ -1,16 +1,13 @@
 from django.db import models
-from server.app.core.models import TimestampedModel
+from server.app.profile.models import Profile
 
 class Users(models.Model):
     class Meta:
         managed = False
-        db_table = "equipo"
-    name = models.CharField('name',max_length=100)
-    city = models.CharField('city',max_length=100)
-    stadium = models.CharField('stadium',max_length=100)
-    lat = models.DecimalField('lat', max_digits=15, decimal_places=10)
-    long = models.DecimalField('long', max_digits=15, decimal_places=10)
-    shield = models.CharField('shield', max_length=500)
+        db_table = "users"
+    profile = models.ForeignKey(Profile, related_name='id_profile', on_delete=models.DO_NOTHING)
+    username = models.CharField('username',max_length=50)
+    passwd = models.CharField('passwd',max_length=50)
 
     def __str__(self):
         return str(self.id)
