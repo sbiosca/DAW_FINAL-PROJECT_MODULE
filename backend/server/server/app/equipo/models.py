@@ -2,7 +2,6 @@ from django.db import models
 
 class Equipo(models.Model):
     class Meta:
-        managed = False
         db_table = "equipo"
     name = models.CharField('name',max_length=100)
     city = models.CharField('city',max_length=100)

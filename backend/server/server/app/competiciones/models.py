@@ -2,7 +2,6 @@ from django.db import models
 
 class Competiciones(models.Model):
     class Meta:
-        managed = False
         db_table = "competiciones"
     name = models.CharField('name',max_length=100)
     clasificacion = models.IntegerField('clasificacion')

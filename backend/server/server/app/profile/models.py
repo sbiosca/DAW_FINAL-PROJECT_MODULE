@@ -1,16 +1,16 @@
 from django.db import models
-from server.app.core.models import TimestampedModel
+from server.app.socios.models import Socios
 
 class Profile(models.Model):
     class Meta:
-        managed = False
-        db_table = "equipo"
-    name = models.CharField('name',max_length=100)
-    city = models.CharField('city',max_length=100)
-    stadium = models.CharField('stadium',max_length=100)
-    lat = models.DecimalField('lat', max_digits=15, decimal_places=10)
-    long = models.DecimalField('long', max_digits=15, decimal_places=10)
-    shield = models.CharField('shield', max_length=500)
+        db_table = "profile"
+    socio = models.ForeignKey(Socios, related_name='id_socio',on_delete=models.DO_NOTHING)
+    correo = models.CharField('correo',max_length=50)
+    name_complet = models.CharField('name_complet',max_length=100)
+    addres = models.CharField('addres',max_length=100)
+    num_telf = models.DecimalField('num_telf',max_digits=9, decimal_places=9)
+    avatar = models.CharField('avatar',max_length=50)    
+    type = models.CharField('type',max_length=50)
 
     def __str__(self):
         return str(self.id)

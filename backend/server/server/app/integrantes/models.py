@@ -4,7 +4,6 @@ from server.app.tecnicos.models import Tecnicos
 
 class Integrantes(models.Model):
     class Meta:
-        managed = False
         db_table = "integrantes"
     player = models.ForeignKey(Jugadores,related_name="id_player",on_delete=models.DO_NOTHING)
     tecnico = models.ForeignKey(Tecnicos,related_name="id_tecn",on_delete=models.DO_NOTHING)

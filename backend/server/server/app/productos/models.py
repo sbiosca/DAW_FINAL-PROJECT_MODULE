@@ -2,7 +2,6 @@ from django.db import models
 
 class Productos(models.Model):
     class Meta:
-        managed = False
         db_table = "productos"
     name = models.CharField('name',max_length=100)
     type = models.CharField('type',max_length=100)

@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class StationAppConfig(AppConfig):
-    name = 'server.app.station'
-    verbose_name = 'Station'
+class ProfileAppConfig(AppConfig):
+    name = 'server.app.profile'
+    verbose_name = 'Profile'
 
-default_app_config = 'server.app.station.StationAppConfig'
+default_app_config = 'server.app.profile.ProfileAppConfig'

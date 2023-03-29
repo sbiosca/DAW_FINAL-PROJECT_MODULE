@@ -2,7 +2,6 @@ from django.db import models
 
 class Jugadores(models.Model):
     class Meta:
-        managed = False
         db_table = "jugadores"
     dorsal = models.IntegerField('dorsal')
     goles = models.IntegerField('goles')

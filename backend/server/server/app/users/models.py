@@ -3,7 +3,6 @@ from server.app.profile.models import Profile
 
 class Users(models.Model):
     class Meta:
-        managed = False
         db_table = "users"
     profile = models.ForeignKey(Profile, related_name='id_profile', on_delete=models.DO_NOTHING)
     username = models.CharField('username',max_length=50)

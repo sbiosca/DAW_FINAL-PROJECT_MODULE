@@ -1,9 +1,7 @@
 from django.db import models
-from server.app.core.models import TimestampedModel
 
 class Partidos(models.Model):
     class Meta:
-        managed = False
         db_table = "partidos"
     competi = models.IntegerField('id_competi')
     eq1 = models.CharField('eq1',max_length=100)
