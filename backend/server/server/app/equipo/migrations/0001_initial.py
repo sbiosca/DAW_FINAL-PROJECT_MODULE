@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(max_length=100, verbose_name='city')),
                 ('stadium', models.CharField(max_length=100, verbose_name='stadium')),
                 ('shield', models.CharField(max_length=500, verbose_name='shield')),
-                ('lat', models.DecimalField(decimal_places=10, max_digits=15, verbose_name='lat')),
-                ('long', models.DecimalField(decimal_places=10, max_digits=15, verbose_name='long')),
+                ('lat', models.CharField(max_length=100, verbose_name='lat')),
+                ('long', models.CharField(max_length=100, verbose_name='long')),
             ],
             options={
                 'db_table': 'equipo',

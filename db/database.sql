@@ -354,7 +354,7 @@ CREATE TABLE public.entradas (
     asiento integer NOT NULL,
     graderia character varying(100) NOT NULL,
     fila integer NOT NULL,
-    precio numeric(100,100) NOT NULL,
+    precio integer NOT NULL,
     disponible boolean NOT NULL,
     partido_id bigint NOT NULL
 );
@@ -386,8 +386,8 @@ CREATE TABLE public.equipo (
     city character varying(100) NOT NULL,
     stadium character varying(100) NOT NULL,
     shield character varying(500) NOT NULL,
-    lat numeric(15,10) NOT NULL,
-    long numeric(15,10) NOT NULL
+    lat character varying(100) NOT NULL,
+    long character varying(100) NOT NULL
 );
 
 
@@ -564,7 +564,7 @@ CREATE TABLE public.profile (
     correo character varying(50) NOT NULL,
     name_complet character varying(100) NOT NULL,
     addres character varying(100) NOT NULL,
-    num_telf integer NOT NULL,
+    num_telf character varying(9) NOT NULL,
     avatar character varying(50) NOT NULL,
     type character varying(50) NOT NULL,
     socio_id bigint NOT NULL
@@ -717,86 +717,86 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 --
 
 COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
-1       Can add log entry       1       add_logentry
-2       Can change log entry    1       change_logentry
-3       Can delete log entry    1       delete_logentry
-4       Can view log entry      1       view_logentry
-5       Can add equipo  2       add_equipo
-6       Can change equipo       2       change_equipo
-7       Can delete equipo       2       delete_equipo
-8       Can view equipo 2       view_equipo
-9       Can add competiciones   3       add_competiciones
-10      Can change competiciones        3       change_competiciones
-11      Can delete competiciones        3       delete_competiciones
-12      Can view competiciones  3       view_competiciones
-13      Can add entrada_reserved        4       add_entrada_reserved
-14      Can change entrada_reserved     4       change_entrada_reserved
-15      Can delete entrada_reserved     4       delete_entrada_reserved
-16      Can view entrada_reserved       4       view_entrada_reserved
-17      Can add entrada 5       add_entrada
-18      Can change entrada      5       change_entrada
-19      Can delete entrada      5       delete_entrada
-20      Can view entrada        5       view_entrada
-21      Can add integrantes     6       add_integrantes
-22      Can change integrantes  6       change_integrantes
-23      Can delete integrantes  6       delete_integrantes
-24      Can view integrantes    6       view_integrantes
-25      Can add jugadores       7       add_jugadores
-26      Can change jugadores    7       change_jugadores
-27      Can delete jugadores    7       delete_jugadores
-28      Can view jugadores      7       view_jugadores
-29      Can add news    8       add_news
-30      Can change news 8       change_news
-31      Can delete news 8       delete_news
-32      Can view news   8       view_news
-33      Can add partidos        9       add_partidos
-34      Can change partidos     9       change_partidos
-35      Can delete partidos     9       delete_partidos
-36      Can view partidos       9       view_partidos
-37      Can add productos       10      add_productos
-38      Can change productos    10      change_productos
-39      Can delete productos    10      delete_productos
-40      Can view productos      10      view_productos
-41      Can add socios  11      add_socios
-42      Can change socios       11      change_socios
-43      Can delete socios       11      delete_socios
-44      Can view socios 11      view_socios
-45      Can add tecnicos        12      add_tecnicos
-46      Can change tecnicos     12      change_tecnicos
-47      Can delete tecnicos     12      delete_tecnicos
-48      Can view tecnicos       12      view_tecnicos
-49      Can add tienda  13      add_tienda
-50      Can change tienda       13      change_tienda
-51      Can delete tienda       13      delete_tienda
-52      Can view tienda 13      view_tienda
-53      Can add users   14      add_users
-54      Can change users        14      change_users
-55      Can delete users        14      delete_users
-56      Can view users  14      view_users
-57      Can add profile 15      add_profile
-58      Can change profile      15      change_profile
-59      Can delete profile      15      delete_profile
-60      Can view profile        15      view_profile
-61      Can add permission      16      add_permission
-62      Can change permission   16      change_permission
-63      Can delete permission   16      delete_permission
-64      Can view permission     16      view_permission
-65      Can add group   17      add_group
-66      Can change group        17      change_group
-67      Can delete group        17      delete_group
-68      Can view group  17      view_group
-69      Can add user    18      add_user
-70      Can change user 18      change_user
-71      Can delete user 18      delete_user
-72      Can view user   18      view_user
-73      Can add content type    19      add_contenttype
-74      Can change content type 19      change_contenttype
-75      Can delete content type 19      delete_contenttype
-76      Can view content type   19      view_contenttype
-77      Can add session 20      add_session
-78      Can change session      20      change_session
-79      Can delete session      20      delete_session
-80      Can view session        20      view_session
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can view log entry	1	view_logentry
+5	Can add equipo	2	add_equipo
+6	Can change equipo	2	change_equipo
+7	Can delete equipo	2	delete_equipo
+8	Can view equipo	2	view_equipo
+9	Can add competiciones	3	add_competiciones
+10	Can change competiciones	3	change_competiciones
+11	Can delete competiciones	3	delete_competiciones
+12	Can view competiciones	3	view_competiciones
+13	Can add entrada_reserved	4	add_entrada_reserved
+14	Can change entrada_reserved	4	change_entrada_reserved
+15	Can delete entrada_reserved	4	delete_entrada_reserved
+16	Can view entrada_reserved	4	view_entrada_reserved
+17	Can add entrada	5	add_entrada
+18	Can change entrada	5	change_entrada
+19	Can delete entrada	5	delete_entrada
+20	Can view entrada	5	view_entrada
+21	Can add integrantes	6	add_integrantes
+22	Can change integrantes	6	change_integrantes
+23	Can delete integrantes	6	delete_integrantes
+24	Can view integrantes	6	view_integrantes
+25	Can add jugadores	7	add_jugadores
+26	Can change jugadores	7	change_jugadores
+27	Can delete jugadores	7	delete_jugadores
+28	Can view jugadores	7	view_jugadores
+29	Can add news	8	add_news
+30	Can change news	8	change_news
+31	Can delete news	8	delete_news
+32	Can view news	8	view_news
+33	Can add partidos	9	add_partidos
+34	Can change partidos	9	change_partidos
+35	Can delete partidos	9	delete_partidos
+36	Can view partidos	9	view_partidos
+37	Can add productos	10	add_productos
+38	Can change productos	10	change_productos
+39	Can delete productos	10	delete_productos
+40	Can view productos	10	view_productos
+41	Can add socios	11	add_socios
+42	Can change socios	11	change_socios
+43	Can delete socios	11	delete_socios
+44	Can view socios	11	view_socios
+45	Can add tecnicos	12	add_tecnicos
+46	Can change tecnicos	12	change_tecnicos
+47	Can delete tecnicos	12	delete_tecnicos
+48	Can view tecnicos	12	view_tecnicos
+49	Can add tienda	13	add_tienda
+50	Can change tienda	13	change_tienda
+51	Can delete tienda	13	delete_tienda
+52	Can view tienda	13	view_tienda
+53	Can add users	14	add_users
+54	Can change users	14	change_users
+55	Can delete users	14	delete_users
+56	Can view users	14	view_users
+57	Can add profile	15	add_profile
+58	Can change profile	15	change_profile
+59	Can delete profile	15	delete_profile
+60	Can view profile	15	view_profile
+61	Can add permission	16	add_permission
+62	Can change permission	16	change_permission
+63	Can delete permission	16	delete_permission
+64	Can view permission	16	view_permission
+65	Can add group	17	add_group
+66	Can change group	17	change_group
+67	Can delete group	17	delete_group
+68	Can view group	17	view_group
+69	Can add user	18	add_user
+70	Can change user	18	change_user
+71	Can delete user	18	delete_user
+72	Can view user	18	view_user
+73	Can add content type	19	add_contenttype
+74	Can change content type	19	change_contenttype
+75	Can delete content type	19	delete_contenttype
+76	Can view content type	19	view_contenttype
+77	Can add session	20	add_session
+78	Can change session	20	change_session
+79	Can delete session	20	delete_session
+80	Can view session	20	view_session
 \.
 
 
@@ -829,6 +829,9 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 --
 
 COPY public.competiciones (id, name, clasificacion) FROM stdin;
+1	LaLiga	1
+2	Champions League	1
+3	Copa Rey	1
 \.
 
 
@@ -845,26 +848,26 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 --
 
 COPY public.django_content_type (id, app_label, model) FROM stdin;
-1       admin   logentry
-2       equipo  equipo
-3       competiciones   competiciones
-4       entrada_reserved        entrada_reserved
-5       entradas        entrada
-6       integrantes     integrantes
-7       jugadores       jugadores
-8       news    news
-9       partidos        partidos
-10      productos       productos
-11      socios  socios
-12      tecnicos        tecnicos
-13      tienda  tienda
-14      users   users
-15      profile profile
-16      auth    permission
-17      auth    group
-18      auth    user
-19      contenttypes    contenttype
-20      sessions        session
+1	admin	logentry
+2	equipo	equipo
+3	competiciones	competiciones
+4	entrada_reserved	entrada_reserved
+5	entradas	entrada
+6	integrantes	integrantes
+7	jugadores	jugadores
+8	news	news
+9	partidos	partidos
+10	productos	productos
+11	socios	socios
+12	tecnicos	tecnicos
+13	tienda	tienda
+14	users	users
+15	profile	profile
+16	auth	permission
+17	auth	group
+18	auth	user
+19	contenttypes	contenttype
+20	sessions	session
 \.
 
 
@@ -873,38 +876,38 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1       contenttypes    0001_initial    2023-03-29 17:00:22.009957+00
-2       auth    0001_initial    2023-03-29 17:00:22.09681+00
-3       admin   0001_initial    2023-03-29 17:00:22.121311+00
-4       admin   0002_logentry_remove_auto_add   2023-03-29 17:00:22.129819+00
-5       admin   0003_logentry_add_action_flag_choices   2023-03-29 17:00:22.139787+00
-6       contenttypes    0002_remove_content_type_name   2023-03-29 17:00:22.157861+00
-7       auth    0002_alter_permission_name_max_length   2023-03-29 17:00:22.167919+00
-8       auth    0003_alter_user_email_max_length        2023-03-29 17:00:22.177461+00
-9       auth    0004_alter_user_username_opts   2023-03-29 17:00:22.18594+00
-10      auth    0005_alter_user_last_login_null 2023-03-29 17:00:22.197481+00
-11      auth    0006_require_contenttypes_0002  2023-03-29 17:00:22.201452+00
-12      auth    0007_alter_validators_add_error_messages        2023-03-29 17:00:22.211416+00
-13      auth    0008_alter_user_username_max_length     2023-03-29 17:00:22.224937+00
-14      auth    0009_alter_user_last_name_max_length    2023-03-29 17:00:22.233908+00
-15      auth    0010_alter_group_name_max_length        2023-03-29 17:00:22.244477+00
-16      auth    0011_update_proxy_permissions   2023-03-29 17:00:22.254693+00
-17      auth    0012_alter_user_first_name_max_length   2023-03-29 17:00:22.265765+00
-18      competiciones   0001_initial    2023-03-29 17:00:22.27479+00
-19      socios  0001_initial    2023-03-29 17:00:22.283788+00
-20      profile 0001_initial    2023-03-29 17:00:22.300862+00
-21      users   0001_initial    2023-03-29 17:00:22.315704+00
-22      partidos        0001_initial    2023-03-29 17:00:22.325728+00
-23      entradas        0001_initial    2023-03-29 17:00:22.341784+00
-24      entrada_reserved        0001_initial    2023-03-29 17:00:22.363814+00
-25      equipo  0001_initial    2023-03-29 17:00:22.375904+00
-26      tecnicos        0001_initial    2023-03-29 17:00:22.384876+00
-27      jugadores       0001_initial    2023-03-29 17:00:22.395198+00
-28      integrantes     0001_initial    2023-03-29 17:00:22.415803+00
-29      news    0001_initial    2023-03-29 17:00:22.425741+00
-30      productos       0001_initial    2023-03-29 17:00:22.435835+00
-31      sessions        0001_initial    2023-03-29 17:00:22.453879+00
-32      tienda  0001_initial    2023-03-29 17:00:22.462885+00
+1	contenttypes	0001_initial	2023-03-30 19:18:01.227999+00
+2	auth	0001_initial	2023-03-30 19:18:01.308872+00
+3	admin	0001_initial	2023-03-30 19:18:01.33099+00
+4	admin	0002_logentry_remove_auto_add	2023-03-30 19:18:01.340003+00
+5	admin	0003_logentry_add_action_flag_choices	2023-03-30 19:18:01.347836+00
+6	contenttypes	0002_remove_content_type_name	2023-03-30 19:18:01.366057+00
+7	auth	0002_alter_permission_name_max_length	2023-03-30 19:18:01.377301+00
+8	auth	0003_alter_user_email_max_length	2023-03-30 19:18:01.387833+00
+9	auth	0004_alter_user_username_opts	2023-03-30 19:18:01.396959+00
+10	auth	0005_alter_user_last_login_null	2023-03-30 19:18:01.407019+00
+11	auth	0006_require_contenttypes_0002	2023-03-30 19:18:01.41187+00
+12	auth	0007_alter_validators_add_error_messages	2023-03-30 19:18:01.420868+00
+13	auth	0008_alter_user_username_max_length	2023-03-30 19:18:01.434257+00
+14	auth	0009_alter_user_last_name_max_length	2023-03-30 19:18:01.443825+00
+15	auth	0010_alter_group_name_max_length	2023-03-30 19:18:01.454428+00
+16	auth	0011_update_proxy_permissions	2023-03-30 19:18:01.463088+00
+17	auth	0012_alter_user_first_name_max_length	2023-03-30 19:18:01.473169+00
+18	competiciones	0001_initial	2023-03-30 19:18:01.482872+00
+19	socios	0001_initial	2023-03-30 19:18:01.491936+00
+20	profile	0001_initial	2023-03-30 19:18:01.509808+00
+21	users	0001_initial	2023-03-30 19:18:01.52469+00
+22	partidos	0001_initial	2023-03-30 19:18:01.532941+00
+23	entradas	0001_initial	2023-03-30 19:18:01.547955+00
+24	entrada_reserved	0001_initial	2023-03-30 19:18:01.567861+00
+25	equipo	0001_initial	2023-03-30 19:18:01.578444+00
+26	tecnicos	0001_initial	2023-03-30 19:18:01.58796+00
+27	jugadores	0001_initial	2023-03-30 19:18:01.597222+00
+28	integrantes	0001_initial	2023-03-30 19:18:01.618815+00
+29	news	0001_initial	2023-03-30 19:18:01.629387+00
+30	productos	0001_initial	2023-03-30 19:18:01.637906+00
+31	sessions	0001_initial	2023-03-30 19:18:01.657468+00
+32	tienda	0001_initial	2023-03-30 19:18:01.666126+00
 \.
 
 
@@ -921,6 +924,10 @@ COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 --
 
 COPY public.entrada_reserved (id, entrada_id, user_id) FROM stdin;
+1	1	1
+2	2	2
+3	3	3
+4	4	4
 \.
 
 
@@ -929,6 +936,12 @@ COPY public.entrada_reserved (id, entrada_id, user_id) FROM stdin;
 --
 
 COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_id) FROM stdin;
+1	45	Tribuna	2	300	t	4
+2	46	Tribuna	2	300	t	1
+3	47	Tribuna	2	300	t	4
+4	48	Tribuna	2	300	t	2
+5	49	Tribuna	2	300	t	3
+6	50	Tribuna	2	300	t	4
 \.
 
 
@@ -937,6 +950,7 @@ COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_i
 --
 
 COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
+1	Bios FC	Ontinyent	Bioskin Stadium	logo_bioskin.png	38.7533	-0.6656
 \.
 
 
@@ -945,6 +959,12 @@ COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
 --
 
 COPY public.integrantes (id, name, apellidos, nacionalidad, fech_naci, avatar, player_id, tecnico_id) FROM stdin;
+1	Pepe	Garcia Sanchis	Rumania	1991-02-11	avatar.png	1	1
+2	Jose	Carbonell Gandia	España	1995-02-11	avatar.png	2	1
+3	Lucas	Bataller Sanchis	Francia	1990-02-11	avatar.png	3	1
+4	Xavi	Garcia Guerola	Portugal	1994-02-11	avatar.png	3	1
+5	Pablo	Garcia Diaz	Alemania	1994-02-11	avatar.png	4	2
+6	Tono	Reyes Sanchis	España	1994-02-11	avatar.png	5	2
 \.
 
 
@@ -953,6 +973,12 @@ COPY public.integrantes (id, name, apellidos, nacionalidad, fech_naci, avatar, p
 --
 
 COPY public.jugadores (id, dorsal, goles, tarjetas_amar, tarjetas_roj, lesionado) FROM stdin;
+1	5	0	0	1	t
+2	7	25	2	2	f
+3	10	100	23	1	f
+4	13	254	2	0	f
+5	22	55	1	2	f
+6	12	10	10	0	f
 \.
 
 
@@ -961,6 +987,10 @@ COPY public.jugadores (id, dorsal, goles, tarjetas_amar, tarjetas_roj, lesionado
 --
 
 COPY public.news (id, descr, img) FROM stdin;
+1	What is Lorem Ipsum? Lorem Ipsum isi	img_news1.png
+2	What is Lorem Ipsum? Lorem Ipsum isi	img_news2.png
+3	What is Lorem Ipsum? Lorem Ipsum isi	img_news3.png
+4	What is Lorem Ipsum? Lorem Ipsum isi	img_news4.png
 \.
 
 
@@ -969,6 +999,10 @@ COPY public.news (id, descr, img) FROM stdin;
 --
 
 COPY public.partidos (id, competi, eq1, eq2, horario, resultado) FROM stdin;
+4	2	Real Beniarres	Bios FC	2023-04-22 21:00:00+00	0-5
+1	1	Bios FC	Otos FC	2023-06-22 21:00:00+00	
+2	1	Bios FC	Aielo FC	2023-06-29 22:00:00+00	
+3	3	Beniganim CF	Bios FC	2023-07-02 20:00:00+00	
 \.
 
 
@@ -977,6 +1011,10 @@ COPY public.partidos (id, competi, eq1, eq2, horario, resultado) FROM stdin;
 --
 
 COPY public.productos (id, name, type, talla, img) FROM stdin;
+1	Camiseta 1a Equipación		M	producto1.jpg
+2	Camiseta 2a Equipación		XL	producto2.jpg
+3	Camiseta 3a Equipación		XS	producto3.jpg
+4	Pantalón 1a Equipación		16	producto4.jpg
 \.
 
 
@@ -985,7 +1023,10 @@ COPY public.productos (id, name, type, talla, img) FROM stdin;
 --
 
 COPY public.profile (id, correo, name_complet, addres, num_telf, avatar, type, socio_id) FROM stdin;
-1       prueba@gmail.com        Sergi Biosca Beneyto    C/Alacant       12      prueba.jpg      eeee    1
+1	prueba@gmail.com	Seergi Biosca Beneyto	C/Alacant	12	prueba.jpg	eeee	1
+2	pruebaaa@gmail.com	Gonzalo Roberto Beneyto	C/Alacant	123455	prueba.jpg	eeee	2
+3	pruebaaaaa@gmail.com	Adrian Mico Perez	C/Albaida	123455	prueba.jpg	eeee	3
+4	aadmin@gmail.com	aadmin	C/aadmin	00000	prueba.jpg	eeee	4
 \.
 
 
@@ -994,7 +1035,11 @@ COPY public.profile (id, correo, name_complet, addres, num_telf, avatar, type, s
 --
 
 COPY public.socios (id, num_socio) FROM stdin;
-1       289
+1	289
+2	288
+3	287
+4	286
+5	285
 \.
 
 
@@ -1003,6 +1048,8 @@ COPY public.socios (id, num_socio) FROM stdin;
 --
 
 COPY public.tecnicos (id, type) FROM stdin;
+1	Entrenador
+2	Presidente
 \.
 
 
@@ -1011,6 +1058,10 @@ COPY public.tecnicos (id, type) FROM stdin;
 --
 
 COPY public.tienda (id, name, lat, long, img) FROM stdin;
+1	San Rafael	38.7933	-0.62576	tienda1.jpg
+2	Almaig	38.333	-0.61476	tienda2.jpg
+3	Barranquet	38.8253	-0.6656	tienda3.jpg
+4	Centro	38.1233	-0.60056	tienda4.jpg
 \.
 
 
@@ -1019,6 +1070,10 @@ COPY public.tienda (id, name, lat, long, img) FROM stdin;
 --
 
 COPY public.users (id, username, passwd, profile_id) FROM stdin;
+1	sbiosca94	123456	1
+2	bioskin	123456	3
+3	bioska	123456	2
+4	admin	admin	4
 \.
 
 
@@ -1451,6 +1506,7 @@ CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permi
 
 CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_permissions USING btree (permission_id);
 
+
 --
 -- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: bioskin
 --
@@ -1667,14 +1723,16 @@ ALTER TABLE ONLY public.entradas
 
 
 --
--- Name: integrantes integrantes_player_id_6bdf05c6_fk_jugadores_id; Type: FK CONSTRAINT; Schema: public; Owner: bioskin--
+-- Name: integrantes integrantes_player_id_6bdf05c6_fk_jugadores_id; Type: FK CONSTRAINT; Schema: public; Owner: bioskin
+--
 
 ALTER TABLE ONLY public.integrantes
     ADD CONSTRAINT integrantes_player_id_6bdf05c6_fk_jugadores_id FOREIGN KEY (player_id) REFERENCES public.jugadores(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: integrantes integrantes_tecnico_id_c979d7d9_fk_tecnicos_id; Type: FK CONSTRAINT; Schema: public; Owner: bioskin--
+-- Name: integrantes integrantes_tecnico_id_c979d7d9_fk_tecnicos_id; Type: FK CONSTRAINT; Schema: public; Owner: bioskin
+--
 
 ALTER TABLE ONLY public.integrantes
     ADD CONSTRAINT integrantes_tecnico_id_c979d7d9_fk_tecnicos_id FOREIGN KEY (tecnico_id) REFERENCES public.tecnicos(id) DEFERRABLE INITIALLY DEFERRED;
@@ -1699,3 +1757,4 @@ ALTER TABLE ONLY public.users
 --
 -- PostgreSQL database dump complete
 --
+

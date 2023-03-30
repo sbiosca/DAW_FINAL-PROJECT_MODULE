@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('correo', models.CharField(max_length=50, verbose_name='correo')),
                 ('name_complet', models.CharField(max_length=100, verbose_name='name_complet')),
                 ('addres', models.CharField(max_length=100, verbose_name='addres')),
-                ('num_telf', models.DecimalField(decimal_places=9, max_digits=9, verbose_name='num_telf')),
+                ('num_telf', models.CharField(max_length=9, verbose_name='num_telf')),
                 ('avatar', models.CharField(max_length=50, verbose_name='avatar')),
                 ('type', models.CharField(max_length=50, verbose_name='type')),
                 ('socio', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='id_socio', to='socios.socios')),

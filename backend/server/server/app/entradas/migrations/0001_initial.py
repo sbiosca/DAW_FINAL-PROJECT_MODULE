@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('asiento', models.IntegerField(verbose_name='asiento')),
                 ('graderia', models.CharField(max_length=100, verbose_name='graderia')),
                 ('fila', models.IntegerField(verbose_name='fila')),
-                ('precio', models.DecimalField(decimal_places=100, max_digits=100, verbose_name='precio')),
+                ('precio', models.IntegerField(verbose_name='precio')),
                 ('disponible', models.BooleanField(verbose_name='disponible')),
                 ('partido', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='id_partido', to='partidos.partidos')),
             ],

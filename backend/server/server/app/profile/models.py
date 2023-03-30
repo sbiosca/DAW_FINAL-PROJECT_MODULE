@@ -8,7 +8,7 @@ class Profile(models.Model):
     correo = models.CharField('correo',max_length=50)
     name_complet = models.CharField('name_complet',max_length=100)
     addres = models.CharField('addres',max_length=100)
-    num_telf = models.DecimalField('num_telf',max_digits=9, decimal_places=9)
+    num_telf = models.CharField('num_telf',max_length=9)
     avatar = models.CharField('avatar',max_length=50)    
     type = models.CharField('type',max_length=50)
 
