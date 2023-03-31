@@ -20,7 +20,7 @@ const HeaderComponent = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={"/bios.fc"} className="nav-link">
+                            <Link to={"/shops"} className="nav-link">
                                 <p>Shop</p>
                             </Link>
                         </li>

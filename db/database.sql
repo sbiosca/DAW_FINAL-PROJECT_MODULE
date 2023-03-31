@@ -950,7 +950,7 @@ COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_i
 --
 
 COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
-1	Bios FC	Ontinyent	Bioskin Stadium	logo_bioskin.png	38.7533	-0.6656
+1	Bios FC	Ontinyent	Bioskin Stadium	logo_bioskin.png	38.8247988	-0.6130516
 \.
 
 

@@ -7,6 +7,7 @@ import Header from "./pages/Header"
 import Footer from "./pages/Footer"
 import Home from "./pages/Home"
 import Equipo from "./pages/Equipo"
+import Shop from "./pages/Shop"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/bios.fc' element={<Equipo />} />
+          <Route exact path='/shops' element={<Shop />} />
         </Routes>
         <Footer />
       </BrowserRouter>
