@@ -20,5 +20,17 @@ class ProfileSerializer(serializers.ModelSerializer):
             'avatar': instance.avatar,
             'type': instance.type
         }
+
+    def getProfile(context):
+        queryset = Profile.objects.filter(id = context['id']) or False
+        if not queryset:
+            raise serializers.ValidationError('Profile doesnt found')
+        serialized_profile = []
+
+        for profile in queryset.iterator():
+            ser_profile = ProfileSerializer.to_profile(profile)
+            serialized_profile.append(ser_profile)
+
+        return serialized_profile
         
         

@@ -17,5 +17,16 @@ class TiendaSerializer(serializers.ModelSerializer):
             'long': instance.long,
             'img': instance.img
         }
-        
-        
+    
+    def AddTienda(context):
+        tienda = Tienda.objects.create(
+            name = context["name"],
+            lat = context["lat"],
+            long = context["long"],
+            img = context["img"]
+        )
+        return tienda
+    
+    def UpdateTienda(context, id):
+        Tienda.objects.bulk_update([Tienda(id=id, name=context['name'], long=context['long'], lat=context['lat'], img=context['img'])], fields=["name", "long", "lat", "img"])
+        return "Correct"
