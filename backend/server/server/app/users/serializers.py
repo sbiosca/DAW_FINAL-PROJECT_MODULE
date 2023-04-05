@@ -2,7 +2,9 @@
 from pyexpat import model
 from rest_framework import serializers
 from .models import Users
+from django.shortcuts import get_object_or_404
 from ..profile.serializers import ProfileSerializer
+from django.http import Http404
 from ..profile.models import Profile
 from django.contrib.auth.hashers import make_password, check_password
 
@@ -14,12 +16,14 @@ class UsersSerializer(serializers.ModelSerializer):
     def to_Users(instance):
         return {
             'id': instance.id,
-            'id_profile': instance.id_profile,
+            'id_profile': instance.profile_id,
             'username': instance.username,
             'passwd': instance.passwd,
+            'token': instance.token,
+            'ref_token': instance.ref_token,
         }
         
-    def register(context):   
+    def Register(context):   
 
         user_exist=Users.objects.filter(username=context['username']).exists()
         if user_exist:
@@ -27,21 +31,31 @@ class UsersSerializer(serializers.ModelSerializer):
         else:
             new_profile = Profile.objects.create(
                 avatar = context['avatar'],
-                email = context['email'],
+                correo = context['email'],
                 name_complet= context["name_complet"],
                 addres = context["addres"],
                 num_telf = context["num_telf"],
                 type = context["type"],
-                id_socio = context["id_socio"],
+                socio_id = context["socio_id"],
             )
-            ProfileSerializer.to_profile(new_profile)
+            ProfileSerializer.to_Profile(new_profile)
             profile = Profile.objects.get(id = new_profile.id)
             user = Users.objects.create(
                 username = context['username'],
-                password = make_password(context['password']),
+                passwd = make_password(context['passwd']),
                 profile = profile
             )
-            serialized_user = UsersSerializer.to_user(user)
+            serialized_user = UsersSerializer.to_Users(user)
             return serialized_user
+        
+    def loginSerializer(context):
+        password = context['password']
+        user = get_object_or_404(Users, username=context['username'])
+        
+        if not check_password(password, user.passwd):
+            raise Http404
+
+        serialized_user = UsersSerializer.to_Users(user)
+        return serialized_user
 
         

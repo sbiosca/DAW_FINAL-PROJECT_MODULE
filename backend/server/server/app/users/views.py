@@ -13,11 +13,11 @@ class UsersView(viewsets.GenericViewSet):
 
     def Register(self, request):
         serializer_context = {
-            'id_socio': request.data["id_socio"],
+            'socio_id': request.data["id_socio"],
             'avatar': request.data["avatar"],
             'email': request.data["email"],
             'username': request.data["username"],
-            'password': request.data["password"],
+            'passwd': request.data["passwd"],
             'name_complet': request.data["name_complet"],
             'addres': request.data["addres"],
             'num_telf': request.data["num_telf"],
@@ -25,6 +25,17 @@ class UsersView(viewsets.GenericViewSet):
 
         }
         serializer = UsersSerializer.Register(context=serializer_context)
-        serializer_profile = ProfileSerializer.getProfile(context={'id': serializer["profile_id"]})
-        serializer["profile_id"] = serializer_profile
+        serializer_profile = ProfileSerializer.getProfile(context={'id': serializer["id_profile"]})
+        serializer["id_profile"] = serializer_profile
+        return Response(serializer, status=status.HTTP_200_OK)
+    
+    def Login(self, request):
+        serializer_login = {
+            'username': request.data["username"],
+            'password': request.data["password"]
+        }
+        serializer = UsersSerializer.loginSerializer(context=serializer_login)
+        serializer_profile = ProfileSerializer.getProfile(context={'id': serializer["id_profile"]})
+        serializer["id_profile"] = serializer_profile
+
         return Response(serializer, status=status.HTTP_200_OK)

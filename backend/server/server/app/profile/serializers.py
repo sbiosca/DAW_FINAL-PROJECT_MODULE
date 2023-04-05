@@ -12,7 +12,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     def to_Profile(instance):
         return {
             'id': instance.id,
-            'id_socio': instance.id_socio,
+            'socio_id': instance.socio_id,
             'correo': instance.correo,
             'name_complet': instance.name_complet,
             'addres': instance.addres,
@@ -28,7 +28,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         serialized_profile = []
 
         for profile in queryset.iterator():
-            ser_profile = ProfileSerializer.to_profile(profile)
+            ser_profile = ProfileSerializer.to_Profile(profile)
             serialized_profile.append(ser_profile)
 
         return serialized_profile
