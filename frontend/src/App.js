@@ -8,6 +8,8 @@ import Footer from "./pages/Footer"
 import Home from "./pages/Home"
 import Equipo from "./pages/Equipo"
 import Shop from "./pages/Shop"
+import Login from './pages/Users/Login'
+import Register from './pages/Users/Register'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/bios.fc' element={<Equipo />} />
           <Route exact path='/shops' element={<Shop />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1027,6 +1027,7 @@ COPY public.profile (id, correo, name_complet, addres, num_telf, avatar, type, s
 2	pruebaaa@gmail.com	Gonzalo Roberto Beneyto	C/Alacant	123455	prueba.jpg	eeee	2
 3	pruebaaaaa@gmail.com	Adrian Mico Perez	C/Albaida	123455	prueba.jpg	eeee	3
 4	aadmin@gmail.com	aadmin	C/aadmin	00000	prueba.jpg	eeee	4
+14	test@gmail.com	test test	dfsadf	3252521	test	d	6
 \.
 
 
@@ -1040,6 +1041,12 @@ COPY public.socios (id, num_socio) FROM stdin;
 3	287
 4	286
 5	285
+6	127
+7	126
+8	125
+9	124
+10	123
+11	122
 \.
 
 
@@ -1070,10 +1077,11 @@ COPY public.tienda (id, name, lat, long, img) FROM stdin;
 --
 
 COPY public.users (id, username, passwd, profile_id) FROM stdin;
-2	bioskin	123456	3
-3	bioska	123456	2
 4	admin	admin	4
 1	sbiosca94	pbkdf2_sha256$390000$9uijTyhWPzOSLNYppNy0ra$MV8c1ngvXP1L5Sfe2Jm0o5d7CyQTgR8rVuftOYvPtTo=	1
+6	test	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	14
+2	bioskin	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	3
+3	bioska	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	2
 \.
 
 
@@ -1207,7 +1215,7 @@ SELECT pg_catalog.setval('public.productos_id_seq', 1, false);
 -- Name: profile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.profile_id_seq', 1, false);
+SELECT pg_catalog.setval('public.profile_id_seq', 14, true);
 
 
 --
@@ -1235,7 +1243,7 @@ SELECT pg_catalog.setval('public.tienda_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_id_seq', 6, true);
 
 
 --
