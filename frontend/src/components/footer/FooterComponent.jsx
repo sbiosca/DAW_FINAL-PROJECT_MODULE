@@ -3,7 +3,7 @@ import "./FooterComponent.css"
 
 const FooterComponent = () => {
     return (
-        <div className="bg-danger p-5 footerComponent">
+        <div className="p-5 footerComponent">
             <strong className="text-center">
             © Copyright Bios FC Página Oficial del FC Bios
             </strong>&nbsp;
