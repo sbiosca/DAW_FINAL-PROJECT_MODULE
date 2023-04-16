@@ -100,7 +100,7 @@ const RegisterComponent = (props) => {
             setErrorUsername("")
         }
 
-        if (valueTelf.length < 9 || valueTelf > 9) {
+        if (valueTelf.length < 9 || valueTelf.length > 9) {
             setErrorTelf("*Number telephone is not correct.")
         }else {
             setErrorTelf("")
@@ -193,6 +193,10 @@ const RegisterComponent = (props) => {
                         <AiFillEye onClick={() => props.viewEye(false)} style={{ fontSize: "40px" }} />:
                         <AiFillEyeInvisible onClick={() => props.viewEye(true)} style={{ fontSize: "40px" }} />
                     }
+                </div>
+                <span>Inserte identificador de socio</span>
+                <div className="form-field d-flex align-items-center"> 
+                    <input onKeyUp={event => setSocio(event.target.value)} type={"number"} />
                 </div>                
                 <span className="text-danger">{errorPassword2}</span><p></p> 
                 <button onClick={submitRegister} className="btn mt-3">Register</button>

@@ -57,5 +57,9 @@ class UsersSerializer(serializers.ModelSerializer):
 
         serialized_user = UsersSerializer.to_Users(user)
         return serialized_user
-
+    
+    def getUser(context):
+        user = Users.objects.get(id = context["id"])
+        serialized_user = UsersSerializer.to_Users(user)
+        return serialized_user
         

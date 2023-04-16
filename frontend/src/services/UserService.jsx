@@ -6,7 +6,10 @@ const UserService = {
     },
     usersRegister(data) {
         return http().post("/server/users_register", data)
-    }
+    },
+    getProfile(id) {
+        return http().get("/server/users_profile/"+ id)
+    },
 }
 
 export default UserService;

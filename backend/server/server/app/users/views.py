@@ -39,3 +39,11 @@ class UsersView(viewsets.GenericViewSet):
         serializer["id_profile"] = serializer_profile
 
         return Response(serializer, status=status.HTTP_200_OK)
+    
+    def getInforUser(self, request, *args , **kwargs):
+
+        serializer_user = UsersSerializer.getUser(context={'id': kwargs["id"]})
+        serializer_profile = ProfileSerializer.getProfile(context={'id': serializer_user["id_profile"]})
+        serializer_user["id_profile"] = serializer_profile
+
+        return Response(serializer_user, status=status.HTTP_200_OK)

@@ -7,15 +7,27 @@ const Context = React.createContext({})
 export function UserContextProvider({ children }) {
     const [users, setUser] = useState(null)
     const [ Admin, setIsAdmin ] = useState(false);
-    
-    console.log(JWTGetToken())
-    const navigate = useNavigate()
+
     useEffect(() => {
+        checkUser()
         console.log(users)
     }, [])
-    //const [jwt, setJWT] = useState(() => checkUser())
+    const checkUser = async () => {
+        if (JWTGetToken()) {
+            const id = jwt_decode(JWTGetToken())
+            const res = await UserService.getProfile(id.id)
+            console.log(res)
+            if (res) {
+                setUser(res.data)
+            }
+        } else {
+            setUser(null)
+            JWTRemoveToken()
+        }
+    }
+    const [jwt, setJWT] = useState(() => checkUser())
     return (
-        <Context.Provider value={{  users, setUser }}>{children}</Context.Provider>
+        <Context.Provider value={{ jwt, setJWT, users, setUser }}>{children}</Context.Provider>
     );
 }
 export default Context

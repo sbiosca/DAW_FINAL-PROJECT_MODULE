@@ -1,6 +1,9 @@
 import React from "react";
+import './HeaderComponent.css'
 import {Link} from 'react-router-dom'
 import {FaUserAlt} from "react-icons/fa"
+import jwt_decode from "jwt-decode"
+import {MdOutlineLogout} from 'react-icons/md'
 
 const HeaderComponent = (props) => {
     return (
@@ -26,7 +29,7 @@ const HeaderComponent = (props) => {
                             </Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Partidos
                             </a>
                             <div className="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
@@ -40,12 +43,32 @@ const HeaderComponent = (props) => {
                         </li>
                     </ul>
                 </div>
-                
-                <div>
-                    <Link to={"/login"} className="nav-link">
-                        <FaUserAlt style={{fontSize: "40px"}}/>
-                    </Link>
-                </div>
+                {
+                    props.isToken ?
+                    <div>
+                            <ul className="navbar-nav ">
+                                <li className="nav-item dropdown logoProfile">
+                                    <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img style={{width: "90px"}}  src={props.userData?.id_profile[0].avatar} />
+                                    </a>
+                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a className="dropdown-item" href="/profile">
+                                                Profile
+                                        </a>
+                                        <a className="dropdown-item" onClick={() => props.isLogout()}>
+                                            <MdOutlineLogout style={{fontSize: "20px"}}/>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    :
+                    <div>
+                        <Link to={"/login"} className="nav-link">
+                            <FaUserAlt style={{fontSize: "40px"}}/>
+                        </Link>
+                    </div>
+                }
             </nav>
         </div>
     )

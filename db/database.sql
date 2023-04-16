@@ -565,7 +565,7 @@ CREATE TABLE public.profile (
     name_complet character varying(100) NOT NULL,
     addres character varying(100) NOT NULL,
     num_telf character varying(9) NOT NULL,
-    avatar character varying(50) NOT NULL,
+    avatar character varying(500) NOT NULL,
     type character varying(50) NOT NULL,
     socio_id bigint NOT NULL
 );
@@ -1011,10 +1011,17 @@ COPY public.partidos (id, competi, eq1, eq2, horario, resultado) FROM stdin;
 --
 
 COPY public.productos (id, name, type, talla, img) FROM stdin;
-1	Camiseta 1a Equipación		M	producto1.jpg
-2	Camiseta 2a Equipación		XL	producto2.jpg
-3	Camiseta 3a Equipación		XS	producto3.jpg
-4	Pantalón 1a Equipación		16	producto4.jpg
+1	Camiseta 1a Equipación		M	1equipacion_del.png:1equipacion_tras.png\n\n
+2	Camiseta 2a Equipación		XL	2equipacion_del.png:2equipacion_tras.png
+3	Pantalón 2a Equipación		XS	pantalon2.png\n
+4	Pantalón 1a Equipación		16	pantalon1.png\n
+7	Portero Equipación	a	S	portero.png:porterotras.png
+6	Medias 2a Equipación	a	Unique	medias2.png
+5	Medias 1a Equipación	a	Unique	medias.png\n
+10	Bolsa Tela BIOS FC	a	Unique	bolsa.png
+9	Funda iPhone BIOS FC	a	Unique	funda_movil.png
+8	Gorra BIOS FC	a	Unique	gorra.png
+11	Sudadera BIOS FC	a	M	sudadera.png
 \.
 
 
@@ -1023,11 +1030,11 @@ COPY public.productos (id, name, type, talla, img) FROM stdin;
 --
 
 COPY public.profile (id, correo, name_complet, addres, num_telf, avatar, type, socio_id) FROM stdin;
-1	prueba@gmail.com	Seergi Biosca Beneyto	C/Alacant	12	prueba.jpg	eeee	1
 2	pruebaaa@gmail.com	Gonzalo Roberto Beneyto	C/Alacant	123455	prueba.jpg	eeee	2
-3	pruebaaaaa@gmail.com	Adrian Mico Perez	C/Albaida	123455	prueba.jpg	eeee	3
 4	aadmin@gmail.com	aadmin	C/aadmin	00000	prueba.jpg	eeee	4
 14	test@gmail.com	test test	dfsadf	3252521	test	d	6
+1	prueba@gmail.com	Seergi Biosca Beneyto	C/Alacant	12	https://avatars.githubusercontent.com/u/102309782?s=400&u=1810e623aec9fc9fcde11a75594ce231ee100001&v=4	eeee	1
+3	pruebaaaaa@gmail.com	Adrian Mico Perez	C/Albaida	123455	https://avatars.githubusercontent.com/u/102309782?s=400&u=1810e623aec9fc9fcde11a75594ce231ee100001&v=4	eeee	3
 \.
 
 
@@ -1215,7 +1222,7 @@ SELECT pg_catalog.setval('public.productos_id_seq', 1, false);
 -- Name: profile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.profile_id_seq', 14, true);
+SELECT pg_catalog.setval('public.profile_id_seq', 15, true);
 
 
 --
@@ -1243,7 +1250,7 @@ SELECT pg_catalog.setval('public.tienda_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 6, true);
+SELECT pg_catalog.setval('public.users_id_seq', 7, true);
 
 
 --
