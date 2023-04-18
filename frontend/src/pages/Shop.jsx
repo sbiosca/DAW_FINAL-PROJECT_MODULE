@@ -10,10 +10,13 @@ const ShopComponent = React.lazy(() => {
 
 const ShopPage = () => {
     const {shop} = useShop()
-    const {products} = useProducts()
+    const {products, ProductFiltered} = useProducts()
+    const formFiltered = (value) => (
+        ProductFiltered(value)
+    )
     return (
         <Suspense fallback={<div className="text-center"><img className="w-25" src="https://usagif.com/wp-content/uploads/loading-4.gif"/></div>}>
-            <ShopComponent products={products} shop={shop}/>
+            <ShopComponent products={products} shop={shop} formFiltered={formFiltered}/>
         </Suspense>
     )
 

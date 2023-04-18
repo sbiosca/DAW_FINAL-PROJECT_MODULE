@@ -5,9 +5,12 @@ import Products from "../products/ProductsComponent"
 
 const ShopComponent = (props) => {
     console.log(props)
+    const formFiltered = (value) => (
+        props.formFiltered(value)
+    )
     return (
         <div className="p-5">
-            <Products products={props.products}/>
+            <Products products={props.products} formFiltered={formFiltered}/>
             <MapBox data={props.shop}/>
         </div>
     )

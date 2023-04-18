@@ -9,3 +9,8 @@ class ProductosView(viewsets.GenericViewSet):
         queryset = Productos.objects.all()
         serializer = ProductosSerializer(queryset,many=True).data
         return Response(serializer,status=status.HTTP_200_OK)
+    
+    def GetProductosFiltered(self, request):
+        serializer_data = request.data
+        serializer = ProductosSerializer.ProductosFiltered(context=serializer_data)
+        return Response(serializer,status=status.HTTP_200_OK)

@@ -1,5 +1,5 @@
 .contentProducts {
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
 }
@@ -13,4 +13,9 @@
     padding: 1.5%;
     border-radius: 15px;
     border: 1px solid black;
+}
+
+.filters {
+    padding: 5px;
+    text-align: center;
 }

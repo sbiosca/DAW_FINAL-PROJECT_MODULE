@@ -1011,17 +1011,17 @@ COPY public.partidos (id, competi, eq1, eq2, horario, resultado) FROM stdin;
 --
 
 COPY public.productos (id, name, type, talla, img) FROM stdin;
-1	Camiseta 1a Equipación		M	1equipacion_del.png:1equipacion_tras.png\n\n
-2	Camiseta 2a Equipación		XL	2equipacion_del.png:2equipacion_tras.png
-3	Pantalón 2a Equipación		XS	pantalon2.png\n
-4	Pantalón 1a Equipación		16	pantalon1.png\n
-7	Portero Equipación	a	S	portero.png:porterotras.png
-6	Medias 2a Equipación	a	Unique	medias2.png
-5	Medias 1a Equipación	a	Unique	medias.png\n
-10	Bolsa Tela BIOS FC	a	Unique	bolsa.png
-9	Funda iPhone BIOS FC	a	Unique	funda_movil.png
-8	Gorra BIOS FC	a	Unique	gorra.png
-11	Sudadera BIOS FC	a	M	sudadera.png
+1	Camiseta 1a Equipación	camiseta	M	1equipacion_del.png:1equipacion_tras.png\n\n
+2	Camiseta 2a Equipación	camiseta	XL	2equipacion_del.png:2equipacion_tras.png
+3	Pantalón 2a Equipación	pantalon	XS	pantalon2.png\n
+4	Pantalón 1a Equipación	pantalon\n	16	pantalon1.png\n
+7	Portero Equipación	camiseta	S	portero.png:porterotras.png
+6	Medias 2a Equipación	medias	Unique	medias2.png
+5	Medias 1a Equipación	medias	Unique	medias.png\n
+10	Bolsa Tela BIOS FC	bolsa	Unique	bolsa.png
+9	Funda iPhone BIOS FC	funda movil	Unique	funda_movil.png
+8	Gorra BIOS FC	gorra	Unique	gorra.png
+11	Sudadera BIOS FC	sudadera	M	sudadera.png
 \.
 
 
