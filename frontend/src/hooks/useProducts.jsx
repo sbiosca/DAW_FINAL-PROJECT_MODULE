@@ -15,10 +15,11 @@ export function useProducts() {
     }, [setProducts])
 
     const ProductFiltered = (data) => {
+        console.log(data)
         ProductsService.getProductsFiltered(data)
         .then(({data}) => {
             console.log(data)
-            setProductsFiltered(data)
+            //setProductsFiltered(data)
         })
     }
 

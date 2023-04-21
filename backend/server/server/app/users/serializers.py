@@ -21,6 +21,7 @@ class UsersSerializer(serializers.ModelSerializer):
             'passwd': instance.passwd,
             'token': instance.token,
             'ref_token': instance.ref_token,
+            'isAdmin': instance.admin
         }
         
     def Register(context):   
@@ -63,3 +64,9 @@ class UsersSerializer(serializers.ModelSerializer):
         serialized_user = UsersSerializer.to_Users(user)
         return serialized_user
         
+    def getAdmin(context):
+        adminId = Users.objects.get(id=context['id'])
+        serialized_user = UsersSerializer.to_Users(adminId)
+        if not serialized_user["isAdmin"]:
+            raise serializers.ValidationError('UserAdmin is not foud')
+        return serialized_user

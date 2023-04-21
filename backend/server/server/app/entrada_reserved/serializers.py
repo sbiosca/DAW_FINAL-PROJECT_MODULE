@@ -15,5 +15,14 @@ class Entrada_reservedSerializer(serializers.ModelSerializer):
             'id_entrada': instance.id_entrada,
             'id_user': instance.id_user
         }
-        
+    
+    def GetEntrada_reserved():
+        entrada_reserved = Entrada_reserved.objects.all()
+        seralizer_entrada = []
+
+        for entradas_reserved in entrada_reserved.iterator():
+            ser_entrada = Entrada_reservedSerializer.to_Entrada_reserved(entradas_reserved)
+            seralizer_entrada.append(ser_entrada)
+            
+        return seralizer_entrada        
         

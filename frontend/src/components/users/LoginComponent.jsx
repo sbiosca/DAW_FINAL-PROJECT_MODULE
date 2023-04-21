@@ -13,7 +13,6 @@ const LoginComponent = (props) => {
         "username": valueUsername,
         "password": valuePassword
     }
-    console.log(props)
     const submitLogin = () => {
         if (!valueUsername) {
             setErrorUsername("*Username can't be blank. Please insert an username")

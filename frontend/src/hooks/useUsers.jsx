@@ -12,7 +12,10 @@ export function useUser() {
     const login = useCallback((data) => {
         UserService.usersLogin(data)
         .then(({data}) => {
-            console.log(data)
+            UserService.isAdmin(data.id)
+            .then(() => {
+                setIsAdmin(true)
+            })
             setUser(data)
             // checkNotificationContext(data.id)
             JWTService.JWTPutToken(data.token)
@@ -88,6 +91,7 @@ export function useUser() {
         })
         navigate("/")
         setUser(null)
+        setIsAdmin(false)
         JWTService.JWTRemoveTokenRef()
         JWTService.JWTRemoveToken()
     }, [])

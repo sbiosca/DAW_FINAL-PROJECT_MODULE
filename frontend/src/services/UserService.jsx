@@ -10,6 +10,9 @@ const UserService = {
     getProfile(id) {
         return http().get("/server/users_profile/"+ id)
     },
+    isAdmin(id) {
+        return http().get("/server/users_admin/"+ id)
+    }
 }
 
 export default UserService;

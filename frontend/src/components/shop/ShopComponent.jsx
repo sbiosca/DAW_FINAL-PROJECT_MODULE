@@ -11,6 +11,7 @@ const ShopComponent = (props) => {
     return (
         <div className="p-5">
             <Products products={props.products} formFiltered={formFiltered}/>
+            <h3 className="text-center">Visita nuestras tiendas oficiales presencialmente:</h3>
             <MapBox data={props.shop}/>
         </div>
     )

@@ -3,9 +3,11 @@ import './HeaderComponent.css'
 import {Link} from 'react-router-dom'
 import {FaUserAlt} from "react-icons/fa"
 import jwt_decode from "jwt-decode"
+
 import {MdOutlineLogout} from 'react-icons/md'
 
 const HeaderComponent = (props) => {
+   
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-warning p-3">
@@ -55,6 +57,13 @@ const HeaderComponent = (props) => {
                                         <a className="dropdown-item" href="/profile">
                                                 Profile
                                         </a>
+                                        {
+                                            props.isAdmin ? 
+                                            <a className="dropdown-item" href="/dashboard">
+                                                    Panel Dashboard
+                                            </a>: 
+                                            <a></a>
+                                        }
                                         <a className="dropdown-item" onClick={() => props.isLogout()}>
                                             <MdOutlineLogout style={{fontSize: "20px"}}/>
                                         </a>

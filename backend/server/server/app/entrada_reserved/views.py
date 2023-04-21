@@ -6,6 +6,5 @@ from .serializers import Entrada_reservedSerializer
 
 class Entrada_reservedView(viewsets.GenericViewSet):
     def GetEntrada_reserved(self, request):
-        queryset = Entrada_reserved.objects.all()
-        serializer = Entrada_reservedSerializer(queryset,many=True).data
+        serializer = Entrada_reservedSerializer.GetEntrada_reserved()
         return Response(serializer,status=status.HTTP_200_OK)

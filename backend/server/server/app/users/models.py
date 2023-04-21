@@ -10,6 +10,7 @@ class Users(models.Model):
     profile = models.ForeignKey(Profile, related_name='profile_id', on_delete=models.DO_NOTHING)
     username = models.CharField('username',max_length=50)
     passwd = models.CharField('passwd',max_length=50)
+    admin = models.BooleanField('admin')
 
     USERNAME_FIELD = 'username'
 

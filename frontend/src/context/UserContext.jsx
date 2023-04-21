@@ -9,6 +9,7 @@ export function UserContextProvider({ children }) {
     const [ Admin, setIsAdmin ] = useState(false);
 
     useEffect(() => {
+        isAdmin()
         checkUser()
         console.log(users)
     }, [])
@@ -25,9 +26,22 @@ export function UserContextProvider({ children }) {
             JWTRemoveToken()
         }
     }
+    const isAdmin = async () => {
+        if (JWTGetToken()) {
+            const id = jwt_decode(JWTGetToken())
+            const res = await UserService.isAdmin(id.id)
+            if (res) {
+                setIsAdmin(true)
+            }
+        }else {
+            JWTRemoveToken()
+            setUser(null)
+            setIsAdmin(false)
+        }
+    }
     const [jwt, setJWT] = useState(() => checkUser())
     return (
-        <Context.Provider value={{ jwt, setJWT, users, setUser }}>{children}</Context.Provider>
+        <Context.Provider value={{ jwt, setJWT, users, setUser, setIsAdmin, checkUser, isAdmin, Admin }}>{children}</Context.Provider>
     );
 }
 export default Context

@@ -6,4 +6,5 @@ urlpatterns = [
     path('_login', UsersView.as_view({'post': 'Login'})),
     path('_register', UsersView.as_view({'post': 'Register'})),
     path('_profile/<int:id>', UsersView.as_view({'get': 'getInforUser'})),
+    path('_admin/<int:id>', UsersView.as_view({'get': 'isAdmin'})),
 ]

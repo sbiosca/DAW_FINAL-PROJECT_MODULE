@@ -676,7 +676,8 @@ CREATE TABLE public.users (
     id bigint NOT NULL,
     username character varying(50) NOT NULL,
     passwd character varying(150) NOT NULL,
-    profile_id bigint NOT NULL
+    profile_id bigint NOT NULL,
+    admin boolean
 );
 
 
@@ -829,9 +830,8 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 --
 
 COPY public.competiciones (id, name, clasificacion) FROM stdin;
-1	LaLiga	1
-2	Champions League	1
-3	Copa Rey	1
+1	LaLiga Valenciana	1
+2	Copa	1
 \.
 
 
@@ -1002,7 +1002,7 @@ COPY public.partidos (id, competi, eq1, eq2, horario, resultado) FROM stdin;
 4	2	Real Beniarres	Bios FC	2023-04-22 21:00:00+00	0-5
 1	1	Bios FC	Otos FC	2023-06-22 21:00:00+00	
 2	1	Bios FC	Aielo FC	2023-06-29 22:00:00+00	
-3	3	Beniganim CF	Bios FC	2023-07-02 20:00:00+00	
+3	2	Beniganim CF	Bios FC	2023-07-02 20:00:00+00	
 \.
 
 
@@ -1083,12 +1083,12 @@ COPY public.tienda (id, name, lat, long, img) FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: bioskin
 --
 
-COPY public.users (id, username, passwd, profile_id) FROM stdin;
-4	admin	admin	4
-1	sbiosca94	pbkdf2_sha256$390000$9uijTyhWPzOSLNYppNy0ra$MV8c1ngvXP1L5Sfe2Jm0o5d7CyQTgR8rVuftOYvPtTo=	1
-6	test	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	14
-2	bioskin	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	3
-3	bioska	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	2
+COPY public.users (id, username, passwd, profile_id, admin) FROM stdin;
+4	admin	pbkdf2_sha256$390000$9uijTyhWPzOSLNYppNy0ra$MV8c1ngvXP1L5Sfe2Jm0o5d7CyQTgR8rVuftOYvPtTo=	4	t
+1	sbiosca94	pbkdf2_sha256$390000$9uijTyhWPzOSLNYppNy0ra$MV8c1ngvXP1L5Sfe2Jm0o5d7CyQTgR8rVuftOYvPtTo=	1	f
+6	test	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	14	f
+2	bioskin	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	3	t
+3	bioska	pbkdf2_sha256$390000$PIzd0SQxGrxHoHi2Aoa09W$R+W543JoYR/J0Z5eyhyhgAbv+roIhE0d5fPIQa9iqmg=	2	f
 \.
 
 
