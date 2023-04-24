@@ -9,7 +9,7 @@ const ShopComponent = (props) => {
         props.formFiltered(value)
     )
     return (
-        <div className="p-5">
+        <div className="p-5 divShop">
             <Products products={props.products} formFiltered={formFiltered}/>
             <h3 className="text-center">Visita nuestras tiendas oficiales presencialmente:</h3>
             <MapBox data={props.shop}/>

@@ -1,0 +1,34 @@
+.divHome {
+    padding: 2px;
+    background-image: radial-gradient(circle at 9.42% 84.05%, #fbff70 0, #e2ff77 8.33%, #c7ff7f 16.67%, #abff87 25%, 
+    #8dff8f 33.33%, #6cfb95 41.67%,
+     #46ee9a 50%, #00e09e 58.33%, #00d4a2 66.67%, #00caa6 75%, #00c1ab 83.33%, #00bab0 91.67%, #00b4b6 100%);
+}
+
+.carouselStyle {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.imgPartidos {
+    width: 30%; 
+}
+
+.divPrincipalPartidos {
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    border-radius: 2%;
+}
+
+.divPartidosHome {
+    border: 1px solid black;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    padding: 1.5%;
+    margin: 0 auto;
+}

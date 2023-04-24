@@ -13,3 +13,13 @@
     object-fit: contain;
     border-radius: 50%;
 }
+
+header {
+    background-image: radial-gradient(circle at 9.42% 84.05%, #ffff2f 0, #ffff1b 25%, #f6f000 50%, #c1c800 75%, #93a300 100%);
+    position: sticky;
+    top: 0;
+}
+
+.divUserHeader {
+    padding-right: 90px;
+}

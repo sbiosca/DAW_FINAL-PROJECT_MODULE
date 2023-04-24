@@ -8,6 +8,8 @@ import Footer from "./pages/Footer"
 import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 import Equipo from "./pages/Equipo"
+import Entradas from "./pages/Entradas"
+import Partidos from "./pages/Partidos"
 import Dashboard from "./pages/Dashboard"
 import Shop from "./pages/Shop"
 import Login from './pages/Users/Login'
@@ -29,7 +31,9 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/bios.fc' element={<Equipo />} />
+            <Route exact path='/partidos' element={<Partidos />} />
             <Route exact path='/shops' element={<Shop />} />
+            <Route exact path='/entradas' element={<Entradas />} />
             {/* <Route element={<AuthGuardUser />}> */}
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />

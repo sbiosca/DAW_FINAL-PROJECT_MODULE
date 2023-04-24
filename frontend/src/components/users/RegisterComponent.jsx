@@ -130,9 +130,11 @@ const RegisterComponent = (props) => {
 
     return (
         <div className="FormSign" style={{maxWidth: "510px"}}>
-            <div className="logo">
-                <img src="/logo.png" />
-            </div>
+            <Link to={"/"} className="nav-link">
+                <div className="logo">
+                    <img src="/logo.png" />
+                </div>
+            </Link>
             <div className="text-center mt-4 web">
                 BIOSFC SIGN UP
             </div>

@@ -16,4 +16,10 @@ class CompeticionesSerializer(serializers.ModelSerializer):
             'clasificacion': instance.clasificacion,
         }
         
-        
+    def getOneCompeticion(id):
+        try:
+            competicion = Competiciones.objects.get(id = id)
+        except Exception as e:
+            return e
+        serialized_competicion = CompeticionesSerializer.to_Competiciones(competicion)
+        return serialized_competicion

@@ -8,7 +8,8 @@ const FooterPage = () => {
     return (
         <div>
             {
-                location.pathname.includes("dashboard") ?
+                location.pathname.includes("dashboard") || location.pathname.includes("login")
+                || location.pathname.includes("register") ?
                 <div></div>:
                 <FooterComponent />
             }

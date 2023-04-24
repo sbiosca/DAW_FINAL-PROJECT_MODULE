@@ -1,11 +1,11 @@
 import React from "react";
-// import "./EquipoComponent.css"
+import "./EquipoComponent.css"
 import MapBox from "../MapBox/MapBoxComponent"
 
 const EquipoComponent = (props) => {
     console.log(props)
     return (
-        <div className="p-5"> 
+        <div className="p-5 divEquipo"> 
             {props.equipo?.map((data, index) => (
                 <div>
                     <h1>

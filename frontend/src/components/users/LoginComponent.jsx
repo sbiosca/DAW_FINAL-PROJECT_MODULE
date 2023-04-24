@@ -45,9 +45,11 @@ const LoginComponent = (props) => {
     
     return (
         <div className="FormSign" style={{maxWidth: "390px"}}>
-            <div className="logo">
-                <img src="/logo.png" />
-            </div>
+            <Link to={"/"} className="nav-link">
+                <div className="logo">
+                    <img src="/logo.png" />
+                </div>
+            </Link>
             <div className="text-center mt-4 web">
                 BIOSFC SIGN IN
             </div>

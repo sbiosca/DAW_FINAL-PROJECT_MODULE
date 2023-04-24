@@ -6,6 +6,12 @@ from .serializers import PartidosSerializer
 
 class PartidosView(viewsets.GenericViewSet):
     def GetPartidos(self, request):
-        queryset = Partidos.objects.all()
-        serializer = PartidosSerializer(queryset,many=True).data
+        serializer = PartidosSerializer.AllPartidos()
+        return Response(serializer,status=status.HTTP_200_OK)
+    
+    def GetPartidosbyCompeti(self, request, *args, **kwargs):
+        serializer_context = {
+            'competi_id': kwargs["id"]
+        }
+        serializer = PartidosSerializer.GetPartidosbyCompeti(context=serializer_context)
         return Response(serializer,status=status.HTTP_200_OK)

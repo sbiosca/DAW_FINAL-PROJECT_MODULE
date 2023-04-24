@@ -7,10 +7,9 @@ import jwt_decode from "jwt-decode"
 import {MdOutlineLogout} from 'react-icons/md'
 
 const HeaderComponent = (props) => {
-   
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-warning p-3">
+        <header>
+            <nav className="navbar navbar-expand-lg navbar-light">
                 <Link to={""} className="nav-link">
                     <img src="logo.png" style={{width: "140px"}}/>
                 </Link>
@@ -37,20 +36,23 @@ const HeaderComponent = (props) => {
                             <div className="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
                                 {
                                     props.competicion?.map((data, index) => (
-                                        <a className="dropdown-item" href="#">{data.name}</a>
+                                        <Link to={"/partidos/"+ data.id} className="dropdown-item">
+                                            <p>{data.name}</p>
+                                        </Link>
                                     ))
                                 }
                                 <div className="dropdown-divider"></div>
+                                <a className="dropdown-item" href="/partidos">Todos los partidos</a>
                             </div>
                         </li>
                     </ul>
                 </div>
                 {
                     props.isToken ?
-                    <div>
-                            <ul className="navbar-nav ">
+                    <div className="divUserHeader">
+                            <ul className="navbar-nav">
                                 <li className="nav-item dropdown logoProfile">
-                                    <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a className="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <img style={{width: "90px"}}  src={props.userData?.id_profile[0].avatar} />
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -72,14 +74,14 @@ const HeaderComponent = (props) => {
                             </ul>
                     </div>
                     :
-                    <div>
+                    <div className="divUserHeader">
                         <Link to={"/login"} className="nav-link">
                             <FaUserAlt style={{fontSize: "40px"}}/>
                         </Link>
                     </div>
                 }
             </nav>
-        </div>
+        </header>
     )
 
 }

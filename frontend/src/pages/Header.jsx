@@ -29,7 +29,8 @@ const HeaderPage = () => {
     return (
         <div>
             {
-                location.pathname.includes("dashboard") ?
+                location.pathname.includes("dashboard") || location.pathname.includes("login")
+                || location.pathname.includes("register") ?
                 <div></div>:
                 <HeaderComponent competicion={competicion} isToken={token} isLogout={isLogout} token_logout={token_logout} 
                     isLogin={isLogin} userData={users} isAdmin={Admin}/> 

@@ -506,7 +506,8 @@ CREATE TABLE public.partidos (
     eq1 character varying(100) NOT NULL,
     eq2 character varying(100) NOT NULL,
     horario timestamp with time zone NOT NULL,
-    resultado character varying(20) NOT NULL
+    resultado character varying(20) NOT NULL,
+    img_partidos character varying(1000)
 );
 
 
@@ -998,11 +999,11 @@ COPY public.news (id, descr, img) FROM stdin;
 -- Data for Name: partidos; Type: TABLE DATA; Schema: public; Owner: bioskin
 --
 
-COPY public.partidos (id, competi, eq1, eq2, horario, resultado) FROM stdin;
-4	2	Real Beniarres	Bios FC	2023-04-22 21:00:00+00	0-5
-1	1	Bios FC	Otos FC	2023-06-22 21:00:00+00	
-2	1	Bios FC	Aielo FC	2023-06-29 22:00:00+00	
-3	2	Beniganim CF	Bios FC	2023-07-02 20:00:00+00	
+COPY public.partidos (id, competi, eq1, eq2, horario, resultado, img_partidos) FROM stdin;
+4	2	Real Alb	Bios FC	2023-04-22 21:00:00+00	0-5	albaida_shield.png:logo.png
+1	1	Bios FC	Otos FC	2023-06-22 21:00:00+00		logo.png:otos_shield.png
+2	1	Bios FC	Aielo FC	2023-06-29 22:00:00+00		logo.png:aielo_shield.png
+3	2	CF Beni	Bios FC	2023-07-02 20:00:00+00		beniganim_shield.png:logo.png
 \.
 
 
