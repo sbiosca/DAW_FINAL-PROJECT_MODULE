@@ -6,14 +6,22 @@ import {  toast } from 'react-toastify';
 export function usePartidos() {
     const navigate = useNavigate();
     const [partidos, setPartidos] = useState();
-    useEffect(function (id) {
-        PartidosService.getAllPartidos(id)
+    const [partidosbyCompeti, setPartidosByCompeti] = useState();
+    useEffect(function () {
+        PartidosService.getAllPartidos()
         .then(({data}) => {
             setPartidos(data)
         })
     }, [setPartidos])
 
+    const GetPartidosbyCompeti = (id) => {
+        PartidosService.GetPartidosbyCompeti(id)
+        .then(({data}) => {
+            setPartidosByCompeti(data)
+        })
+    }
+
     return {
-        partidos: partidos
+        partidos: partidos, partidosbyCompeti, GetPartidosbyCompeti
     }
 }

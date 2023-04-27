@@ -1,37 +1,66 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./HomeComponent.css"
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import {Link} from 'react-router-dom'
 
-const HomeComponent = () => {
+const HomeComponent = (props) => {
+    const dateNow = Date.now();
+    const hoy = new Date(dateNow);
+    const formatData = hoy.toISOString().slice(0, 10)
+    var fechaFin = new Date(formatData).getTime();
+
     return (
         <div className="divHome">
-            <Carousel showArrows={true} className="carouselStyle">
-                <div>
-                    <img className="img-fluid" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
+                <div className="text-center">
+                    <img className="img-fluid hover-zoom" src="stadium_BIOS_FC.png" />
+                    <img className="img-fluid hover-zoom" src="stadium_BIOS_FC3.png" />
+                    <img className="img-fluid hover-zoom" src="stadium_BIOS_FC2.png" />
                 </div>
-                <div>
-                    <img className="img-fluid" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
-                </div>
-                <div>
-                    <img className="img-fluid" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
-                </div>
-            </Carousel>
             <h1 className="text-center p-3">Próximos partidos</h1>
-            <div className="p-5 divPrincipalPartidos">
-                <div className="divPartidosHome">
-                    <img className="imgPartidos" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
-                    <img className="imgPartidos" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
-                </div>
-                <div className="divPartidosHome">
-                    <img className="imgPartidos" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
-                </div>
-                <div className="divPartidosHome">
-                    <img className="imgPartidos" src="https://www.bbva.com/wp-content/uploads/2015/12/Big-Data-Futbol-Innovacion-Tecnologia-Analisis-bbva-1024x622.jpg" />
-                </div>
-                {/* <PartidoComponent /> */}
-            </div>
+            <div className="divPrincipalPartidos">
+                {props.partidos?.map((data, index) => (
+                    <div>
+                        {
+                            new Date(data.horario.slice(0, 10)).getTime()/(1000*60*60*24) - fechaFin/(1000*60*60*24) < 30
+                            &&  new Date(data.horario.slice(0, 10)).getTime()/(1000*60*60*24) - fechaFin/(1000*60*60*24) > 0? 
+                            <div className="divPartidosHome">
+                                <h3>{data.id_competi.name}</h3>
+                                <strong>{data.eq1}</strong>
+                                <img src={data.img_partidos.split(":")[0]} style={{ width: "40px" }} />
+                                <img src={data.img_partidos.split(":")[1]} style={{ width: "40px" }} />
+                                <strong>{data.eq2}</strong>
+                                <div>
+                                    <strong>{data.horario.slice(11).split("Z")}</strong><p></p>
+                                    <strong>{data.horario.slice(0, 10)}</strong>
+                                </div>
+                                
+                                <div>
+                                    <Link to={"/entradas"} className="btn_sold">
+                                        <span>Comprar Entradas</span>
+                                    </Link>
+                                </div>
+                            </div>:
+                            <p></p>
+                        }
+                    </div>
+                ))}                
+            </div>     
             <h1 className="text-center p-5">Jugadores</h1>
+            <Carousel showArrows={false} className="carouselStyle" >
+                {props.integrantes?.map((data, index) => (
+                    <div >
+                        <Link to={"/integrantes"}>
+                            <h3>{data.name} {data.apellidos}</h3>
+                        </Link>
+                        <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "30%" }} />
+                        <div>
+                           
+                        </div>
+                    </div>
+                ))}
+                
+            </Carousel>
         </div>
     )
 

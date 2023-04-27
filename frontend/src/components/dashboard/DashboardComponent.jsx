@@ -1,6 +1,8 @@
 import React from "react";
 import "./DashboardComponent.css"
 import {Link} from 'react-router-dom'
+
+import {MdOutlineLogout} from 'react-icons/md'
 const DashboardComponent = (props) => {
     console.log(props)
     return (
@@ -17,7 +19,7 @@ const DashboardComponent = (props) => {
 								<li className="nav-item">
 									<a className="nav-link" href="#">
 										<span data-feather="file"></span>
-										Archivos
+										Partidos
 									</a>
 								</li>
 								<li className="nav-item">
@@ -29,9 +31,21 @@ const DashboardComponent = (props) => {
 								<li className="nav-item">
 									<a className="nav-link" href="#">
 										<span data-feather="bar-chart-2"></span>
-										Reportes
+										Entradas
 									</a>
 								</li>
+								<li className="nav-item">
+									<a className="nav-link" href="#">
+										<span data-feather="bar-chart-2"></span>
+										Integrantes
+									</a>
+								</li>
+								<div className="profileAdminUser">
+									<a className="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img style={{width: "90px"}}  src={"https://api.dicebear.com/6.x/micah/svg?seed=Molly"} />
+                                        	<MdOutlineLogout style={{fontSize: "50px"}}/>
+                                    </a>
+								</div>
 							</ul>
 						</div>
 					</nav>

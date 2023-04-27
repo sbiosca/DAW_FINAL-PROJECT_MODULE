@@ -6,6 +6,12 @@ from .serializers import EntradasSerializer
 
 class EntradasView(viewsets.GenericViewSet):
     def GetEntradas(self, request):
-        queryset = Entrada.objects.all()
-        serializer = EntradasSerializer(queryset,many=True).data
+        serializer = EntradasSerializer.AllEntradas()
+        return Response(serializer,status=status.HTTP_200_OK)
+
+    def GetEntradasbyPartidos(self, request, *args, **kwargs):
+        serializer_context = {
+            'partidos_id': kwargs["id"]
+        }
+        serializer = EntradasSerializer.GetEntradasbyPartidos(context=serializer_context)
         return Response(serializer,status=status.HTTP_200_OK)

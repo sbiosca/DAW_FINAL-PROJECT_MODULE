@@ -11,6 +11,7 @@ import Equipo from "./pages/Equipo"
 import Entradas from "./pages/Entradas"
 import Partidos from "./pages/Partidos"
 import Dashboard from "./pages/Dashboard"
+import Integrantes from "./pages/Integrantes"
 import Shop from "./pages/Shop"
 import Login from './pages/Users/Login'
 import Register from './pages/Users/Register'
@@ -32,8 +33,10 @@ function App() {
             <Route exact path='/' element={<Home />} />
             <Route exact path='/bios.fc' element={<Equipo />} />
             <Route exact path='/partidos' element={<Partidos />} />
+            <Route exact path='/partidos/:id' element={<Partidos />} />
             <Route exact path='/shops' element={<Shop />} />
             <Route exact path='/entradas' element={<Entradas />} />
+            <Route exact path='/integrantes' element={<Integrantes />} />
             {/* <Route element={<AuthGuardUser />}> */}
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />

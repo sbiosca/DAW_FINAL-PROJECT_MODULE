@@ -1,13 +1,12 @@
 import http from "./http"
 
 const PartidosService = {
-    getAllPartidos(id) {
-        if (id) {
-            return http().get("/server/partidos/" + id)
-        }else {
-            return http().get("/server/partidos")
-        }
+    getAllPartidos() {
+        return http().get("/server/partidos")
     },
+    GetPartidosbyCompeti(id) {
+        return http().get("/server/partidos/" + id)
+    }
 }
 
 export default PartidosService;

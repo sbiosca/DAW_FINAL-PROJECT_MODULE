@@ -19,16 +19,45 @@
     width: 80%;
     display: flex;
     flex-flow: row wrap;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     margin: 0 auto;
     border-radius: 2%;
+    padding: 4%;
 }
 
 .divPartidosHome {
-    border: 1px solid black;
-    width: 25%;
-    display: flex;
+    border-radius: 10px 15px 27px 27px;
+    -moz-border-radius: 10px 15px 27px 27px;
+    -webkit-border-radius: 10px 15px 27px 27px;
+    border: 16px ridge #000000;
+    background-image: radial-gradient(circle at 9.42% 84.05%, #ffff2f 0, #ffff1b 25%, #f6f000 50%, #c1c800 75%, #93a300 100%);
+    width: 90%;
     align-items: center;
-    padding: 1.5%;
-    margin: 0 auto;
+    padding: 6.5%;
+    margin: 90px;
+}
+
+.btn_sold {
+    display: inline-block;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn_sold:hover {
+    background-color: #ffffff;
+}
+
+.hover-zoom {
+    width: 30%;
+}
+
+.hover-zoom:hover {
+    width: 40%;
 }
