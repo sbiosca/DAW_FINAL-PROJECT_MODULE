@@ -5,7 +5,7 @@ const ProductsService = {
         return http().get("/server/productos")
     },
     getProductsFiltered(data) {
-        return http().get("/server/productos_productsFiltered", data)
+        return http().post("/server/productos_productsFiltered", data)
     },
 }
 

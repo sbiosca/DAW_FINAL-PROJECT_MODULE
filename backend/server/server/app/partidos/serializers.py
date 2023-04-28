@@ -21,6 +21,17 @@ class PartidosSerializer(serializers.ModelSerializer):
             'img_partidos': instance.img_partidos
         }
         
+    def CreatePartidos(context):
+        partidos = Partidos.objects.create(
+            competi = context["id_competi"],
+            eq1 = context["eq1"],
+            eq2 = context["eq2"],
+            horario = context["horario"],
+            resultado = context["resultado"],
+            img_partidos = context["img_partidos"],
+        )
+        return partidos
+    
     def getOnePartido(id):
         try:
             partido = Partidos.objects.get(id = id)

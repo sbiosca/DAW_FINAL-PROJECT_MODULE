@@ -22,3 +22,17 @@ class PartidosView(viewsets.GenericViewSet):
         }
         serializer = PartidosSerializer.GetPartidosbyCompeti(context=serializer_context)
         return Response(serializer,status=status.HTTP_200_OK)
+
+    def CreatePartidos(self, request):
+        serializer_data = request.data
+        PartidosSerializer.CreatePartidos(context=serializer_data)
+        return Response({"ADDED NEW MATCH SUCCESFULL"}, status=status.HTTP_201_CREATED)
+    
+    def DeletePartidos(self, request, id):
+        try:
+            partidos = Partidos.objects.get(id=id)
+        except Partidos.DoesNotExist:
+            raise NotFound('A Partidos with this id does not exist.')
+
+        partidos.delete()
+        return Response({"Partidos DELETED"}, status=status.HTTP_204_NO_CONTENT)

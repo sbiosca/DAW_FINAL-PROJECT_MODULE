@@ -46,12 +46,17 @@ const HomeComponent = (props) => {
                     </div>
                 ))}                
             </div>     
-            <h1 className="text-center p-5">Jugadores</h1>
+            <h1 className="text-center p-5">Integrantes:</h1>
             <Carousel showArrows={false} className="carouselStyle" >
                 {props.integrantes?.map((data, index) => (
-                    <div >
-                        <Link to={"/integrantes"}>
+                    <div>
+                        <Link to={"/integrantes"} className="nav-link">
                             <h3>{data.name} {data.apellidos}</h3>
+                            {
+                                data.tecnico != 1 ?
+                                <strong>Cuerpo Tecnico</strong>:
+                                <strong>Jugador</strong>
+                            }
                         </Link>
                         <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "30%" }} />
                         <div>

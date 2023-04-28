@@ -11,11 +11,13 @@ import Equipo from "./pages/Equipo"
 import Entradas from "./pages/Entradas"
 import Partidos from "./pages/Partidos"
 import Dashboard from "./pages/Dashboard"
+import AddPartidos from './components/dashboard/AddPartidosDashboard';
 import Integrantes from "./pages/Integrantes"
 import Shop from "./pages/Shop"
 import Login from './pages/Users/Login'
 import Register from './pages/Users/Register'
 import {UserContextProvider} from './context/UserContext'
+import {ProductsContextProvider} from './context/ProductsContext'
 import {  ToastContainer } from 'react-toastify';
 import AuthGuardAdmin from "./services/AuthSecurity/AuthGuardAdmin";
 import AuthGuardUser from "./services/AuthSecurity/AuthGuardUser";
@@ -28,28 +30,31 @@ function App() {
     <div>
       <BrowserRouter>
         <UserContextProvider>
-          <Header />
-          <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/bios.fc' element={<Equipo />} />
-            <Route exact path='/partidos' element={<Partidos />} />
-            <Route exact path='/partidos/:id' element={<Partidos />} />
-            <Route exact path='/shops' element={<Shop />} />
-            <Route exact path='/entradas' element={<Entradas />} />
-            <Route exact path='/integrantes' element={<Integrantes />} />
-            {/* <Route element={<AuthGuardUser />}> */}
+          <ProductsContextProvider>
+            <Header />
+            <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route exact path='/bios.fc' element={<Equipo />} />
+              <Route exact path='/partidos' element={<Partidos />} />
+              <Route exact path='/partidos/:id' element={<Partidos />} />
+              <Route exact path='/shops' element={<Shop />} />
+              <Route exact path='/entradas' element={<Entradas />} />
+              <Route exact path='/integrantes' element={<Integrantes />} />
+              {/* <Route element={<AuthGuardUser />}> */}
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
-            {/* </Route> */}
-            {/* <Route element={<AuthGuardNotUser />}> */}
-              <Route path='/profile' element={<Profile />} />
-            {/* </Route> */}
-            {/* <Route element={<AuthGuardAdmin />}> */}
-                  <Route path='/dashboard' element={<Dashboard />} />
               {/* </Route> */}
-          </Routes>
-          <ToastContainer />
-          <Footer />
+              {/* <Route element={<AuthGuardNotUser />}> */}
+              <Route path='/profile' element={<Profile />} />
+              {/* </Route> */}
+              {/* <Route element={<AuthGuardAdmin />}> */}
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/dashboard/add_partidos' element={<AddPartidos />} />
+              {/* </Route> */}
+            </Routes>
+            <ToastContainer />
+            <Footer />
+          </ProductsContextProvider>
         </UserContextProvider>
       </BrowserRouter>
 
