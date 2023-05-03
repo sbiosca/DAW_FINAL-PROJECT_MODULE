@@ -13,13 +13,21 @@ class EntradasSerializer(serializers.ModelSerializer):
     def to_Entradas(instance):
         return {
             'id': instance.id,
-            'id_partido': instance.partido,
+            'partido_id': instance.partido.id,
             'asiento': instance.asiento,
             'graderia': instance.graderia,
             'fila': instance.fila,
             'precio': instance.precio,
             'disponible': instance.disponible
         }
+    
+    def GetOneEntrada(id):
+        try:
+            entrada = Entrada.objects.get(id = id)
+        except Exception as e:
+            return e
+        serialized_entrada = EntradasSerializer.to_Entradas(entrada)
+        return serialized_entrada
         
     def AllEntradas():
         entradas = Entrada.objects.all()
@@ -27,11 +35,9 @@ class EntradasSerializer(serializers.ModelSerializer):
 
         for entrada in entradas.iterator():
             parti = EntradasSerializer.to_Entradas(entrada)
-            # partido = PartidosSerializer.getOnePartido(id = parti["id_partido"])
-            # parti["id_partido"] = partido
+            partido = PartidosSerializer.getOnePartido(id = parti["partido_id"])
+            parti["partido_id"] = partido
             serialized_entradas.append(parti)
-            print(parti["id_partido"])
-            #print(serialized_entradas)
 
         return serialized_entradas
     
@@ -41,7 +47,7 @@ class EntradasSerializer(serializers.ModelSerializer):
         
         for entrada in queryset.iterator():
             parti = EntradasSerializer.to_Entradas(entrada)
-            partido = PartidosSerializer.getOnePartido(id = parti["id_partido"])
+            partido = PartidosSerializer.getOnePartido(id = parti["partido_id"])
             parti["id_partido"] = partido
             serialized_entradas.append(parti)
 

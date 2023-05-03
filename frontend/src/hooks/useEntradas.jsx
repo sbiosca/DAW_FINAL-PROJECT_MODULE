@@ -6,6 +6,7 @@ import {  toast } from 'react-toastify';
 export function useEntradas() {
     const navigate = useNavigate();
     const [entradas, setEntradas] = useState();
+    const [entradasbyPartido, setEntradasByPartido] = useState();
     useEffect(function () {
         EntradasService.getEntradas()
         .then(({data}) => {
@@ -13,7 +14,14 @@ export function useEntradas() {
         })
     }, [setEntradas])
 
+    const GetEntradasByPartido = (id) => {
+        EntradasService.GetEntradasByPartido(id)
+        .then(({data}) => {
+            setEntradasByPartido(data)
+        })
+    }
+
     return {
-        entradas: entradas
+        entradas: entradas, entradasbyPartido, GetEntradasByPartido
     }
 }

@@ -25,7 +25,6 @@ class UsersSerializer(serializers.ModelSerializer):
         }
         
     def Register(context):   
-
         user_exist=Users.objects.filter(username=context['username']).exists()
         if user_exist:
             raise serializers.ValidationError("User '{}' has already existed".format(context['username']))
@@ -61,6 +60,14 @@ class UsersSerializer(serializers.ModelSerializer):
     
     def getUser(context):
         user = Users.objects.get(id = context["id"])
+        serialized_user = UsersSerializer.to_Users(user)
+        return serialized_user
+
+    def getOneUser(id):
+        try:
+            user = Users.objects.get(id = id)
+        except Exception as e:
+            return e
         serialized_user = UsersSerializer.to_Users(user)
         return serialized_user
         

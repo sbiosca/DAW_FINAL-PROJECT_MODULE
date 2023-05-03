@@ -22,7 +22,7 @@ const EquipoComponent = (props) => {
                 </div>
             ))}
             <MapBox data={props.equipo}/>
-            <img src="logo.png" style={{width: "340px"}}/>
+            <img src="/logo.png" style={{width: "340px"}}/>
         </div>
     )
 

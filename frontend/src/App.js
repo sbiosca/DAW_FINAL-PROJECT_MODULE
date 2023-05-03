@@ -39,6 +39,7 @@ function App() {
               <Route exact path='/partidos/:id' element={<Partidos />} />
               <Route exact path='/shops' element={<Shop />} />
               <Route exact path='/entradas' element={<Entradas />} />
+              <Route exact path='/entradas/:id' element={<Entradas />} />
               <Route exact path='/integrantes' element={<Integrantes />} />
               {/* <Route element={<AuthGuardUser />}> */}
               <Route path='/login' element={<Login />} />

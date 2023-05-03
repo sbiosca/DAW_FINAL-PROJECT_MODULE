@@ -13,9 +13,9 @@ const HomeComponent = (props) => {
     return (
         <div className="divHome">
                 <div className="text-center">
-                    <img className="img-fluid hover-zoom" src="stadium_BIOS_FC.png" />
-                    <img className="img-fluid hover-zoom" src="stadium_BIOS_FC3.png" />
-                    <img className="img-fluid hover-zoom" src="stadium_BIOS_FC2.png" />
+                    <img className="img-fluid hover-zoom" src="/stadium_BIOS_FC.png" />
+                    <img className="img-fluid hover-zoom" src="/stadium_BIOS_FC3.png" />
+                    <img className="img-fluid hover-zoom" src="/stadium_BIOS_FC2.png" />
                 </div>
             <h1 className="text-center p-3">Próximos partidos</h1>
             <div className="divPrincipalPartidos">
@@ -35,11 +35,11 @@ const HomeComponent = (props) => {
                                     <strong>{data.horario.slice(0, 10)}</strong>
                                 </div>
                                 
-                                <div>
-                                    <Link to={"/entradas"} className="btn_sold">
-                                        <span>Comprar Entradas</span>
-                                    </Link>
-                                </div>
+                                    <div>
+                                        <Link to={"/entradas/" + data.id} className="btn_sold">
+                                            <span>Comprar Entradas</span>
+                                        </Link>
+                                    </div>
                             </div>:
                             <p></p>
                         }

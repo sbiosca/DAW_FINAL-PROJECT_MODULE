@@ -937,12 +937,18 @@ COPY public.entrada_reserved (id, entrada_id, user_id) FROM stdin;
 --
 
 COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_id) FROM stdin;
-1	45	Tribuna	2	300	t	4
-2	46	Tribuna	2	300	t	1
-3	47	Tribuna	2	300	t	4
-4	48	Tribuna	2	300	t	2
+4	48	Tribuna	2	300	f	2
 5	49	Tribuna	2	300	t	3
 6	50	Tribuna	2	300	t	4
+2	46	Tribuna	2	300	f	1
+1	45	Tribuna	2	300	f	1
+3	47	Tribuna	2	300	f	1
+7	1	General	10	70	t	1
+8	2	General	10	70	t	1
+9	3	General	10	70	t	1
+10	4	General	10	70	t	1
+11	5	General	10	70	t	1
+12	6	General	10	70	t	1
 \.
 
 

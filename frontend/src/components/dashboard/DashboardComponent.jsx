@@ -58,7 +58,7 @@ const DashboardComponent = (props) => {
 							<ul className="nav flex-column">
 								<li className="nav-item">
                                 <Link to={"/"} className="nav-link">
-                                    <img src="logo.png" style={{width: "140px"}}/>
+                                    <img src="/logo.png" style={{width: "140px"}}/>
                                 </Link>
 								</li>
 								<li className="nav-item">

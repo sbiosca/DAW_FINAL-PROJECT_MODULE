@@ -36,7 +36,6 @@ class PartidosSerializer(serializers.ModelSerializer):
         try:
             partido = Partidos.objects.get(id = id)
         except Exception as e:
-            print("#"*100)
             return e
         serialized_partido = PartidosSerializer.to_Partidos(partido)
         return serialized_partido

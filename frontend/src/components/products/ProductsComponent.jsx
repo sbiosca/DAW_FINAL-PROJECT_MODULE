@@ -42,21 +42,21 @@ const ProductsComponent = (props) => {
     return (
         <div className="p-5">
             <div className="filters">
-                <select onChange={event => setTalla(event.target.value)}>
+                <select onChange={event => setTalla(event.target.value)} className="select-blue">
                     <option label="TALLA" disabled selected />
                     {props.products?.map((data, index) => (
                         <option>{data.talla}</option>
                     ))}
                     <option></option>
                 </select>&nbsp;
-                <select onChange={event => setType(event.target.value)}>
+                <select onChange={event => setType(event.target.value)} className="select-yellow">
                     <option label="TYPE" disabled selected />
                     {props.products?.map((data, index) => (
                         <option >{data.type}</option>
                     ))}
                     <option></option>
-                </select>
-                <input type={"button"}  value={"Add"} onClick={submit}/>
+                </select>&nbsp;
+                <button className="btn btn-green" onClick={submit}>Add Filtros</button>
             </div>
             {
                 productsfiltered ? 
