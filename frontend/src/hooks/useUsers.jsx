@@ -9,6 +9,14 @@ import jwt_decode from "jwt-decode"
 export function useUser() {
     const navigate = useNavigate()
     const { users, setUser, jwt, setJWT, setIsAdmin, checkUser } = useContext(UserContext);
+    const [usersAll, setUsersAll] = useState();
+    useEffect(function () {
+        UserService.AllUsers()
+        .then(({data}) => {
+            setUsersAll(data)
+        })
+    }, [setUsersAll])
+
     const login = useCallback((data) => {
         UserService.usersLogin(data)
         .then(({data}) => {
@@ -107,6 +115,6 @@ export function useUser() {
     }
 
     return {
-         login, user: users, register, checkToken, userlogout
+         login, user: users, register, checkToken, userlogout, usersAll: usersAll
     }
 }

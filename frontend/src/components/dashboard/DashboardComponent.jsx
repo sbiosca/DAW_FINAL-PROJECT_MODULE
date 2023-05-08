@@ -6,10 +6,39 @@ import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
 import Button from 'react-bootstrap/Button';
 import { usePartidos } from "../../hooks/usePartidos";
+import {MdOutlineLogout} from 'react-icons/md';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
-import {MdOutlineLogout} from 'react-icons/md'
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+
 const DashboardComponent = (props) => {
+	const test = {
+		labels: ['No Disponibles', 'Disponibles', 'Definir'],
+        datasets: [
+          {
+            label: '',
+            data: [3,43,23],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(54, 162, 235, 1)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+	}
 	const [selected, setSelected] = useState();
+	const [viewCalendar, setViewCalendar] = useState(false);
+	const [viewUsers, setViewUsers] = useState(false);
+	const [viewEntradas, setViewEntradas] = useState(false);
 	const {deletePartidos} = usePartidos();
 	let footer = <div>
 		<h4>No hay Partidos Seleccionados </h4>
@@ -62,19 +91,20 @@ const DashboardComponent = (props) => {
                                 </Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
+									<a className="nav-link" href="#" onClick={()=> setViewCalendar(true)}>
 										<span data-feather="file"></span>
-										Partidos
+										Calendario Partidos
 									</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
-										<span data-feather="users"></span>
+									<a className="nav-link" href="#" onClick={()=> setViewUsers(true)} >
+										<span data-feather="file"></span>
 										Usuarios
 									</a>
+									
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
+									<a className="nav-link" href="#" onClick={()=> setViewEntradas(true)}>
 										<span data-feather="bar-chart-2"></span>
 										Entradas
 									</a>
@@ -96,12 +126,110 @@ const DashboardComponent = (props) => {
 					</nav>
 
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4 text-center">
-							<h1 className="h2">Panel Dashboard</h1>
+						<h1 className="h2">Panel Dashboard</h1>
+						<div>
+							<Doughnut className="stadistics w-25 h-25 m-5" data={test} />
+						</div>
+						{
+							viewCalendar ?
 							<DayPicker mode="single"
-									selected={selected}
-									onSelect={setSelected}
-									footer={footer}/>
-							
+								selected={selected}
+								onSelect={setSelected}
+								footer={footer}/>:
+							<div></div>
+						}
+						{
+							viewUsers ?
+							<div>
+								<h1>Users</h1>
+								<table className="table table-striped p-3 table-bordered table-hover table-responsive tbl-header">
+									<thead className="thead-dark">
+										<tr>
+											<th scope="col" className="user_id">User_Id</th>
+											<th scope="col" className="user">Username</th>
+											<th scope="col" className="admin">Admin</th>
+										</tr>
+									</thead>
+									<tbody>
+										{props.usersAll?.map((data, index) => (
+											<tr>
+												<td scope="row" className="user_id">{data.id}</td>
+												<td className="user">{data.username} </td>
+												<td className="admin">{data.admin ? <input type="checkbox" checked/>: <input type="checkbox"/>}</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+								</div>:
+							<div></div>
+						}
+						{
+							viewEntradas ?
+							<div>
+								<h1>Entradas</h1>
+								<table className="table table-striped p-3 table-bordered table-hover table-responsive tbl-header">
+									<thead className="thead-dark">
+										<tr>
+											<th scope="col" className="entrada_id">Entrada_id</th>
+											<th scope="col" className="partido">Partido_id</th>
+											<th scope="col" className="asiento">Asiento</th>
+											<th scope="col" className="fila">fila</th>
+											<th scope="col" className="graderia">Graderia</th>
+											<th scope="col" className="precio">Precio</th>
+											<th scope="col" className="disponible">Disponible</th>
+											<th scope="col" className="operations">Operations</th>
+										</tr>
+									</thead>
+									<tbody>
+										{props.entradas?.map((data, index) => (
+											<tr>
+												<td scope="row" className="entrada_id" title={data.partido_id.eq1 +" VS "+data.partido_id.eq2}>{data.id}</td>
+												<td className="partido">{data.partido_id.id} </td>
+												<td className="asiento">{data.asiento} </td>
+												<td className="fila">{data.fila} </td>
+												<td className="graderia">{data.graderia} </td>
+												<td className="precio">{data.precio} €</td>
+												<td className="disponible">{data.disponible ? <input type="checkbox" checked/>: <input type="checkbox" disabled/>}</td>
+												<td className="operations">
+													<div>
+														Edit
+														Delete
+													</div>
+												</td>
+											</tr>
+										))}
+										<p>Add Entrada</p>
+										{/* <tr>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+											<td>
+												<input type="text"/>
+											</td>
+										</tr> */}
+									</tbody>
+								</table>
+								</div>:
+							<div></div>
+						}
 					</main>
 				</div>
 			</div>

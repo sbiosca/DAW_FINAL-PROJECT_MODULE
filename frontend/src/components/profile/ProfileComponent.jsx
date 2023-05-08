@@ -1,8 +1,9 @@
 import React from "react";
 import "./ProfileComponent.css"
+import {BsDownload} from "react-icons/bs"
 
 const ProfileComponent = (props) => {
-    console.log(props.infoUser)
+
     return (
         <div className="divProfile">
             <div className="container">
@@ -33,6 +34,16 @@ const ProfileComponent = (props) => {
                             <input type="text" readOnly value={props.infoUser?.id_profile[0].name_complet} className="bg-transparent text-center border-0"/>
                         </div>
                     </div>
+                    <h1>ENTRADAS</h1>
+                    {props.entradasReservedUser?.map((data, index) => (
+                        <div className="entradaReservedUser m-3">
+                            <strong>{data.id}</strong><p></p>
+                            <button onClick={props.generatePDF} className="btn">
+                                <BsDownload style={{ fontSize: "40px" }} />
+                            </button>                           
+                        </div>
+                    ))}
+                    
                 </div>
             </div>
         </div>

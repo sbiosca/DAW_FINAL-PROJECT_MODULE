@@ -25,3 +25,5 @@ yarn-error.log*
 src/secret.json
 
 ApiSoccerService.jsx
+
+configEmail.js

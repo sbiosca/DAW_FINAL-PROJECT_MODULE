@@ -4,3 +4,10 @@
     #8dff8f 33.33%, #6cfb95 41.67%,
      #46ee9a 50%, #00e09e 58.33%, #00d4a2 66.67%, #00caa6 75%, #00c1ab 83.33%, #00bab0 91.67%, #00b4b6 100%);
 }
+
+.entradaReservedUser {
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #00caa6;
+}

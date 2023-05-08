@@ -31,7 +31,7 @@ export function usePartidos() {
     const deletePartidos = useCallback((id) => {
         PartidosService.deletePartidos(id)
         .then(({data}) => {
-            toast.warn('🚲 Deleted Partidos!', {
+            toast.warn('Deleted Partidos!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,

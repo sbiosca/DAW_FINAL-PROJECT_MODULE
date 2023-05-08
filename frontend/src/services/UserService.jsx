@@ -12,7 +12,11 @@ const UserService = {
     },
     isAdmin(id) {
         return http().get("/server/users_admin/"+ id)
+    },
+    AllUsers() {
+        return http().get("/server/users")
     }
+
 }
 
 export default UserService;

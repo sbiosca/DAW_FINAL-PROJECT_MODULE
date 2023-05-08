@@ -4,6 +4,7 @@ from rest_framework import serializers
 from .models import Entrada_reserved
 from django.core.serializers import serialize
 from ..entradas.serializers import EntradasSerializer
+from ..partidos.serializers import PartidosSerializer
 from ..entradas.models import Entrada
 from ..users.serializers import UsersSerializer
 from ..users.models import Users
@@ -12,14 +13,14 @@ class Entrada_reservedSerializer(serializers.ModelSerializer):
     class Meta:
             model = Entrada_reserved
             fields = ('__all__')
-    
+
     def to_Entrada_reserved(instance):
         return {
             'id': instance.id,
             'id_entrada': instance.entrada.id,
             'id_user': instance.user.id
         }
-    
+
     def GetEntrada_reserved():
         entrada_reserved = Entrada_reserved.objects.all()
         seralizer_entrada = []
@@ -31,8 +32,24 @@ class Entrada_reservedSerializer(serializers.ModelSerializer):
             ser_entrada["id_entrada"] = entrada
             ser_entrada["id_user"] = user
             seralizer_entrada.append(ser_entrada)
-            
-        return seralizer_entrada       
+
+        return seralizer_entrada
+
+    def GetEntrada_reserved_User(context):
+        entrada_reserved = Entrada_reserved.objects.filter(user_id = context["id_user"])
+        seralizer_entrada = []
+
+        for entradas_reserved in entrada_reserved.iterator():
+            ser_entrada = Entrada_reservedSerializer.to_Entrada_reserved(entradas_reserved)
+            entrada = EntradasSerializer.GetOneEntrada(id = ser_entrada["id_entrada"])
+            user = UsersSerializer.getOneUser(id = ser_entrada["id_user"])
+            partido = PartidosSerializer.getOnePartido(id = entrada["partido_id"])
+            ser_entrada["id_entrada"] = entrada
+            ser_entrada["id_user"] = user
+            entrada["partido_id"] = partido
+            seralizer_entrada.append(ser_entrada)
+
+        return seralizer_entrada
 
     def BuyEntrada(context):
         entrada_reserved =  Entrada_reserved.objects.create(
@@ -47,4 +64,3 @@ class Entrada_reservedSerializer(serializers.ModelSerializer):
         Entrada.objects.bulk_update([Entrada(id=context["id_entrada"], disponible=False)], fields=["disponible"])
 
         return ser_entrada_reserved
-        

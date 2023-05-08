@@ -16,3 +16,9 @@
     align-items: center;
     padding: 6.5%;
 }
+
+.stadistics {
+    width: 40px;
+    height: 250px;
+    font-size: 10px;
+}
