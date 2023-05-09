@@ -3,6 +3,7 @@ import UserContext from "../context/UserContext"
 import { usePartidos } from "../hooks/usePartidos";
 import { useUser } from "../hooks/useUsers";
 import {useEntradas} from "../hooks/useEntradas"
+import { useIntegrantes } from "../hooks/useIntegrantes"
 
 const DashboardComponent = React.lazy(() => {
     return new Promise(resolve => {
@@ -15,10 +16,10 @@ const DashboardPage = () => {
     const {partidos} = usePartidos();
     const { usersAll } = useUser();
     const { entradas } = useEntradas();
-    console.log(entradas)
+    const {integrantes} = useIntegrantes();
     return (
         <Suspense fallback={<div className="text-center"><img className="w-25" src="https://usagif.com/wp-content/uploads/loading-4.gif"/></div>}>
-            <DashboardComponent users={users} partidos={partidos} usersAll={usersAll} entradas={entradas}/>
+            <DashboardComponent users={users} partidos={partidos} usersAll={usersAll} entradas={entradas} integrantes={integrantes}/>
         </Suspense>
     )
 

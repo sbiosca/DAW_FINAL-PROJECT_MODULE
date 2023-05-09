@@ -11,7 +11,6 @@ import Equipo from "./pages/Equipo"
 import Entradas from "./pages/Entradas"
 import Partidos from "./pages/Partidos"
 import Dashboard from "./pages/Dashboard"
-import AddPartidos from './components/dashboard/AddPartidosDashboard';
 import Integrantes from "./pages/Integrantes"
 import Shop from "./pages/Shop"
 import Login from './pages/Users/Login'
@@ -50,7 +49,6 @@ function App() {
               {/* </Route> */}
               {/* <Route element={<AuthGuardAdmin />}> */}
               <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/dashboard/add_partidos' element={<AddPartidos />} />
               {/* </Route> */}
             </Routes>
             <ToastContainer />

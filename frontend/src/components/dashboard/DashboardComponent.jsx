@@ -7,8 +7,9 @@ import { format } from 'date-fns';
 import Button from 'react-bootstrap/Button';
 import { usePartidos } from "../../hooks/usePartidos";
 import {MdOutlineLogout} from 'react-icons/md';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import AddPartidos from '../../components/dashboard/AddPartidosDashboard';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -39,19 +40,22 @@ const DashboardComponent = (props) => {
 	const [viewCalendar, setViewCalendar] = useState(false);
 	const [viewUsers, setViewUsers] = useState(false);
 	const [viewEntradas, setViewEntradas] = useState(false);
+	const [viewIntegrantes, setViewIntegrantes] = useState(false);
+	const [viewAddPartido, setViewAddPartido] = useState(false);
 	const {deletePartidos} = usePartidos();
+	let formattedDate;
 	let footer = <div>
 		<h4>No hay Partidos Seleccionados </h4>
-		<Link to={"/dashboard/add_partidos"} className="btn_sold">
-			<span>Añadir Partido</span>
-		</Link>
+		<Button className="btn_sold">
+			<span onClick={()=> [setViewCalendar(false), setViewAddPartido(true)]}>Añadir Partido</span>
+		</Button>
 	</div>;
 	for (let i=0; i < props.partidos?.length; i++) {
 		if (selected) {
 			let year = selected.getFullYear();
 			let month = selected.getMonth() + 1;
 			let day = selected.getDate();
-			let formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+			formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
 			
 			if (formattedDate === props.partidos[i].horario.slice(0, 10)) {
 				footer = <div>
@@ -91,26 +95,30 @@ const DashboardComponent = (props) => {
                                 </Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#" onClick={()=> setViewCalendar(true)}>
+									<a className="nav-link" href="#" onClick={()=> [setViewUsers(false), setViewCalendar(true), setViewEntradas(false),
+																				setViewIntegrantes(false), setViewAddPartido(false)]}>
 										<span data-feather="file"></span>
 										Calendario Partidos
 									</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#" onClick={()=> setViewUsers(true)} >
+									<a className="nav-link" href="#" onClick={()=> [setViewUsers(true), setViewCalendar(false), setViewEntradas(false),
+																				setViewIntegrantes(false)]} >
 										<span data-feather="file"></span>
 										Usuarios
 									</a>
 									
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#" onClick={()=> setViewEntradas(true)}>
+									<a className="nav-link" href="#" onClick={()=> [setViewUsers(false), setViewCalendar(false), setViewEntradas(true),
+																				setViewIntegrantes(false)]}>
 										<span data-feather="bar-chart-2"></span>
 										Entradas
 									</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
+									<a className="nav-link" href="#"  onClick={()=> [setViewUsers(false), setViewCalendar(false), setViewEntradas(false),
+																				setViewIntegrantes(true)]}>
 										<span data-feather="bar-chart-2"></span>
 										Integrantes
 									</a>
@@ -130,12 +138,20 @@ const DashboardComponent = (props) => {
 						<div>
 							<Doughnut className="stadistics w-25 h-25 m-5" data={test} />
 						</div>
+						<div>
+							{/* <Pie className="stadistics w-25 h-25 m-5" data={test}/> */}
+						</div>
 						{
 							viewCalendar ?
 							<DayPicker mode="single"
-								selected={selected}
-								onSelect={setSelected}
-								footer={footer}/>:
+							selected={selected}
+							onSelect={setSelected}
+							footer={footer}/>:
+							<div></div>
+						}
+						{
+							viewAddPartido ?
+							<AddPartidos formattedDate={formattedDate}/>:
 							<div></div>
 						}
 						{
@@ -225,6 +241,51 @@ const DashboardComponent = (props) => {
 												<input type="text"/>
 											</td>
 										</tr> */}
+									</tbody>
+								</table>
+								</div>:
+							<div></div>
+						}
+						{
+							viewIntegrantes ?
+							<div>
+								<h1>Jugadores y Cuerpo Técnico</h1>
+								<table className="table table-striped p-3 table-bordered table-hover table-responsive tbl-header">
+									<thead className="thead-dark">
+										<tr>
+											<th scope="col" className="integrante_id">Id</th>
+											<th scope="col" className="name">Name</th>
+											<th scope="col" className="fech_naci">Fecha Nacimiento</th>
+											<th scope="col" className="naci">Nacionalidad</th>
+											<th scope="col" className="type">Type</th>
+										</tr>
+									</thead>
+									<tbody>
+										{props.integrantes?.map((data, index) => (
+											<tr>
+												<td scope="row" className="integrante_id">
+												{data.id}
+													{/* <input type="text" id="integrante_id" name="integrante_id" value={data.id}/> */}
+												</td>
+												<td className="nameTd">
+													<div className="textTd">
+														{data.name} {data.apellidos}
+													</div>
+													<div className="imgTd">
+														<img src="http://eskipaper.com/images/images-4.jpg" height='100%' width='100%' />
+													</div>
+												</td>
+												<td className="fech_naci">{data.fech_naci}</td>
+												<td className="naci">{data.nacionalidad}</td>
+												<td className="type">
+													{
+														data.tecnico == 1 ?
+														"Jugador":
+														"Cuerpo tecnico"
+													}
+												</td>
+											</tr>
+										))}
 									</tbody>
 								</table>
 								</div>:

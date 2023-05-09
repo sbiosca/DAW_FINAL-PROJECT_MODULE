@@ -1,4 +1,4 @@
-.columnDashboard{
+.columnDashboard {
     background-color: rgb(0, 0, 0);
     height: 35cm;
 }
@@ -21,4 +21,81 @@
     width: 40px;
     height: 250px;
     font-size: 10px;
+}
+
+.nameTd {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #d4d4d4;
+    background: #fff;
+    border-radius: 3px;
+    text-align: center;
+    position: relative
+}
+
+.nameTd:hover .textTd {
+    opacity: 0
+}
+
+.nameTd:hover .imgTd {
+    opacity: 1
+}
+
+.textTd {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    transition: opacity .3s linear;
+}
+
+.imgTd {
+    transition: opacity .3s linear;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+strong {
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="url"] {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="button"] {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="button"]:hover {
+    background-color: navy;
 }

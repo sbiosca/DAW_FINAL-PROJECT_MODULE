@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import '../../Partidoss/PartidossComponent.css'
 import { usePartidos } from "../../hooks/usePartidos";
 import Button from 'react-bootstrap/Button';
 
 import {  toast } from 'react-toastify';
 
-const CreatePartidos = () => {
+const CreatePartidos = (props) => {
+    console.log(props.formattedDate)
     const partidos = usePartidos();
     const [isAdmin] = useState(true);
     
     const [competi, setCompeti] = useState();
     const [eq1, setEq1] = useState()
     const [eq2, setEq2] = useState()
-    const [horario, setHorario] = useState();
+    const [fecha, setFecha] = useState();
+    const [hora, setHora] = useState();
     const [resultado, setResultado] = useState()
     const [img, setImg] = useState()
     const {CreatePartidos} = usePartidos();
@@ -23,10 +24,11 @@ const CreatePartidos = () => {
         "id_competi": competi,
         "eq1": eq1,
         "eq2": eq2,
-        "horario": horario,
+        "horario": props.formattedDate + " " + hora,
         "resultado": resultado ? resultado : "",
         "img_partidos": img
     }
+    console.log(data)
     const submit = () => {
         CreatePartidos(data)
         toast('🚲 New Partidos!', {
@@ -43,8 +45,8 @@ const CreatePartidos = () => {
     }
    
     return (
-        <div className="m-3 PartidosComponent">
-            <h1 className="text-center">ADD Partidos</h1>
+        <div className="formulario">
+            <h1 className="">ADD Partidos</h1>
             <strong>Competicion OF Partidos: </strong>
             <input type={"text"} id="competi" onChange={event => setCompeti(event.target.value)}/><p></p>
             <strong>IMAGE OF Partidos: </strong>
@@ -53,10 +55,11 @@ const CreatePartidos = () => {
             <input type={"text"} id="eq1" onChange={event => setEq1(event.target.value)}/><p></p>
             <strong>Equipo Visitante </strong>
             <input type={"text"} id="eq2" onChange={event => setEq2(event.target.value)}/><p></p>
-            <strong>Horario</strong>
-            <input type={"text"} id="eq2" onChange={event => setHorario(event.target.value)}/><p></p>
+            <strong>Fecha</strong>
+            <input type={"text"} id="fecha" value={props.formattedDate}/><p></p>
+            <strong>Hora</strong>
+            <input type={"time"} id="hora" onChange={event => setHora(event.target.value)}/><p></p>
             <input type={"button"}  value={"Add"} onClick={submit}/>
-            
         </div>
     )
 }
