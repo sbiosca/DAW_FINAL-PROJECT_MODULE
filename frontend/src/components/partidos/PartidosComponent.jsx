@@ -3,11 +3,11 @@ import "./PartidosComponent.css"
 import {Link} from 'react-router-dom'
 
 const PartidosComponent = (props) => {
+    console.log(props)
     const dateNow = Date.now();
     const hoy = new Date(dateNow);
     const formatData = hoy.toISOString().slice(0, 10)
     var fechaFin = new Date(formatData).getTime();
-    console.log(props)
     return (
         <div className="p-5 divPartidos">
             <h1>PRÓXIMOS PARTIDOS</h1>

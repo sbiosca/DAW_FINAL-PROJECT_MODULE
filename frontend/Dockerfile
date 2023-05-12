@@ -1,7 +1,7 @@
 FROM node:lts AS reactDeploy
 WORKDIR /frontendDir
 COPY ./package.json .
-RUN ["npm", "install"]
+RUN ["npm", "install", "--force"]
 
 FROM node:lts
 WORKDIR /frontendDir
