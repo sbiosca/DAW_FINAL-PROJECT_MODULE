@@ -19,4 +19,10 @@ class JugadoresSerializer(serializers.ModelSerializer):
             'lesionado': instance.lesionado,
         }
         
-        
+    def getOneJugador(id):
+        try:
+            jugador = Jugadores.objects.get(id = id)
+        except Exception as e:
+            return e
+        serialized_Jugador = JugadoresSerializer.to_Jugadores(jugador)
+        return serialized_Jugador

@@ -52,3 +52,19 @@ class EntradasSerializer(serializers.ModelSerializer):
             serialized_entradas.append(parti)
 
         return serialized_entradas    
+    
+    def CreateEntrada(context):
+        entrada = Entrada.objects.create(
+            asiento = context["asiento"],
+            graderia = context["graderia"],
+            fila = context["fila"],
+            precio = context["precio"],
+            disponible = context["disponible"],
+            partido_id = context["partido_id"]
+        )
+        return entrada
+    
+    def putEntrada(data, context):
+        Entrada.objects.bulk_update([Entrada(id=context, asiento=data["asiento"],graderia=data["graderia"],fila=data["fila"],precio=data["precio"],
+                                              disponible=data["disponible"])],fields=["asiento", "graderia", "fila", "precio", "disponible"])
+        return "Correct"

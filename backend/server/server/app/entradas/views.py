@@ -15,3 +15,13 @@ class EntradasView(viewsets.GenericViewSet):
         }
         serializer = EntradasSerializer.GetEntradasbyPartidos(context=serializer_context)
         return Response(serializer,status=status.HTTP_200_OK)
+    
+    def CreateEntrada(self, request):
+        serializer_data = request.data
+        EntradasSerializer.CreateEntrada(context=serializer_data)
+        return Response({"ADDED NEW TICKET SUCCESFULL"}, status=status.HTTP_201_CREATED)
+    
+    def putEntrada(self, request, *args , **kwargs):
+        serializer_user = EntradasSerializer.putEntrada(data=request.data, context=kwargs["id"])
+
+        return Response(serializer_user, status=status.HTTP_200_OK) 

@@ -77,3 +77,10 @@ class UsersSerializer(serializers.ModelSerializer):
         if not serialized_user["isAdmin"]:
             raise serializers.ValidationError('UserAdmin is not foud')
         return serialized_user
+    
+    def putUser(data, context):
+        Users.objects.bulk_update([Users(id=context, username=data["username"], passwd=make_password(data["password"]))],fields=["username", "passwd"])
+        Profile.objects.bulk_update([Profile(id=data["profile_id"], correo=data["email"], name_complet=data["name_complet"],addres=data["addres"],
+                                            num_telf=data["num_telf"],
+                                            avatar=data["avatar"])],fields=["correo", "name_complet", "addres", "num_telf","avatar", ])
+        return "Correct"

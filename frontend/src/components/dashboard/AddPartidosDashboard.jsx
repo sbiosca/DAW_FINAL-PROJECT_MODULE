@@ -31,7 +31,7 @@ const CreatePartidos = (props) => {
     console.log(data)
     const submit = () => {
         CreatePartidos(data)
-        toast('🚲 New Partidos!', {
+        toast('New Partidos!', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

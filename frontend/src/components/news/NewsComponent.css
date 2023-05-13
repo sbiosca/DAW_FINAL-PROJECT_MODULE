@@ -1,0 +1,40 @@
+.divNews {
+    padding: 2px;
+    background-image: radial-gradient(circle at 9.42% 84.05%, #fbff70 0, #e2ff77 8.33%, #c7ff7f 16.67%, #abff87 25%, 
+    #8dff8f 33.33%, #6cfb95 41.67%,
+     #46ee9a 50%, #00e09e 58.33%, #00d4a2 66.67%, #00caa6 75%, #00c1ab 83.33%, #00bab0 91.67%, #00b4b6 100%);
+}
+
+/* Estilos generales */
+.news-section {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .news-title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .news-article {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos específicos para colores */
+  .news-article .title {
+    color: #047900; /* Verde */
+  }
+  
+  .news-article .date {
+    color: #f9a602; /* Amarillo */
+  }
+  
+  .news-article .content {
+    color: #0064c8; /* Azul */
+  }

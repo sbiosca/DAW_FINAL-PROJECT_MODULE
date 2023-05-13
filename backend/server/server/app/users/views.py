@@ -56,3 +56,8 @@ class UsersView(viewsets.GenericViewSet):
         serializer = UsersSerializer.getAdmin(context=serializer_context)
 
         return Response(serializer, status=status.HTTP_200_OK)
+    
+    def putUser(self, request, *args , **kwargs):
+        serializer_user = UsersSerializer.putUser(data=request.data, context=kwargs["id"])
+
+        return Response(serializer_user, status=status.HTTP_200_OK) 

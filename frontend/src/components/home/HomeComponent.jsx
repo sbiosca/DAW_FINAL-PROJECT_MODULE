@@ -9,7 +9,7 @@ const HomeComponent = (props) => {
     const hoy = new Date(dateNow);
     const formatData = hoy.toISOString().slice(0, 10)
     var fechaFin = new Date(formatData).getTime();
-
+    console.log(props)
     return (
         <div className="divHome">
                 <div className="text-center">
@@ -53,8 +53,8 @@ const HomeComponent = (props) => {
                         <Link to={"/integrantes"} className="nav-link">
                             <h3>{data.name} {data.apellidos}</h3>
                             {
-                                data.tecnico != 1 ?
-                                <strong>Cuerpo Tecnico</strong>:
+                                data.id_tecn.id != 0 ?
+                                <strong>{data.id_tecn.type}</strong>:
                                 <strong>Jugador</strong>
                             }
                         </Link>
@@ -64,8 +64,20 @@ const HomeComponent = (props) => {
                         </div>
                     </div>
                 ))}
-                
             </Carousel>
+            <h1 className="text-center p3">Actualidad</h1>
+            <div className="actuality">
+                    {props.news?.slice(0,3).map((data, index) => (
+                        <div className="actualityDivs">
+                            <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "60%" }} />
+                            <strong className="text-dark">Test</strong>
+                            <div className="descrNews">
+                                <hr></hr>
+                                <strong>{data.descr}</strong>
+                            </div>
+                        </div>
+                    ))}
+            </div>
         </div>
     )
 

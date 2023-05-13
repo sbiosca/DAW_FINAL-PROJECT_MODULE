@@ -14,5 +14,12 @@ class TecnicosSerializer(serializers.ModelSerializer):
             'id': instance.id,
             'type': instance.type
         }
-        
+    
+    def getOneTecnicos(id):
+        try:
+            tecnicos = Tecnicos.objects.get(id = id)
+        except Exception as e:
+            return e
+        serialized_Tecnicos = TecnicosSerializer.to_Tecnicos(tecnicos)
+        return serialized_Tecnicos
         

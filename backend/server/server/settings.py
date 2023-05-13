@@ -98,8 +98,8 @@ DATABASES = {
         'NAME': 'bioskin',
         'USER': 'bioskin',
         'PASSWORD': 'r00t',
-        'HOST': 'postgres',
-        #'HOST': 'localhost',
+        #'HOST': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }

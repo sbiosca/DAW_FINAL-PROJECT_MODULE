@@ -8,6 +8,7 @@ import Footer from "./pages/Footer"
 import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 import Equipo from "./pages/Equipo"
+import News from "./pages/News"
 import Entradas from "./pages/Entradas"
 import Partidos from "./pages/Partidos"
 import Dashboard from "./pages/Dashboard"
@@ -40,6 +41,7 @@ function App() {
               <Route exact path='/entradas' element={<Entradas />} />
               <Route exact path='/entradas/:id' element={<Entradas />} />
               <Route exact path='/integrantes' element={<Integrantes />} />
+              <Route exact path='/news' element={<News />} />
               {/* <Route element={<AuthGuardUser />}> */}
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />

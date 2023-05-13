@@ -6,6 +6,10 @@ from .serializers import IntegrantesSerializer
 
 class IntegrantesView(viewsets.GenericViewSet):
     def GetIntegrantes(self, request):
-        queryset = Integrantes.objects.all()
-        serializer = IntegrantesSerializer(queryset,many=True).data
+        serializer = IntegrantesSerializer.GetIntegrantes()
         return Response(serializer,status=status.HTTP_200_OK)
+
+    def putIntegrante(self, request, *args , **kwargs):
+        serializer_user = IntegrantesSerializer.putIntegrante(data=request.data, context=kwargs["id"])
+
+        return Response(serializer_user, status=status.HTTP_200_OK) 

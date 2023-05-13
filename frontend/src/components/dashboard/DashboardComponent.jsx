@@ -11,10 +11,16 @@ import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import AddPartidos from '../../components/dashboard/AddPartidosDashboard';
 
+import {AiFillCheckCircle} from "react-icons/ai"
+import {RiQuestionAnswerFill} from "react-icons/ri"
+import {MdCancel, MdSend} from "react-icons/md"
+
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 const DashboardComponent = (props) => {
+	console.log(props.integrantes)
 	const test = {
 		labels: ['No Disponibles', 'Disponibles', 'Definir'],
         datasets: [
@@ -42,6 +48,8 @@ const DashboardComponent = (props) => {
 	const [viewEntradas, setViewEntradas] = useState(false);
 	const [viewIntegrantes, setViewIntegrantes] = useState(false);
 	const [viewAddPartido, setViewAddPartido] = useState(false);
+	const [viewAnswer, SetView] = useState(false)
+    const [idAnswer, SetId] = useState()
 	const {deletePartidos} = usePartidos();
 	let formattedDate;
 	let footer = <div>
@@ -258,6 +266,12 @@ const DashboardComponent = (props) => {
 											<th scope="col" className="fech_naci">Fecha Nacimiento</th>
 											<th scope="col" className="naci">Nacionalidad</th>
 											<th scope="col" className="type">Type</th>
+											<th scope="col" className="dorsal">Dorsal</th>
+											<th scope="col" className="tarjetas_amar">Tarjetas Amarillas</th>
+											<th scope="col" className="tarjetas_roj">Tarjetas Rojas</th>
+											<th scope="col" className="goles">Goles</th>
+											<th scope="col" className="lesionado">Lesionado</th>
+											<th scope="col" className="operations">Operations</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -279,10 +293,32 @@ const DashboardComponent = (props) => {
 												<td className="naci">{data.nacionalidad}</td>
 												<td className="type">
 													{
-														data.tecnico == 1 ?
+														data.id_tecn.id == 0 ?
 														"Jugador":
 														"Cuerpo tecnico"
 													}
+												</td>
+												<td className="dorsal">
+													{
+														viewAnswer &&  idAnswer == data.id ?
+														<input type="text" id="integrante_id" name="integrante_id" defaultValue={data.id_player.dorsal}/>:
+														<div>
+															{data.id_player.dorsal}
+														</div>
+													}
+												</td>
+												<td className="tarjetas_amar">{data.id_player.tarjetas_amar}</td>
+												<td className="tarjetas_roj">{data.id_player.tarjetas_roj}</td>
+												<td className="goles">{data.id_player.goles}</td>
+												<td className="lesionado">{data.id_player.lesionado ? <input type="checkbox" checked/>: <input type="checkbox" disabled/>}</td>
+												<td>
+													{
+														viewAnswer && idAnswer == data.id ?
+															<RiQuestionAnswerFill onClick={() => [SetView(false), SetId(data.id)]} style={{ fontSize: "60px" }} className="btn btn-click" /> :
+															<RiQuestionAnswerFill onClick={() => [SetView(true), SetId(data.id)]} style={{ fontSize: "60px" }} className="btn btn-click text-primary" />
+													}
+													<MdSend style={{ fontSize: "60px" }} className="btn btn-click text-primary" />
+													<MdCancel style={{ fontSize: "60px" }} className="btn btn-click text-danger" />
 												</td>
 											</tr>
 										))}
