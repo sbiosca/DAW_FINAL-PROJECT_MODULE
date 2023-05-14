@@ -1,27 +1,27 @@
 version: '3.5'
 services:
-  # backend:
-  #   container_name: containerbackend
-  #   build:
-  #     context: backend/server
-  #   networks:
-  #     - dbNetwork
-  #     - deploymentNetwork
-  #   ports:
-  #     - 8000:8000
-  #   depends_on:
-  #     - postgres
-  #     - pgadmin
-  # frontend:
-  #   container_name: containerfrontend
-  #   build:
-  #     context: frontend
-  #   networks:
-  #     - deploymentNetwork
-  #   ports:
-  #     - 3000:3000
-  #   volumes: 
-  #     - ./frontend/src:/frontendDir/src
+  backend:
+    container_name: containerbackend
+    build:
+      context: backend/server
+    networks:
+      - dbNetwork
+      - deploymentNetwork
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      - pgadmin
+  frontend:
+    container_name: containerfrontend
+    build:
+      context: frontend
+    networks:
+      - deploymentNetwork
+    ports:
+      - 3000:3000
+    volumes: 
+      - ./frontend/src:/frontendDir/src
   postgres:
     container_name: containerPostgres
     image: postgres

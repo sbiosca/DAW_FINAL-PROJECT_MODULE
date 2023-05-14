@@ -10,6 +10,7 @@ import {MdOutlineLogout} from 'react-icons/md';
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import IntegrantesDashboard from './IntegrantesDashboard'
+import EntradasDashboard from './EntradasDashboard'
 import AddPartidos from '../../components/dashboard/AddPartidosDashboard';
 
 
@@ -17,16 +18,61 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 const DashboardComponent = (props) => {
-	console.log(props.integrantes)
-	const test = {
-		labels: ['No Disponibles', 'Disponibles', 'Definir'],
+	let arrayTrue = []
+	let arrayFalse = []
+	let winner = []
+	let loser = []
+	let not_play = []
+	for (let i=0;i<props.entradas.length;i++) {
+		if (props.entradas[i].disponible) {
+			arrayTrue.push(props.entradas[i].disponible)
+		}
+		if (!props.entradas[i].disponible) {
+			arrayFalse.push(props.entradas[i].disponible.resultado)
+		}
+	}
+	for (let i=0;i<props.partidos.length;i++) {
+		if (props.partidos[i].resultado) {
+			if (props.partidos[i].eq1 === "Bios FC" && props.partidos[i].resultado.split("-")[0] > props.partidos[i].resultado.split("-")[1]
+			|| props.partidos[i].eq2 === "Bios FC" && props.partidos[i].resultado.split("-")[0] < props.partidos[i].resultado.split("-")[1]) {
+				winner.push("Winner")
+			}else {
+				loser.push("Loser")
+			}
+		}else {
+			not_play.push("Not Play")
+		}
+	}
+	const entradasDou = {
+		labels: ['Disponibles', 'No Disponibles', 'Definir'],
         datasets: [
           {
             label: '',
-            data: [3,43,23],
+            data: [arrayTrue.length, arrayFalse.length, 23],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
+              'rgba(0, 255, 55)',
+              'rgba(252, 0, 0)',
+              'rgba(54, 162, 235, 0.2)',
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(54, 162, 235, 1)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+	}
+	const partidosDou = {
+		labels: ['Ganados', 'Perdidos', 'Por Jugar'],
+        datasets: [
+          {
+            label: '',
+            data: [winner.length, loser.length, not_play.length],
+            backgroundColor: [
+              'rgba(0, 255, 55)',
+              'rgba(252, 0, 0)',
               'rgba(54, 162, 235, 0.2)',
 
             ],
@@ -40,6 +86,7 @@ const DashboardComponent = (props) => {
           ],
 	}
 	const [selected, setSelected] = useState();
+	const [viewStadistics, setStatistics] = useState();
 	const [viewCalendar, setViewCalendar] = useState(false);
 	const [viewUsers, setViewUsers] = useState(false);
 	const [viewEntradas, setViewEntradas] = useState(false);
@@ -99,31 +146,36 @@ const DashboardComponent = (props) => {
 								</li>
 								<li className="nav-item">
 									<a className="nav-link" href="#" onClick={()=> [setViewUsers(false), setViewCalendar(true), setViewEntradas(false),
-																				setViewIntegrantes(false), setViewAddPartido(false)]}>
+																				setViewIntegrantes(false), setViewAddPartido(false), setStatistics(false)]}>
 										<span data-feather="file"></span>
 										Calendario Partidos
 									</a>
 								</li>
 								<li className="nav-item">
 									<a className="nav-link" href="#" onClick={()=> [setViewUsers(true), setViewCalendar(false), setViewEntradas(false),
-																				setViewIntegrantes(false)]} >
+																				setViewIntegrantes(false), setStatistics(false)]} >
 										<span data-feather="file"></span>
 										Usuarios
 									</a>
-									
 								</li>
 								<li className="nav-item">
 									<a className="nav-link" href="#" onClick={()=> [setViewUsers(false), setViewCalendar(false), setViewEntradas(true),
-																				setViewIntegrantes(false)]}>
+																				setViewIntegrantes(false), setStatistics(false)]}>
 										<span data-feather="bar-chart-2"></span>
 										Entradas
 									</a>
 								</li>
 								<li className="nav-item">
 									<a className="nav-link" href="#"  onClick={()=> [setViewUsers(false), setViewCalendar(false), setViewEntradas(false),
-																				setViewIntegrantes(true)]}>
+																				setViewIntegrantes(true), setStatistics(false)]}>
 										<span data-feather="bar-chart-2"></span>
 										Integrantes
+									</a>
+								</li>
+								<li className="nav-item">
+									<a className="nav-link" href="#"  onClick={()=> [viewStadistics ? setStatistics(false): setStatistics(true)]}>
+										<span data-feather="bar-chart-2"></span>
+										Estadisticas
 									</a>
 								</li>
 								<div className="profileAdminUser">
@@ -138,9 +190,23 @@ const DashboardComponent = (props) => {
 
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4 text-center">
 						<h1 className="h2">Panel Dashboard</h1>
-						<div>
-							<Doughnut className="stadistics w-25 h-25 m-5" data={test} />
-						</div>
+						{
+							viewStadistics ?
+							<div>
+								<h2>Estadisticas</h2>
+								<div>
+									<strong>Entradas</strong>
+									<hr></hr>
+									<Doughnut className="stadistics w-25 h-50 m-5" data={entradasDou} />
+								</div>
+								<div>
+									<strong>Partidos</strong>
+									<hr></hr>
+									<Doughnut className="stadistics w-25 h-25 m-5" data={partidosDou} />
+								</div>
+							</div>:
+							<div></div>
+						}
 						<div>
 							{/* <Pie className="stadistics w-25 h-25 m-5" data={test}/> */}
 						</div>
