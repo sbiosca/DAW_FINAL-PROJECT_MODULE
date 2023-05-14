@@ -24,12 +24,12 @@ const HeaderComponent = (props) => {
                                 <p>Equipo</p>
                             </Link>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item active">
                             <Link to={"/shops"} className="nav-link">
-                                <p>Shop</p>
+                                <p>Tienda</p>
                             </Link>
                         </li>
-                        <li className="nav-item dropdown">
+                        <li className="nav-item dropdown active">
                             <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Partidos
                             </a>
@@ -44,6 +44,33 @@ const HeaderComponent = (props) => {
                                 <div className="dropdown-divider"></div>
                                 <a className="dropdown-item" href="/partidos">Todos los partidos</a>
                             </div>
+                        </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Plantilla
+                            </a>
+                            <div className="dropdown-menu bg-primary" aria-labelledby="navbarDropdown2">
+                                {/* {
+                                    props.competicion?.map((data, index) => (
+                                        <Link to={"/partidos/"+ data.id} className="dropdown-item">
+                                            <p>{data.name}</p>
+                                        </Link>
+                                    ))
+                                } */}
+                                <Link to={"/integrantes/"+ "jugadores"} className="dropdown-item">
+                                            <p>Jugadores</p>
+                                </Link>
+                                <Link to={"/integrantes/"+ "tecnicos"} className="dropdown-item">
+                                            <p>Cuerpo Técnico</p>
+                                </Link>
+                                <div className="dropdown-divider"></div>
+                                <a className="dropdown-item" href="/integrantes">Todos los integrantes</a>
+                            </div>
+                        </li>
+                        <li className="nav-item active">
+                            <Link to={"/news"} className="nav-link">
+                                <p>Noticias</p>
+                            </Link>
                         </li>
                     </ul>
                 </div>

@@ -4,3 +4,38 @@
     #8dff8f 33.33%, #6cfb95 41.67%,
      #46ee9a 50%, #00e09e 58.33%, #00d4a2 66.67%, #00caa6 75%, #00c1ab 83.33%, #00bab0 91.67%, #00b4b6 100%);
 }
+
+.integrantesPrin{
+    width: 80%;
+   display: flex;
+   flex-flow: row wrap;
+   background-color: white;
+   margin: 0 auto;
+   border-radius: 2%;
+   padding: 4%;
+}
+
+.integrantesDiv {
+    padding-left: 100px;
+    transition: all 0.3s;
+    margin-top: 30px;
+}
+
+
+.integrantesDiv:hover .integrantesText {
+    background-color: #dddddd;
+    width: 100%;
+    display: block;
+}
+  
+.integrantesText {
+    display: none;
+}
+
+.oneintegrante {
+    background-color: white;
+   margin: 0 auto;
+   border-radius: 2%;
+   padding: 4%;
+   width: 50%;
+}

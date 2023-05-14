@@ -41,6 +41,7 @@ function App() {
               <Route exact path='/entradas' element={<Entradas />} />
               <Route exact path='/entradas/:id' element={<Entradas />} />
               <Route exact path='/integrantes' element={<Integrantes />} />
+              <Route exact path='/integrantes/:id' element={<Integrantes />} />
               <Route exact path='/news' element={<News />} />
               {/* <Route element={<AuthGuardUser />}> */}
               <Route path='/login' element={<Login />} />

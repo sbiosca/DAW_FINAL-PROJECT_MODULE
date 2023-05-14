@@ -4,6 +4,7 @@ import {FiShoppingCart} from "react-icons/fi"
 import {MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/md"
 import { useProducts } from "../../hooks/useProducts";
 import ProductsContext from "../../context/ProductsContext"
+import { Carousel } from 'react-responsive-carousel';
 
 
 const ProductsComponent = (props) => {
@@ -34,11 +35,7 @@ const ProductsComponent = (props) => {
         console.log(productsfiltered)
     }
 
-    
-    
-    // if (formFiltered.name || formFiltered.talla || formFiltered.type) {
-    //     ProductFiltered(formFiltered)
-    // }
+
     return (
         <div className="p-5">
             <div className="filters">
@@ -64,8 +61,15 @@ const ProductsComponent = (props) => {
                 {productsfiltered?.map((data, index) => (
                     <div className="products">
                         <strong>{data.name}</strong>
-                        <div style={{height: "80%"}}>
-                            <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[0]}/>
+                        <div style={{ height: "80%" }}>
+                            {
+                                data.img.split(":")[1] ?
+                                    <Carousel showArrows={true} showIndicators={false} className="carouselStyleProduct" showThumbs={false}>
+                                        <img style={{ width: "190px", margin: "20px" }} src={data.img.split(":")[0]} />
+                                        <img style={{ width: "190px", margin: "20px" }} src={data.img.split(":")[1]} />
+                                    </Carousel> :
+                                    <img style={{ width: "190px", margin: "20px" }} src={data.img.split(":")[0]} />
+                            }
                         </div>
                         <div className="p-1">
                             <FiShoppingCart style={{fontSize: "30px"}}/>&nbsp;
@@ -83,7 +87,14 @@ const ProductsComponent = (props) => {
                         <div className="products">
                             <strong>{data.name}</strong>
                             <div style={{height: "80%"}}>
-                                <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[0]}/>
+                                {
+                                    data.img.split(":")[1] ?
+                                    <Carousel showArrows={true} showIndicators={false} className="carouselStyleProduct" showThumbs={false}>
+                                        <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[0]}/>
+                                        <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[1]}/>
+                                    </Carousel>: 
+                                    <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[0]}/>
+                                }
                             </div>
                             <div className="p-1">
                                 <FiShoppingCart style={{fontSize: "30px"}}/>&nbsp;

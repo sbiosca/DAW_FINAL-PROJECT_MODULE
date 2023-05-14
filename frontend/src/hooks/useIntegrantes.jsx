@@ -13,7 +13,14 @@ export function useIntegrantes() {
         })
     }, [setIntegrantes])
 
+    const PutIntegrantes = useCallback((id, data) => {
+        IntegrantesService.putIntegrantes(id, data)
+        .then(({data}) => {
+            console.log(data)
+        })
+    }, [setIntegrantes])
+
     return {
-        integrantes: integrantes
+        integrantes: integrantes, PutIntegrantes
     }
 }

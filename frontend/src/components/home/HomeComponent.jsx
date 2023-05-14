@@ -47,7 +47,7 @@ const HomeComponent = (props) => {
                 ))}                
             </div>     
             <h1 className="text-center p-5">Integrantes:</h1>
-            <Carousel showArrows={false} className="carouselStyle" >
+            <Carousel showArrows={false} className="carouselStyle" autoPlay={true} infiniteLoop={true}>
                 {props.integrantes?.map((data, index) => (
                     <div>
                         <Link to={"/integrantes"} className="nav-link">
@@ -58,7 +58,7 @@ const HomeComponent = (props) => {
                                 <strong>Jugador</strong>
                             }
                         </Link>
-                        <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "30%" }} />
+                        <img src={data.avatar} style={{ width: "30%" }} />
                         <div>
                            
                         </div>
@@ -69,8 +69,8 @@ const HomeComponent = (props) => {
             <div className="actuality">
                     {props.news?.slice(0,3).map((data, index) => (
                         <div className="actualityDivs">
-                            <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "60%" }} />
-                            <strong className="text-dark">Test</strong>
+                            {/* <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "60%" }} /> */}
+                            <img src={data.img} style={{ width: "30%" }} />
                             <div className="descrNews">
                                 <hr></hr>
                                 <strong>{data.descr}</strong>

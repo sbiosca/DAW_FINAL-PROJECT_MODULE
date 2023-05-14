@@ -950,6 +950,80 @@ COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_i
 12	6	General	10	70	t	1
 1	45	Tribuna	2	280	f	1
 13	351	Gol Sur	21	80	t	1
+14	352	Gol Sur	21	80	t	1
+15	353	Gol Sur	21	80	t	1
+16	354	Gol Sur	21	80	t	1
+17	355	Gol Sur	21	80	t	1
+18	356	Gol Sur	21	80	t	1
+19	357	Gol Sur	21	80	t	1
+20	358	Gol Sur	21	80	t	1
+21	359	Gol Sur	21	80	t	1
+22	20	Tribuna	3	280	t	2
+23	21	Tribuna	3	280	t	2
+24	22	Tribuna	3	280	t	2
+25	23	Tribuna	3	280	t	2
+26	24	Tribuna	3	280	t	2
+27	25	Tribuna	3	280	t	2
+28	26	Tribuna	3	280	t	2
+29	27	Tribuna	3	280	t	2
+30	28	Tribuna	3	280	t	2
+31	29	Tribuna	3	280	t	2
+32	80	General	30	30	t	2
+33	81	General	30	30	t	2
+34	82	General	30	30	t	2
+35	83	General	30	30	t	2
+36	84	General	30	30	t	2
+37	85	General	30	30	t	2
+38	86	General	30	30	t	2
+39	87	General	30	30	t	2
+40	88	General	30	30	t	2
+41	89	General	30	30	t	2
+42	10	Tribuna	3	230	t	6
+43	11	Tribuna	3	230	t	6
+44	12	Tribuna	3	230	t	6
+45	13	Tribuna	3	230	t	6
+46	14	Tribuna	3	230	t	6
+47	15	Tribuna	3	230	t	6
+48	16	Tribuna	3	230	t	6
+49	17	Tribuna	3	230	t	6
+50	18	Tribuna	3	230	t	6
+51	19	Tribuna	3	230	t	6
+52	100	Tribuna	8	200	t	7
+53	101	Tribuna	8	200	t	7
+54	102	Tribuna	8	200	t	7
+55	103	Tribuna	8	200	t	7
+56	104	Tribuna	8	200	t	7
+57	105	Tribuna	8	200	t	7
+58	106	Tribuna	8	200	t	7
+59	107	Tribuna	8	200	t	7
+60	108	Tribuna	8	200	t	7
+61	109	Tribuna	8	200	t	7
+62	110	Tribuna	8	200	t	7
+63	90	Tribuna	9	200	t	7
+64	91	Tribuna	9	200	t	7
+65	92	Tribuna	9	200	t	7
+66	93	Tribuna	9	200	t	7
+67	94	Tribuna	9	200	t	7
+68	95	Tribuna	9	200	t	7
+69	96	Tribuna	9	200	t	7
+70	97	Tribuna	9	200	t	7
+71	98	Tribuna	9	200	t	7
+72	99	Tribuna	9	200	t	7
+73	200	General	19	35	t	8
+74	201	General	19	35	t	8
+75	202	General	19	35	t	8
+76	203	General	19	35	t	8
+77	204	General	19	35	t	8
+78	205	General	19	35	t	8
+79	206	General	19	35	t	8
+80	207	General	19	35	t	8
+81	208	General	19	35	t	8
+82	209	General	19	35	t	8
+83	210	General	19	35	t	8
+84	211	General	19	35	t	8
+85	212	General	19	35	t	8
+86	213	General	19	35	t	8
+87	214	General	19	35	t	8
 \.
 
 
@@ -967,12 +1041,12 @@ COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
 --
 
 COPY public.integrantes (id, name, apellidos, nacionalidad, fech_naci, avatar, player_id, tecnico_id) FROM stdin;
-2	Jose	Carbonell Gandia	España	1995-02-11	avatar.png	2	0
-3	Lucas	Bataller Sanchis	Francia	1990-02-11	avatar.png	3	0
-4	Xavi	Garcia Guerola	Portugal	1994-02-11	avatar.png	3	0
-6	Tono	Reyes Sanchis	España	1994-02-11	avatar.png	0	2
-5	Pablo	Garcia Diaz	Alemania	1994-02-11	avatar.png	0	1
-1	Pepe	Garcia Sanchis	España	1991-02-11	avatar.png	1	0
+3	Lucas	Bataller Sanchis	Francia	1990-02-11	https://api.dicebear.com/6.x/personas/svg?seed=	3	0
+4	Xavi	Garcia Guerola	Portugal	1994-02-11	https://api.dicebear.com/6.x/personas/svg?seed=xavi	3	0
+6	Tono	Reyes Sanchis	España	1994-02-11	https://api.dicebear.com/6.x/personas/svg?seed=tono	0	2
+5	Pablo	Garcia Diaz	Alemania	1994-02-11	https://api.dicebear.com/6.x/personas/svg?seed=pablo\n	0	1
+2	Jose	Carbonell Gandia	España	1990-02-11	https://api.dicebear.com/6.x/personas/svg?seed=jose	2	0
+1	Pepe	Garcia Sanchis	USA	1991-02-11	https://api.dicebear.com/6.x/personas/svg?seed=pepe	1	0
 \.
 
 
@@ -981,12 +1055,12 @@ COPY public.integrantes (id, name, apellidos, nacionalidad, fech_naci, avatar, p
 --
 
 COPY public.jugadores (id, dorsal, goles, tarjetas_amar, tarjetas_roj, lesionado) FROM stdin;
-2	7	25	2	2	f
 3	10	100	23	1	f
 4	13	254	2	0	f
 5	22	55	1	2	f
 6	12	10	10	0	f
 0	0	0	0	0	f
+2	22	35	22	22	f
 1	5	3	1	1	f
 \.
 
@@ -1190,7 +1264,7 @@ SELECT pg_catalog.setval('public.entrada_reserved_id_seq', 1, true);
 -- Name: entradas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.entradas_id_seq', 13, true);
+SELECT pg_catalog.setval('public.entradas_id_seq', 87, true);
 
 
 --

@@ -10,7 +10,7 @@
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    padding: 1.5%;
+    padding-top: 1.5%;
     border-radius: 15px;
     border: 1px solid black;
 }
@@ -79,4 +79,10 @@
 .btn-green:active {
     transform: translateY(1px);
     box-shadow: none;
+}
+
+
+.carouselStyleProduct {
+    width: 50%;
+    margin: 0 auto;
 }
