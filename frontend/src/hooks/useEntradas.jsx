@@ -21,7 +21,14 @@ export function useEntradas() {
         })
     }
 
+    const PutEntradas = useCallback((id, data) => {
+        EntradasService.putEntradas(id, data)
+        .then(({data}) => {
+            console.log(data)
+        })
+    }, [])
+
     return {
-        entradas: entradas, entradasbyPartido, GetEntradasByPartido
+        entradas: entradas, entradasbyPartido, GetEntradasByPartido, PutEntradas
     }
 }

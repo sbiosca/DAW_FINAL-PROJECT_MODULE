@@ -18,7 +18,7 @@ export function useIntegrantes() {
         .then(({data}) => {
             console.log(data)
         })
-    }, [setIntegrantes])
+    }, [])
 
     return {
         integrantes: integrantes, PutIntegrantes

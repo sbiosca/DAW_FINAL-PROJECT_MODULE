@@ -199,52 +199,7 @@ const DashboardComponent = (props) => {
 											<th scope="col" className="operations">Operations</th>
 										</tr>
 									</thead>
-									<tbody>
-										{props.entradas?.map((data, index) => (
-											<tr>
-												<td scope="row" className="entrada_id" title={data.partido_id.eq1 +" VS "+data.partido_id.eq2}>{data.id}</td>
-												<td className="partido">{data.partido_id.id} </td>
-												<td className="asiento">{data.asiento} </td>
-												<td className="fila">{data.fila} </td>
-												<td className="graderia">{data.graderia} </td>
-												<td className="precio">{data.precio} €</td>
-												<td className="disponible">{data.disponible ? <input type="checkbox" checked/>: <input type="checkbox" disabled/>}</td>
-												<td className="operations">
-													<div>
-														Edit
-														Delete
-													</div>
-												</td>
-											</tr>
-										))}
-										<p>Add Entrada</p>
-										{/* <tr>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-											<td>
-												<input type="text"/>
-											</td>
-										</tr> */}
-									</tbody>
+									<EntradasDashboard entradas={props.entradas} />
 								</table>
 								</div>:
 							<div></div>
