@@ -34,22 +34,31 @@ const ProductsComponent = (props) => {
         ProductFiltered(formFiltered)
         console.log(productsfiltered)
     }
-
-
+    let arrayTalla = [];
+    let arrayType = [];
+    for (let i=0; i<props.products?.length; i++) {
+        if (!arrayTalla.includes(props.products[i].talla)) {
+            arrayTalla.push(props.products[i].talla)
+        }
+        if (!arrayType.includes(props.products[i].type)) {
+            arrayType.push(props.products[i].type)
+        }
+    }
+    console.log(arrayType)
     return (
         <div className="p-5">
             <div className="filters">
                 <select onChange={event => setTalla(event.target.value)} className="select-blue">
                     <option label="TALLA" disabled selected />
-                    {props.products?.map((data, index) => (
-                        <option>{data.talla}</option>
+                    {arrayTalla.map((data, index) => (
+                        <option>{data}</option>
                     ))}
                     <option></option>
                 </select>&nbsp;
                 <select onChange={event => setType(event.target.value)} className="select-yellow">
                     <option label="TYPE" disabled selected />
-                    {props.products?.map((data, index) => (
-                        <option >{data.type}</option>
+                    {arrayType.map((data, index) => (
+                        <option >{data}</option>
                     ))}
                     <option></option>
                 </select>&nbsp;
@@ -64,7 +73,8 @@ const ProductsComponent = (props) => {
                         <div style={{ height: "80%" }}>
                             {
                                 data.img.split(":")[1] ?
-                                    <Carousel showArrows={true} showIndicators={false} className="carouselStyleProduct" showThumbs={false}>
+                                    <Carousel showArrows={true} showIndicators={false} className="carouselStyleProduct" showThumbs={false}
+                                     showStatus={false}>
                                         <img style={{ width: "190px", margin: "20px" }} src={data.img.split(":")[0]} />
                                         <img style={{ width: "190px", margin: "20px" }} src={data.img.split(":")[1]} />
                                     </Carousel> :
@@ -89,7 +99,8 @@ const ProductsComponent = (props) => {
                             <div style={{height: "80%"}}>
                                 {
                                     data.img.split(":")[1] ?
-                                    <Carousel showArrows={true} showIndicators={false} className="carouselStyleProduct" showThumbs={false}>
+                                    <Carousel showArrows={true} showIndicators={false} className="carouselStyleProduct" showThumbs={false}
+                                    showStatus={false}>
                                         <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[0]}/>
                                         <img style={{width: "190px", margin: "20px"}} src={data.img.split(":")[1]}/>
                                     </Carousel>: 

@@ -13,7 +13,7 @@ const IntegrantesComponent = (props) => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-8">
-                                    <img src={integrante.avatar} style={{ width: "70%" }} />
+                                    <img src={"/" + integrante.avatar} style={{ width: "100%" }} />
                                 </div>
                                 <div className="col-md-4">
                                     <div className="p-2">
@@ -43,38 +43,38 @@ const IntegrantesComponent = (props) => {
                                     {
                                         data.id_tecn.id == 0 &&  props.type == "jugadores"?
                                         <div className="integrantesDiv" onClick={() => setIntegrante(data)}>
-                                            <img src={data.avatar} style={{ width: "60%" }} />
+                                            <img src={"/" +data.avatar} className="imgAvatarIntegrante" />
                                             <strong className="text-dark">{data.name} {data.apellidos}</strong>
                                             <div className="integrantesText">
                                                 <hr></hr>
                                                 <div>
-                                                    <strong className="p-2">Jugador</strong>
-                                                    <strong className="p-5">Goles: {data.id_player.goles}</strong>
+                                                    <h3 className="text-center">Jugador</h3>
+                                                    <strong className="p-5">Goles: {data.id_player.goles}</strong><p></p>
                                                     <strong className="p-5">Dorsal: {data.id_player.dorsal}</strong>
                                                 </div>
                                             </div>
                                         </div>:
                                         data.id_tecn.id != 0 &&  props.type == "tecnicos"?
                                         <div className="integrantesDiv" onClick={() => setIntegrante(data)}>
-                                            <img src={data.avatar} style={{ width: "60%" }} />
+                                            <img src={"/" +data.avatar} className="imgAvatarIntegrante" />
                                             <strong className="text-dark">{data.name} {data.apellidos}</strong>
                                             <div className="integrantesText">
                                                 <hr></hr>
-                                                <strong className="p-2">{data.id_tecn.type}</strong>
+                                                <h3 className="p-2">{data.id_tecn.type}</h3>
                                             </div>
                                         </div> :
                                         !props.type  ?
                                         <div className="integrantesDiv" onClick={() => setIntegrante(data)}>
-                                            <img src={data.avatar} style={{ width: "60%" }} />
+                                            <img src={"/" +data.avatar} className="imgAvatarIntegrante" />
                                             <strong className="text-dark">{data.name} {data.apellidos}</strong>
                                             <div className="integrantesText">
                                                 <hr></hr>
                                                 {
                                                     data.id_tecn.id != 0 ?
-                                                        <strong className="p-2">{data.id_tecn.type}</strong> :
+                                                        <h3 className="p-2">{data.id_tecn.type}</h3> :
                                                         <div>
-                                                            <strong className="p-2">Jugador</strong>
-                                                            <strong className="p-5">Goles: {data.id_player.goles}</strong>
+                                                            <h3 className="text-center">Jugador</h3>
+                                                            <strong className="p-5">Goles: {data.id_player.goles}</strong><p></p>
                                                             <strong className="p-5">Dorsal: {data.id_player.dorsal}</strong>
                                                         </div>
                                                 }

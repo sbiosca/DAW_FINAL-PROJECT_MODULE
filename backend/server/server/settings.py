@@ -28,7 +28,7 @@ SECRET_KEY = data_env["SECRETDJANGO"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '192.168.1.101']
 
 
 # Application definition
@@ -98,14 +98,15 @@ DATABASES = {
         'NAME': 'bioskin',
         'USER': 'bioskin',
         'PASSWORD': 'r00t',
-        'HOST': 'postgres',
-        #'HOST': 'localhost',
+        #'HOST': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'http://192.168.1.101:3000'
 ]
 
 # Password validation

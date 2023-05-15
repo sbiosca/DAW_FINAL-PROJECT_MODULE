@@ -1,8 +1,31 @@
-.divEntradas {
-    padding: 2px;
-    background-image: radial-gradient(circle at 9.42% 84.05%, #fbff70 0, #e2ff77 8.33%, #c7ff7f 16.67%, #abff87 25%, 
-    #8dff8f 33.33%, #6cfb95 41.67%,
-     #46ee9a 50%, #00e09e 58.33%, #00d4a2 66.67%, #00caa6 75%, #00c1ab 83.33%, #00bab0 91.67%, #00b4b6 100%);
+@media only screen and (max-width: 760px ) {
+    .partidosEntradas {
+        width: 100%;
+    }
+    .seleccionado, .asiento {
+        height: 50px;
+        width: 50px;
+        margin: 12px;
+    }
+}
+
+@media only screen and (min-width: 1200px ) {
+    .partidosEntradas {
+        width: 35%;
+    }
+    .seleccionado, .asiento {
+        height: 150px;
+        width: 150px;
+        margin: 5px;
+    }
+}
+
+
+.partidosEntradas {
+    background-color: beige;
+    margin-top: 1cm;
+	margin-bottom: 1cm;
+    text-align: center;
 }
 
 .estadio {
@@ -13,13 +36,19 @@
     flex-flow: row wrap;
 }
 .seleccionado, .asiento {
-	height: 150px;
-	width: 150px;
 	border: 2px solid #FFF;
-	margin: 5px;
 	padding: 10px;
 	cursor: pointer;
 }
+
+.divEntradas {
+    padding: 2px;
+    background-image: radial-gradient(circle at 9.42% 84.05%, #fbff70 0, #e2ff77 8.33%, #c7ff7f 16.67%, #abff87 25%, 
+    #8dff8f 33.33%, #6cfb95 41.67%,
+     #46ee9a 50%, #00e09e 58.33%, #00d4a2 66.67%, #00caa6 75%, #00c1ab 83.33%, #00bab0 91.67%, #00b4b6 100%);
+}
+
+
 .asiento{
     background-color: green;
 }
@@ -28,10 +57,4 @@
 	background-color: red;
 }
 
-.partidosEntradas {
-    background-color: beige;
-    margin-top: 1cm;
-	margin-bottom: 1cm;
-    width: 35%;
-    text-align: center;
-}
+

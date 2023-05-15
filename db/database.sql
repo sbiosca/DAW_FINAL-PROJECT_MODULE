@@ -1041,12 +1041,19 @@ COPY public.equipo (id, name, city, stadium, shield, lat, long) FROM stdin;
 --
 
 COPY public.integrantes (id, name, apellidos, nacionalidad, fech_naci, avatar, player_id, tecnico_id) FROM stdin;
-3	Lucas	Bataller Sanchis	Francia	1990-02-11	https://api.dicebear.com/6.x/personas/svg?seed=	3	0
-4	Xavi	Garcia Guerola	Portugal	1994-02-11	https://api.dicebear.com/6.x/personas/svg?seed=xavi	3	0
-6	Tono	Reyes Sanchis	España	1994-02-11	https://api.dicebear.com/6.x/personas/svg?seed=tono	0	2
-5	Pablo	Garcia Diaz	Alemania	1994-02-11	https://api.dicebear.com/6.x/personas/svg?seed=pablo\n	0	1
-2	Jose	Carbonell Gandia	España	1990-02-11	https://api.dicebear.com/6.x/personas/svg?seed=jose	2	0
-1	Pepe	Garcia Sanchis	USA	1991-02-11	https://api.dicebear.com/6.x/personas/svg?seed=pepe	1	0
+3	Lucas	Bataller Sanchis	Francia	1990-12-10	jugador1.png	3	0
+4	Xavi	Garcia Guerola	Portugal	1993-11-11	jugador2.png	4	0
+6	Tono	Reyes Sanchis	España	1997-01-12	presidente.png	0	2
+5	Pablo	Garcia Diaz	Alemania	1994-07-03	entrenador.png	0	1
+2	Jose	Carbonell Gandia	España	1990-06-09	jugador4.png	2	0
+1	Pepe	Garcia Sanchis	USA	1991-02-01	jugador3.png	1	0
+7	Roberto	Iglesias Gutierrez	Alemania	1994-07-03	jugador5.png	5	0
+8	Luis	Soriano Bataller	Portugal	1994-12-01	jugador6.png	6	0
+9	Adrian	Mico Martinez	España	1994-07-03	jugador7.png	7	0
+10	Vicente	Romani Rivas	Francia\n	1994-12-10	jugador8.png	8	0
+11	Lionel	Ferrero Gandia	Alemania	1989-02-11	jugador9.png	9	0
+12	Gerardo	Lopez Peña	España	1987-09-10	jugador10.png	10	0
+13	Andreu	Pla Hernandez	USA	1996-02-11	jugador11.png	11	0
 \.
 
 
@@ -1062,6 +1069,11 @@ COPY public.jugadores (id, dorsal, goles, tarjetas_amar, tarjetas_roj, lesionado
 0	0	0	0	0	f
 2	22	35	22	22	f
 1	5	3	1	1	f
+7	7	14	1	2	f
+8	11	10	5	0	f
+9	5	30	10	0	f
+10	23	2	34	22	f
+11	4	3	1	1	f
 \.
 
 
@@ -1101,7 +1113,6 @@ COPY public.productos (id, name, type, talla, img) FROM stdin;
 1	Camiseta 1a Equipación	camiseta	M	1equipacion_del.png:1equipacion_tras.png\n\n
 2	Camiseta 2a Equipación	camiseta	XL	2equipacion_del.png:2equipacion_tras.png
 3	Pantalón 2a Equipación	pantalon	XS	pantalon2.png\n
-4	Pantalón 1a Equipación	pantalon\n	16	pantalon1.png\n
 7	Portero Equipación	camiseta	S	portero.png:porterotras.png
 6	Medias 2a Equipación	medias	Unique	medias2.png
 5	Medias 1a Equipación	medias	Unique	medias.png\n
@@ -1109,6 +1120,7 @@ COPY public.productos (id, name, type, talla, img) FROM stdin;
 9	Funda iPhone BIOS FC	funda movil	Unique	funda_movil.png
 8	Gorra BIOS FC	gorra	Unique	gorra.png
 11	Sudadera BIOS FC	sudadera	M	sudadera.png
+4	Pantalón 1a Equipación	pantalon	16	pantalon1.png\n
 \.
 
 
@@ -1257,7 +1269,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 32, true);
 -- Name: entrada_reserved_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.entrada_reserved_id_seq', 1, true);
+SELECT pg_catalog.setval('public.entrada_reserved_id_seq', 3, true);
 
 
 --

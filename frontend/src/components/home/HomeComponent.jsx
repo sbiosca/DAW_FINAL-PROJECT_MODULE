@@ -47,7 +47,7 @@ const HomeComponent = (props) => {
                 ))}                
             </div>     
             <h1 className="text-center p-5">Integrantes:</h1>
-            <Carousel showArrows={false} className="carouselStyle" autoPlay={true} infiniteLoop={true}>
+            <Carousel showArrows={false} className="carouselStyle" autoPlay={true} infiniteLoop={true} showIndicators={false} showStatus={false}>
                 {props.integrantes?.map((data, index) => (
                     <div>
                         <Link to={"/integrantes"} className="nav-link">
@@ -58,7 +58,7 @@ const HomeComponent = (props) => {
                                 <strong>Jugador</strong>
                             }
                         </Link>
-                        <img src={data.avatar} style={{ width: "30%" }} />
+                        <img src={data.avatar} className="rounded" style={{ width: "70%" }} />
                         <div>
                            
                         </div>

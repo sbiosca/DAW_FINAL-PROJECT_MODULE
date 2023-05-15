@@ -78,11 +78,13 @@ const PartidosComponent = (props) => {
                                 data.resultado ?
                                 <div className="partidos_resultados">
                                     <h3>{data.id_competi.name}</h3>
-                                    <img src={"/" + data.img_partidos.split(":")[0]} style={{width: "140px"}}/>
                                     <strong className="p-5">{data.eq1}</strong>
-                                    {data.resultado}
-                                    <strong className="p-5">{data.eq2}</strong>
+                                    <img src={"/" + data.img_partidos.split(":")[0]} style={{width: "140px"}}/>
                                     <img src={"/" + data.img_partidos.split(":")[1]} style={{width: "140px"}}/>
+                                    <strong className="p-5">{data.eq2}</strong>
+                                    <div>
+                                        <h2>{data.resultado}</h2>
+                                    </div>    
                                     <div>
                                         <strong>{data.horario.slice(11).split("Z")}</strong>&nbsp;
                                         <strong>{data.horario.slice(0, 10)}</strong>
@@ -100,11 +102,13 @@ const PartidosComponent = (props) => {
                                 data.resultado ?
                                 <div className="partidos_resultados">
                                     <h3>{data.id_competi.name}</h3>
-                                    <img src={"/" + data.img_partidos.split(":")[0]} style={{width: "140px"}}/>
                                     <strong className="p-5">{data.eq1}</strong>
-                                    {data.resultado}
-                                    <strong className="p-5">{data.eq2}</strong>
+                                    <img src={"/" + data.img_partidos.split(":")[0]} style={{width: "140px"}}/>
                                     <img src={"/" + data.img_partidos.split(":")[1]} style={{width: "140px"}}/>
+                                    <strong className="p-5">{data.eq2}</strong>
+                                    <div>
+                                        <h2>{data.resultado}</h2>
+                                    </div>    
                                     <div>
                                         <strong>{data.horario.slice(11).split("Z")}</strong>&nbsp;
                                         <strong>{data.horario.slice(0, 10)}</strong>

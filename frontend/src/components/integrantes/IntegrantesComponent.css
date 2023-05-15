@@ -1,3 +1,45 @@
+@media only screen and (max-width: 760px ) {
+    .imgAvatarIntegrante{
+        width: 120%;
+    }
+    .integrantesPrin{
+        width: 100%;
+    }
+    
+    .oneintegrante {
+    width: 100%;
+    }
+    
+}
+
+@media only screen and (min-width: 1200px ) {
+    .imgAvatarIntegrante{
+        width: 60%;
+    }
+    .integrantesPrin{
+        width: 80%;
+    }
+    
+    .integrantesDiv {
+        padding-left: 100px;
+        transition: all 0.3s;
+        margin-top: 30px;
+    }
+    
+    .oneintegrante {
+        width: 50%;
+    }
+    
+}
+
+
+.oneintegrante {
+    background-color: white;
+   margin: 0 auto;
+   border-radius: 2%;
+   padding: 4%;
+}
+
 .divIntegrantes {
     padding: 2px;
     background-image: radial-gradient(circle at 9.42% 84.05%, #fbff70 0, #e2ff77 8.33%, #c7ff7f 16.67%, #abff87 25%, 
@@ -6,7 +48,6 @@
 }
 
 .integrantesPrin{
-    width: 80%;
    display: flex;
    flex-flow: row wrap;
    background-color: white;
@@ -16,9 +57,7 @@
 }
 
 .integrantesDiv {
-    padding-left: 100px;
     transition: all 0.3s;
-    margin-top: 30px;
 }
 
 
@@ -30,12 +69,4 @@
   
 .integrantesText {
     display: none;
-}
-
-.oneintegrante {
-    background-color: white;
-   margin: 0 auto;
-   border-radius: 2%;
-   padding: 4%;
-   width: 50%;
 }

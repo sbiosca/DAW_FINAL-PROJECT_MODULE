@@ -11,10 +11,10 @@ const NewsComponent = (props) => {
                     <h1 className="news-title">
                         {data.descr}
                     </h1>
-                    <Carousel showArrows={false} className="carouselStyle" >
-                        <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "50%" }} />
-                        <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "50%" }} />
-                        <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "50%" }} />
+                    <Carousel showArrows={false} className="carouselStyleNews" showIndicators={false} showStatus={false}>
+                        <img src={data.img} className="imagesNews" />
+                        <img src={data.img} className="imagesNews" />
+                        <img src={data.img} className="imagesNews" />
                     </Carousel>
                     <strong>
                     What is Lorem Ipsum?
