@@ -35,7 +35,6 @@
     width: 80%;
     display: flex;
     flex-flow: row wrap;
-    background-color: white;
     margin: 0 auto;
     border-radius: 2%;
     padding: 4%;
@@ -46,19 +45,20 @@
     color: #fff;
     transition: all 0.3s;
     margin: 0 auto;
-    border: 2px solid rgb(39, 39, 39);
-    border-radius: 10px 15px 27px 27px;
-    -moz-border-radius: 10px 15px 27px 27px;
-    -webkit-border-radius: 10px 15px 27px 27px;
+    background-color: #00c1ab;
+    margin-bottom: 10%;
+    display: flex;
+    flex-flow: row wrap;
 }
 
-  
+
+
 .actualityDivs:hover .descrNews {
-    background-color: #00b4b6;
+    background-color: #556666;
     width: 100%;
     display: block;
 }
-  
+
 .descrNews {
     display: none;
 }
@@ -92,6 +92,10 @@
     padding: 4%;
 }
 
+/* .DescrNewHome {
+    margin-top: 10%;
+    font-size: 130%;
+} */
 
 @media only screen and (max-width: 760px ) {
     .divPartidosHome {
@@ -104,6 +108,11 @@
     .btn_sold {
         font-size: 15px;
     }
+    .DescrNewHome {
+        padding: 2%;
+        font-size: 100%;
+    }
+    
 
 }
 
@@ -128,5 +137,10 @@
     .integrantesAvatarHome {
         width: 70%;
     }
+    .DescrNewHome {
+        margin-top: 10%;
+        font-size: 130%;
+    }
+    
 
 }

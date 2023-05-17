@@ -18,12 +18,15 @@ import Login from './pages/Users/Login'
 import Register from './pages/Users/Register'
 import {UserContextProvider} from './context/UserContext'
 import {ProductsContextProvider} from './context/ProductsContext'
+import {PartidosContextProvider} from './context/PartidosContext'
+import {EntradasContextProvider} from './context/EntradasContext'
 import {  ToastContainer } from 'react-toastify';
 import AuthGuardAdmin from "./services/AuthSecurity/AuthGuardAdmin";
 import AuthGuardUser from "./services/AuthSecurity/AuthGuardUser";
 import AuthGuardNotUser from "./services/AuthSecurity/AuthGuardNotUser";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { IntegrantesContextProvider } from './context/IntegrantesContext';
 
 function App() {
   return (
@@ -31,31 +34,38 @@ function App() {
       <BrowserRouter>
         <UserContextProvider>
           <ProductsContextProvider>
-            <Header />
-            <Routes>
-              <Route exact path='/' element={<Home />} />
-              <Route exact path='/bios.fc' element={<Equipo />} />
-              <Route exact path='/partidos' element={<Partidos />} />
-              <Route exact path='/partidos/:id' element={<Partidos />} />
-              <Route exact path='/shops' element={<Shop />} />
-              <Route exact path='/entradas' element={<Entradas />} />
-              <Route exact path='/entradas/:id' element={<Entradas />} />
-              <Route exact path='/integrantes' element={<Integrantes />} />
-              <Route exact path='/integrantes/:id' element={<Integrantes />} />
-              <Route exact path='/news' element={<News />} />
-              {/* <Route element={<AuthGuardUser />}> */}
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              {/* </Route> */}
-              {/* <Route element={<AuthGuardNotUser />}> */}
-              <Route path='/profile' element={<Profile />} />
-              {/* </Route> */}
-              {/* <Route element={<AuthGuardAdmin />}> */}
-              <Route path='/dashboard' element={<Dashboard />} />
-              {/* </Route> */}
-            </Routes>
-            <ToastContainer />
-            <Footer />
+            <PartidosContextProvider>
+            <EntradasContextProvider>
+              <IntegrantesContextProvider>
+
+                <Header />
+                <Routes>
+                  <Route exact path='/' element={<Home />} />
+                  <Route exact path='/bios.fc' element={<Equipo />} />
+                  <Route exact path='/partidos' element={<Partidos />} />
+                  <Route exact path='/partidos/:id' element={<Partidos />} />
+                  <Route exact path='/shops' element={<Shop />} />
+                  <Route exact path='/entradas' element={<Entradas />} />
+                  <Route exact path='/entradas/:id' element={<Entradas />} />
+                  <Route exact path='/integrantes' element={<Integrantes />} />
+                  <Route exact path='/integrantes/:id' element={<Integrantes />} />
+                  <Route exact path='/news' element={<News />} />
+                  {/* <Route element={<AuthGuardUser />}> */}
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/register' element={<Register />} />
+                  {/* </Route> */}
+                  {/* <Route element={<AuthGuardNotUser />}> */}
+                  <Route path='/profile' element={<Profile />} />
+                  {/* </Route> */}
+                  {/* <Route element={<AuthGuardAdmin />}> */}
+                  <Route path='/dashboard' element={<Dashboard />} />
+                  {/* </Route> */}
+                </Routes>
+                <ToastContainer />
+                <Footer />
+              </IntegrantesContextProvider>
+            </EntradasContextProvider>
+            </PartidosContextProvider>
           </ProductsContextProvider>
         </UserContextProvider>
       </BrowserRouter>

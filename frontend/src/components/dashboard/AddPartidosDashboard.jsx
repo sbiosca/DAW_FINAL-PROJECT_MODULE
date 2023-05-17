@@ -7,7 +7,6 @@ import {  toast } from 'react-toastify';
 
 const CreatePartidos = (props) => {
     console.log(props.formattedDate)
-    const partidos = usePartidos();
     const [isAdmin] = useState(true);
     
     const [competi, setCompeti] = useState();
@@ -17,7 +16,7 @@ const CreatePartidos = (props) => {
     const [hora, setHora] = useState();
     const [resultado, setResultado] = useState()
     const [img, setImg] = useState()
-    const {CreatePartidos} = usePartidos();
+    const {CreatePartidos, partidos} = usePartidos();
     const navigate = useNavigate();
     
     const data = {
@@ -41,7 +40,9 @@ const CreatePartidos = (props) => {
             progress: undefined,
             theme: "dark",
         })
-        navigate('/dashboard')
+        props.viewAddPartido(false)
+        props.viewCalendar(true)
+        // navigate('/dashboard')
     }
    
     return (

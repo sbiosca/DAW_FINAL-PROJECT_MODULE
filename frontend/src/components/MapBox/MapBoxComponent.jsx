@@ -25,8 +25,7 @@ const MapBoxComponent = (props) => {
                     <img src="logo.png" style={{width: "40%"}}/>
                     <h1>{value.name}</h1>
                     <p>Tienda: </p>
-                    <img src="stadium_BIOS_FC.png" style={{width: "40%"}}/>
-                    <img src="stadium_BIOS_FC3.png" style={{width: "40%"}}/>
+                    <img src={value.img} style={{width: "100%"}}/>
                 </div>
             )
         }

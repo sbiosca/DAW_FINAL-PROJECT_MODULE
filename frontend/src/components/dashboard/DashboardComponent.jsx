@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./DashboardComponent.css"
 import {Link} from 'react-router-dom'
 import { DayPicker } from 'react-day-picker';
@@ -12,12 +12,12 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import IntegrantesDashboard from './IntegrantesDashboard'
 import EntradasDashboard from './EntradasDashboard'
 import AddPartidos from '../../components/dashboard/AddPartidosDashboard';
-
+import PartidosContext from "../../context/PartidosContext"
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
 const DashboardComponent = (props) => {
+	const {Partidosfiltered} = useContext(PartidosContext)
 	let arrayTrue = []
 	let arrayFalse = []
 	let winner = []
@@ -100,39 +100,38 @@ const DashboardComponent = (props) => {
 			<span onClick={()=> [setViewCalendar(false), setViewAddPartido(true)]}>Añadir Partido</span>
 		</Button>
 	</div>;
-	for (let i=0; i < props.partidos?.length; i++) {
+	for (let i=0; i < Partidosfiltered?.length; i++) {
 		if (selected) {
 			let year = selected.getFullYear();
 			let month = selected.getMonth() + 1;
 			let day = selected.getDate();
 			formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
 			
-			if (formattedDate === props.partidos[i].horario.slice(0, 10)) {
+			if (formattedDate === Partidosfiltered[i].horario.slice(0, 10)) {
 				footer = <div>
 							<strong>Día {format(selected, 'PP')} </strong><p></p>
 							<strong>Partido:</strong>  
 							<div className="divPartidosAdmin">
-                                <h3>{props.partidos[i].id_competi.name}</h3>
-                                <strong>{props.partidos[i].eq1}</strong>
-                                <img src={props.partidos[i].img_partidos.split(":")[0]} style={{ width: "40px" }} />
-                                <img src={props.partidos[i].img_partidos.split(":")[1]} style={{ width: "40px" }} />
-                                <strong>{props.partidos[i].eq2}</strong>
-                                <div>
-                                    <strong>{props.partidos[i].horario.slice(11).split("Z")}</strong><p></p>
-                                    <strong>{props.partidos[i].horario.slice(0, 10)}</strong>
-                                </div><p></p>
-								<Button variant="danger" onClick={() => deletePartidos(props.partidos[i].id)}>
+								<h3>{Partidosfiltered[i].id_competi.name}</h3>
+								<strong>{Partidosfiltered[i].eq1}</strong>
+								<img src={Partidosfiltered[i].img_partidos.split(":")[0]} style={{ width: "40px" }} />
+								<img src={Partidosfiltered[i].img_partidos.split(":")[1]} style={{ width: "40px" }} />
+								<strong>{Partidosfiltered[i].eq2}</strong>
+								<div>
+									<strong>{Partidosfiltered[i].horario.slice(11).split("Z")}</strong><p></p>
+									<strong>{Partidosfiltered[i].horario.slice(0, 10)}</strong>
+								</div><p></p>
+								<Button variant="danger" onClick={() => deletePartidos(Partidosfiltered[i].id)}>
 									Delete
 								</Button>&nbsp;
 								<Button variant="primary disabled" >
 									Add Result
 								</Button>
-                            </div>
+							</div>
 						</div>;
 			}
 		}
-	}
-
+	}	
     return (
         <div className="container-fluid">
 				<div className="row">
@@ -220,7 +219,7 @@ const DashboardComponent = (props) => {
 						}
 						{
 							viewAddPartido ?
-							<AddPartidos formattedDate={formattedDate}/>:
+							<AddPartidos formattedDate={formattedDate} viewAddPartido={setViewAddPartido} viewCalendar={setViewCalendar}/>:
 							<div></div>
 						}
 						{

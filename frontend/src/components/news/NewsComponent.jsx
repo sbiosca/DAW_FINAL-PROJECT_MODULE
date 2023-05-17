@@ -12,9 +12,8 @@ const NewsComponent = (props) => {
                         {data.descr}
                     </h1>
                     <Carousel showArrows={false} className="carouselStyleNews" showIndicators={false} showStatus={false}>
-                        <img src={data.img} className="imagesNews" />
-                        <img src={data.img} className="imagesNews" />
-                        <img src={data.img} className="imagesNews" />
+                        <img src={data.img.split(":")[0]} className="imagesNews" />
+                        <img src={data.img.split(":")[1]} className="imagesNews" />
                     </Carousel>
                     <strong>
                     What is Lorem Ipsum?

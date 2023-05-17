@@ -69,11 +69,14 @@ const HomeComponent = (props) => {
             <div className="actuality">
                     {props.news?.slice(0,3).map((data, index) => (
                         <div className="actualityDivs">
-                            {/* <img src="https://api.dicebear.com/6.x/micah/svg?seed=Molly" style={{ width: "60%" }} /> */}
-                            <img src={data.img} style={{ width: "30%" }} />
+                            <img src={data.img.split(":")[0]} style={{ width: "60%" }} />
+                            <strong className="DescrNewHome">{data.descr}</strong>
                             <div className="descrNews">
                                 <hr></hr>
-                                <strong>{data.descr}</strong>
+                                <strong>
+                                What is Lorem Ipsum?
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                </strong>
                             </div>
                         </div>
                     ))}

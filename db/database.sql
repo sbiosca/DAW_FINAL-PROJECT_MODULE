@@ -929,6 +929,7 @@ COPY public.entrada_reserved (id, entrada_id, user_id) FROM stdin;
 2	2	2
 3	3	3
 4	4	4
+5	22	2
 \.
 
 
@@ -958,7 +959,6 @@ COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_i
 19	357	Gol Sur	21	80	t	1
 20	358	Gol Sur	21	80	t	1
 21	359	Gol Sur	21	80	t	1
-22	20	Tribuna	3	280	t	2
 23	21	Tribuna	3	280	t	2
 24	22	Tribuna	3	280	t	2
 25	23	Tribuna	3	280	t	2
@@ -1024,6 +1024,7 @@ COPY public.entradas (id, asiento, graderia, fila, precio, disponible, partido_i
 85	212	General	19	35	t	8
 86	213	General	19	35	t	8
 87	214	General	19	35	t	8
+22	20	Tribuna	3	280	f	2
 \.
 
 
@@ -1082,10 +1083,10 @@ COPY public.jugadores (id, dorsal, goles, tarjetas_amar, tarjetas_roj, lesionado
 --
 
 COPY public.news (id, descr, img) FROM stdin;
-1	What is Lorem Ipsum? Lorem Ipsum isi	img_news1.png
-2	What is Lorem Ipsum? Lorem Ipsum isi	img_news2.png
-3	What is Lorem Ipsum? Lorem Ipsum isi	img_news3.png
-4	What is Lorem Ipsum? Lorem Ipsum isi	img_news4.png
+1	What is Lorem Ipsum? Lorem Ipsum isi	img_news1.png:img_newss1.png
+2	What is Lorem Ipsum? Lorem Ipsum isi	img_news2.png:img_newss2.png
+3	What is Lorem Ipsum? Lorem Ipsum isi	img_news3.png:img_newss3.png
+4	What is Lorem Ipsum? Lorem Ipsum isi	img_news4.png:img_newss4.png
 \.
 
 
@@ -1174,10 +1175,10 @@ COPY public.tecnicos (id, type) FROM stdin;
 --
 
 COPY public.tienda (id, name, lat, long, img) FROM stdin;
-1	San Rafael	38.7933	-0.62576	tienda1.jpg
-2	Almaig	38.333	-0.61476	tienda2.jpg
-3	Barranquet	38.8253	-0.6656	tienda3.jpg
-4	Centro	38.1233	-0.60056	tienda4.jpg
+1	San Rafael	38.7933	-0.62576	tienda1.png
+2	Almaig	38.333	-0.61476	tienda2.png
+3	Barranquet	38.8253	-0.6656	tienda3.png
+4	Centro	38.1233	-0.60056	tienda4.png
 \.
 
 
@@ -1269,7 +1270,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 32, true);
 -- Name: entrada_reserved_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bioskin
 --
 
-SELECT pg_catalog.setval('public.entrada_reserved_id_seq', 3, true);
+SELECT pg_catalog.setval('public.entrada_reserved_id_seq', 5, true);
 
 
 --

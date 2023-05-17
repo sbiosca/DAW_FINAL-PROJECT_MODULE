@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import {AiFillCheckCircle} from "react-icons/ai"
 import {RiQuestionAnswerFill} from "react-icons/ri"
 import {MdCancel, MdSend} from "react-icons/md"
 import { useEntradas } from "../../hooks/useEntradas";
+import EntradasContext from "../../context/EntradasContext"
 
 import {  toast } from 'react-toastify';
 
 const EntradasDashboard = (props) => {
     const {PutEntradas} = useEntradas();
+    const {Entradasfiltered} = useContext(EntradasContext)
     const [viewAnswer, SetView] = useState(false)
     const [idAnswer, SetId] = useState()
     const [asiento, SetAsiento] = useState()
@@ -36,7 +38,7 @@ const EntradasDashboard = (props) => {
     return (
         <tbody>
         {
-            props.entradas?.map((data, index) => (
+            Entradasfiltered?.map((data, index) => (
                 <tr>
                     <td scope="row" className="entrada_id" title={data.partido_id.eq1 + " VS " + data.partido_id.eq2}>{data.id}</td>
                     <td className="partido">

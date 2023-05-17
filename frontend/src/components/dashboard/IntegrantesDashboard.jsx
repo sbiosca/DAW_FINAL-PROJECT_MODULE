@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import {AiFillCheckCircle} from "react-icons/ai"
 import {RiQuestionAnswerFill} from "react-icons/ri"
 import {MdCancel, MdSend} from "react-icons/md"
 import { useIntegrantes } from "../../hooks/useIntegrantes";
+import IntegrantesContext from "../../context/IntegrantesContext"
 
 import {  toast } from 'react-toastify';
 
 const IntegrantesDashboard = (props) => {
+    const {Integrantesfiltered} = useContext(IntegrantesContext)
     const {PutIntegrantes, integrantes} = useIntegrantes();
     const [viewAnswer, SetView] = useState(false)
     const [idAnswer, SetId] = useState()
@@ -53,7 +55,7 @@ const IntegrantesDashboard = (props) => {
    
     return (
         <tbody>
-            {props.integrantes?.map((data, index) => (
+            {Integrantesfiltered?.map((data, index) => (
                 <tr>
                     <td scope="row" className="integrante_id">
                         {data.id}
