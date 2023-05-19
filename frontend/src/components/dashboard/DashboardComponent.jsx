@@ -13,6 +13,7 @@ import IntegrantesDashboard from './IntegrantesDashboard'
 import EntradasDashboard from './EntradasDashboard'
 import AddPartidos from '../../components/dashboard/AddPartidosDashboard';
 import PartidosContext from "../../context/PartidosContext"
+import {  toast } from 'react-toastify';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -23,6 +24,7 @@ const DashboardComponent = (props) => {
 	let winner = []
 	let loser = []
 	let not_play = []
+	
 	for (let i=0;i<props.entradas.length;i++) {
 		if (props.entradas[i].disponible) {
 			arrayTrue.push(props.entradas[i].disponible)
@@ -87,12 +89,42 @@ const DashboardComponent = (props) => {
 	}
 	const [selected, setSelected] = useState();
 	const [viewStadistics, setStatistics] = useState();
+	const [idPartido, setIdPartido] = useState();
+	const [resultadoPut, setResultadoPut] = useState();
+	const [viewEditResult, setViewEditResult] = useState(false);
 	const [viewCalendar, setViewCalendar] = useState(false);
 	const [viewUsers, setViewUsers] = useState(false);
 	const [viewEntradas, setViewEntradas] = useState(false);
 	const [viewIntegrantes, setViewIntegrantes] = useState(false);
 	const [viewAddPartido, setViewAddPartido] = useState(false);
-	const {deletePartidos} = usePartidos();
+	const {deletePartidos, updatePartidos} = usePartidos();
+	const updateResult = (value) => {
+		const dateNow = Date.now();
+		const hoy = new Date(dateNow);
+		const formatData = hoy.toISOString().slice(0, 10)
+		const data = {
+			"eq1": value.eq1,
+			"eq2": value.eq2,
+			"horario": value.horario,
+			"resultado": resultadoPut
+		}
+		if (formatData >= value.horario.slice(0, 10)) {
+			console.log(formatData)
+			updatePartidos(value.id, data)
+		}else {
+			toast.error('No puedes añadir un resultado a un partido que no se ha jugado!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+		}
+		
+	}
 	let formattedDate;
 	let footer = <div>
 		<h4>No hay Partidos Seleccionados </h4>
@@ -117,6 +149,15 @@ const DashboardComponent = (props) => {
 								<img src={Partidosfiltered[i].img_partidos.split(":")[0]} style={{ width: "40px" }} />
 								<img src={Partidosfiltered[i].img_partidos.split(":")[1]} style={{ width: "40px" }} />
 								<strong>{Partidosfiltered[i].eq2}</strong>
+                                <div>
+									{
+										viewEditResult && Partidosfiltered[i].id ==  idPartido?
+										<input type="text" id="result" name="result" defaultValue={Partidosfiltered[i].resultado} onKeyUp={event => setResultadoPut(event.target.value)}/> :
+										<div>
+											<strong>{Partidosfiltered[i].resultado}</strong>
+                            			</div>
+									}
+								</div>
 								<div>
 									<strong>{Partidosfiltered[i].horario.slice(11).split("Z")}</strong><p></p>
 									<strong>{Partidosfiltered[i].horario.slice(0, 10)}</strong>
@@ -124,9 +165,17 @@ const DashboardComponent = (props) => {
 								<Button variant="danger" onClick={() => deletePartidos(Partidosfiltered[i].id)}>
 									Delete
 								</Button>&nbsp;
-								<Button variant="primary disabled" >
-									Add Result
-								</Button>
+								{
+									Partidosfiltered[i].resultado.length != 0?
+									<Button variant="primary" onClick={!viewEditResult ? () => [setViewEditResult(true), setIdPartido(Partidosfiltered[i].id)]: () => 
+																		[setViewEditResult(false), updateResult(Partidosfiltered[i])]}>
+										Edit Result
+									</Button>:
+									<Button variant="primary" onClick={!viewEditResult ? () => [setViewEditResult(true), setIdPartido(Partidosfiltered[i].id)]: () => 
+																	[setViewEditResult(false), updateResult(Partidosfiltered[i])]} >
+										Add Result
+									</Button>
+								}
 							</div>
 						</div>;
 			}

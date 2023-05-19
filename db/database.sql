@@ -1083,10 +1083,10 @@ COPY public.jugadores (id, dorsal, goles, tarjetas_amar, tarjetas_roj, lesionado
 --
 
 COPY public.news (id, descr, img) FROM stdin;
-1	What is Lorem Ipsum? Lorem Ipsum isi	img_news1.png:img_newss1.png
-2	What is Lorem Ipsum? Lorem Ipsum isi	img_news2.png:img_newss2.png
-3	What is Lorem Ipsum? Lorem Ipsum isi	img_news3.png:img_newss3.png
-4	What is Lorem Ipsum? Lorem Ipsum isi	img_news4.png:img_newss4.png
+1	Estadio de futbol, el proximos partido se juega un gran estadio como es el BIOSKIN STADIUM. BIOS FC recibira al CF Beni donde habra una gran rivalidad por el primer clasificado.	img_news1.png:img_newss1.png
+2	Rumores del mejor futbolista del mundo, han salido unos rumores que hablan sobre Neymar que podria fichar por BIOS FC. El jugador no ha querido responder a las respuestas que se le han planteado, ya que esta plenamente centrado en su club. Pero quien dice que a final de temporada Neymar pueda incorporarse...	img_news2.png:img_newss2.png
+3	Celebración del equipo, el último partido el equipo disfruto jugando al futbol. Primero iba perdiendo hasta que pudieron empatar y realizar una remontada epica en los ultimos 20 minutos, donde el equipo demostro porque actualmente va el primero de la clasificación.	img_news3.png:img_newss3.png
+4	Otros equipos, esta semana se han disputado varios partidos en nuestra liga con interesantes partidos y las polemicas tipicas de nuestro futbol español	img_news4.png:img_newss4.png
 \.
 
 

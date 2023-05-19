@@ -30,7 +30,7 @@ export function useEntradasReserved() {
             // const subject = 'Correo prueba';
             // const text = 'Correo prueba'
             // sendEmail(to, subject, text)
-            toast.success('Correo enviado correctamente!', {
+            toast.success('Entrada adquirida correctamente!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,

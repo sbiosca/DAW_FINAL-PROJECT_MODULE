@@ -66,7 +66,7 @@ const EntradasComponent = (props) => {
                             swal(
                                 <div>
                                     <h3>Compra realizada correctamente</h3>
-                                    <strong>En su correo tendrá su entrada con los datos para el acceso</strong>
+                                    <strong>En su perfil tendrá su entrada con los datos para el acceso</strong>
                                 </div>
                                 , { icon: "success", }
                             ).then(result => {

@@ -10,6 +10,9 @@ const PartidosService = {
     addPartidos(data) {
         return http().post("/server/partidos_add", data)
     },
+    updatePartidos(id, data) {
+        return http().put("/server/partidos_update/" + id, data)
+    },
     deletePartidos(id) {
         return http().delete("/server/partidos_delete/" + id)
     }

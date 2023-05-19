@@ -63,4 +63,9 @@ class PartidosSerializer(serializers.ModelSerializer):
             serialized_partidos.append(competi)
 
         return serialized_partidos
+    
+    def putPartidos(data, context):
+        Partidos.objects.bulk_update([Partidos(id=context, eq1=data["eq1"], eq2=data["eq2"] , horario=data["horario"], 
+                                                     resultado=data["resultado"])],fields=["eq1", "eq2", "horario", "resultado"])
+        return "Correct"
          

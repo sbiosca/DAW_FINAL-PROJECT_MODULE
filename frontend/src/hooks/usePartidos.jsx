@@ -32,6 +32,25 @@ export function usePartidos() {
         })
     }, [])
 
+    const updatePartidos = useCallback((id, data) => {
+        PartidosService.updatePartidos(id, data)
+        .then(({data}) => {
+            toast.success('Result Updated!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+            checkPartidosContext()
+
+        })
+    }, [])
+
+
     const deletePartidos = useCallback((id) => {
         PartidosService.deletePartidos(id)
         .then(({data}) => {
@@ -50,6 +69,6 @@ export function usePartidos() {
     }, [])
 
     return {
-        partidos: partidos, partidosbyCompeti, GetPartidosbyCompeti, CreatePartidos, deletePartidos
+        partidos: partidos, partidosbyCompeti, GetPartidosbyCompeti, CreatePartidos, deletePartidos, updatePartidos
     }
 }

@@ -28,6 +28,11 @@ class PartidosView(viewsets.GenericViewSet):
         PartidosSerializer.CreatePartidos(context=serializer_data)
         return Response({"ADDED NEW MATCH SUCCESFULL"}, status=status.HTTP_201_CREATED)
     
+    def putPartidos(self, request, *args , **kwargs):
+        serializer_user = PartidosSerializer.putPartidos(data=request.data, context=kwargs["id"])
+
+        return Response(serializer_user, status=status.HTTP_200_OK) 
+    
     def DeletePartidos(self, request, id):
         try:
             partidos = Partidos.objects.get(id=id)
